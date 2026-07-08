@@ -33,3 +33,9 @@
 - Relaxed desktop spacing so the app no longer feels cramped on wide screens.
 - Added wider desktop container, larger card padding, softer grid gaps and a more breathable desktop navigation.
 - Kept mobile glass navigation scrollable so it remains usable on small phones.
+
+
+## v1.3.3
+- Fixed desktop navigation so it stays in one orderly line.
+- Rebuilt mobile navigation as a centred 5 × 2 grid so it no longer sits off to the side.
+- Added bouquet emoji favicon.
