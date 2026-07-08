@@ -1,9 +1,9 @@
-const CACHE_NAME = 'florist-studio-v1.3.2';
+const CACHE_NAME = 'florist-studio-v1.3.4';
 const ASSETS = [
   './',
   './index.html',
-  './assets/css/style.css?v=1.3.2',
-  './assets/js/app.js?v=1.3.2',
+  './assets/css/style.css?v=1.3.4',
+  './assets/js/app.js?v=1.3.4',
   './manifest.json'
 
 ];
@@ -18,3 +18,5 @@ self.addEventListener('fetch', event => {
 });
 
 // v1.3.2 mobile nav cache bump
+
+// v1.3.4 launch-ready mobile nav and cache bump
