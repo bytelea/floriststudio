@@ -1,25 +1,23 @@
 # Changelog
 
-## v1.1.2 - Final mobile polish pass
-- Added extra iPhone/Safari layout protection for date fields and form controls.
-- Improved bottom glass navigation spacing, touch targets, and safe-area padding.
-- Tightened mobile cards, buttons, charts, and invoice preview styling.
-- Rechecked connected flows: calculator → orders → stock → invoices → analytics.
+## v1.3.0 — Premium responsive polish
 
-# Changelog
+- Made the mobile bottom menu less cramped by changing it to a scrollable glass navigation bar.
+- Improved desktop and mobile visual consistency with stronger app-style styling.
+- Kept Orders as 📋 and Invoices as 🧾 so they are easier to tell apart.
+- Added stronger mobile overflow protection for date fields and form inputs.
+- Rewrote the README so it feels personal, warm and connected to Eternal Blooms.
+- Bumped file versions to help GitHub Pages/browser cache refresh.
 
-## v1.1.0 - Premium mobile polish
-- Added floating glass navigation styling.
-- Improved iPhone/mobile spacing and card layout.
-- Added smoother page transitions and button animations.
-- Upgraded dashboard cards, chart containers and invoice preview styling.
-- Kept Orders as 📋 and Invoices as 🧾.
-- Strengthened mobile date input formatting so date fields stay inside cards.
+## v1.2.1
 
-## v1.0.1 - Mobile bug fix
-- Fixed Orders/Invoicing duplicate icon issue.
-- Fixed mobile date field overflow.
+- Added cache refresh query strings.
+- Continued visual polish.
 
-## v1.0.0 - Proof of concept
-- Calculator, orders, inventory, expenses, calendar, customers, invoices, content ideas and analytics.
-- Local data saving and export/import.
+## v1.1.2
+
+- Improved mobile layout, date field behaviour and connected dashboard flow.
+
+## v1.0.0
+
+- First public proof-of-concept release.
