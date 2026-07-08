@@ -1,0 +1,11 @@
+{
+  "orders": [],
+  "expenses": [],
+  "inventory": [],
+  "customers": [],
+  "invoices": [],
+  "settings": {
+    "businessName": "Example Florist",
+    "businessUser": "@exampleflorist"
+  }
+}

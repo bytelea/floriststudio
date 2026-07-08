@@ -1,80 +1,54 @@
 # 🌸 Florist Studio
 
-An all-in-one business dashboard built by a florist, for florists.
+An all-in-one florist business dashboard created by **Eternal Blooms**.
 
-Florist Studio helps florists manage every part of their business in one place without complicated software or monthly subscriptions.
-
----
+Florist Studio helps florists price bouquets, save orders, track expenses, manage inventory, create invoices, manage customers, view analytics, and plan content ideas in one place.
 
 ## ✨ Features
 
-- 💐 Bouquet Pricing Calculator
-- 📦 Inventory Management
-- 🧾 Downloadable Invoices
-- 👥 Customer Management
-- 📅 Calendar
-- 📋 Order Management
-- 💰 Expense Tracker
-- 📈 Profit & Analytics Dashboard
-- 📊 Downloadable Charts
-- 💡 Content Idea Generator
-- 💾 Local Database (your data stays on your device)
-- 📱 Mobile Friendly
+- Bouquet pricing calculator
+- Orders dashboard
+- Inventory management connected to orders
+- Customer management
+- Downloadable invoices with business name/logo
+- Expense tracking
+- Calendar view
+- Analytics and downloadable graphs
+- Content ideas generator
+- Local-first data storage and JSON backup/import
+- Mobile and desktop friendly layout
 
----
+## 🔒 Data privacy
 
-## 🔒 Your Data
+Florist Studio is designed as a local-first tool. Data is saved on the user's own browser/device unless they choose to export, import, or connect a local data file. Eternal Blooms does not receive or manage florist business data.
 
-Florist Studio does **not** collect or store your data.
+## ☕ Support
 
-Everything is saved locally on your own device, so you stay in complete control of your business information.
+If this tool helps your business, you can support future updates on Ko-fi:
 
----
-
-## ❤️ Why I Built This
-
-Originally built to help manage my own flower business. As it grew, I realised it could help other florists too, so I'm sharing it with the floral community.
-
-My goal is simple:
-
-> Help florists spend less time on admin and more time creating beautiful flowers.
-
----
-
-## 🚀 Roadmap
-
-- Wedding & event planner
-- Customer CRM improvements
-- Delivery route planning
-- AI bouquet pricing suggestions
-- Supplier price comparison
-- Multi-currency support
-- Automatic backups
-- Barcode inventory
-
----
-
-## 🤝 Contributing
-
-Suggestions, ideas and feature requests are always welcome.
-
-If you're a florist and have an idea that would make your life easier, please open an Issue.
-
----
-
-## ☕
-
-If Florist Studio has helped your business, you can support future development here:
-
-👉 **Ko-fi:** https://ko-fi.com/eternalblooms
-
----
+https://ko-fi.com/eternalblooms
 
 ## 🌸 Follow Eternal Blooms
 
-Instagram:
-https://www.instagram.com/eternalblooms.ie/
+Instagram: https://www.instagram.com/eternalblooms.ie/
 
----
+## 🚀 GitHub Pages
 
-Built with ❤️ by Eternal Blooms
+To publish this app:
+
+1. Upload all files in this folder to your GitHub repository.
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment**, choose **Deploy from a branch**.
+4. Select the **main** branch and `/root` folder.
+5. Save and wait for GitHub Pages to publish.
+
+## 📝 Roadmap
+
+- More invoice templates
+- Better calendar reminders
+- Wedding/event workflow
+- Stem recipe builder
+- Supplier tracking
+- Optional cloud sync
+
+Built with ❤️ by Eternal Blooms.

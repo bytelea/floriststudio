@@ -1,0 +1,16 @@
+{
+  "name": "Florist Studio",
+  "short_name": "Florist Studio",
+  "description": "Florist studio for pricing bouquets, saving orders, tracking expenses, managing inventory and viewing profit projections.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fbf7f1",
+  "theme_color": "#f7e6e5",
+  "icons": [
+    {
+      "src": "assets/images/eternal-blooms-logo.png",
+      "sizes": "500x500",
+      "type": "image/png"
+    }
+  ]
+}
