@@ -68,6 +68,6 @@ I’d love to see what you create with Florist Studio — tag **@eternalblooms.i
 
 ## 🛠️ Current version
 
-**v1.3.0 — Premium responsive polish**
+**v1.3.2 — Premium responsive polish**
 
 This version focuses on a more consistent mobile/desktop style, better spacing, a less cramped mobile menu, and a warmer README that explains the heart behind the project.

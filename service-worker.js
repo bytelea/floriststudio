@@ -1,10 +1,11 @@
-const CACHE_NAME = 'florist-studio-v1.3.0';
+const CACHE_NAME = 'florist-studio-v1.3.2';
 const ASSETS = [
   './',
   './index.html',
-  './assets/css/style.css?v=1.3.0',
-  './assets/js/app.js?v=1.3.0',
+  './assets/css/style.css?v=1.3.2',
+  './assets/js/app.js?v=1.3.2',
   './manifest.json'
+
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
@@ -15,3 +16,5 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
 });
+
+// v1.3.2 mobile nav cache bump
