@@ -3,7 +3,7 @@ const DEFAULT_LOGO='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAA
 const blank={orders:[],expenses:[],inventory:[],customers:[],invoices:[],settings:{businessName:'Eternal Blooms',businessUser:'@eternalblooms.ie',logoData:DEFAULT_LOGO},version:'proof-connected-1'};
 let db;try{db=JSON.parse(localStorage.ebFloristStudioConnected||'null')||structuredClone(blank)}catch(e){db=structuredClone(blank)}normalize();
 let localFileHandle=null, localFileName='';
-const pages=[['home','Home','🏠'],['calculator','Calc','🧮'],['orders','Orders','🧾'],['inventory','Stock','📦'],['expenses','Expenses','💸'],['calendar','Calendar','📅'],['customers','Customers','👥'],['invoices','Invoices','🧾'],['content','Ideas','💡'],['analytics','Stats','📈']];
+const pages=[['home','Home','🏠'],['calculator','Calc','🧮'],['orders','Orders','📋'],['inventory','Stock','📦'],['expenses','Expenses','💸'],['calendar','Calendar','📅'],['customers','Customers','👥'],['invoices','Invoices','🧾'],['content','Ideas','💡'],['analytics','Stats','📈']];
 function $(id){return document.getElementById(id)}function money(n){return '€'+Number(n||0).toFixed(2)}function today(){return new Date().toISOString().slice(0,10)}function val(id){return parseFloat($(id).value)||0}function esc(s){return String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
 function normalize(){['orders','expenses','inventory','customers','invoices'].forEach(k=>db[k] ||= []);db.settings ||= {};db.settings.businessName ||= 'Eternal Blooms';db.settings.businessUser ||= '@eternalblooms.ie';db.settings.logoData ||= DEFAULT_LOGO}
 function save(){normalize();localStorage.ebFloristStudioConnected=JSON.stringify(db);render();saveToLocalFile(true)}
@@ -45,3 +45,21 @@ customersBody.innerHTML=db.customers.map(c=>`<tr><td>${esc(c.name)}</td><td>${es
 invoiceOrder.innerHTML='<option value="">Choose order</option>'+db.orders.map(o=>`<option value="${o.id}">${esc(o.name)} · ${money(o.price)}</option>`).join('');invoicesBody.innerHTML=db.invoices.map(i=>`<tr><td>${i.date}</td><td>${esc(i.customer)}</td><td>${esc(i.item)}</td><td>${money(i.amount)}</td><td>${esc(i.status)}</td><td><button onclick="previewInvoice(${i.id})">Preview</button> <button onclick="downloadInvoice(${i.id})">Download</button> <button onclick="printInvoice(${i.id})">PDF</button> <button class="danger" onclick="del('invoices',${i.id})">Delete</button></td></tr>`).join('');invoicesCards.innerHTML=db.invoices.map(i=>`<div class="mobile-card"><b>${esc(i.customer)}</b><p>${i.date} · ${esc(i.status)}</p><p>${esc(i.item)} · <b>${money(i.amount)}</b></p><button onclick="previewInvoice(${i.id})">Preview</button> <button onclick="downloadInvoice(${i.id})">Download</button> <button onclick="printInvoice(${i.id})">PDF</button> <button class="danger" onclick="del('invoices',${i.id})">Delete</button></div>`).join('');
 aAverage.textContent=money(db.orders.length?sales/db.orders.length:0);aExpenses.textContent=money(exp);aUnpaid.textContent=money(db.invoices.filter(i=>i.status!=='Paid').reduce((a,i)=>a+(+i.amount||0),0));let month={};db.orders.forEach(o=>{let m=(o.date||today()).slice(0,7);month[m]=(month[m]||0)+(+o.price||0)-(+o.cost||0)});let keys=Object.keys(month).sort().slice(-6);drawLine('profitChart',keys.map(k=>k.slice(5)),keys.map(k=>month[k]),'Profit by month');drawBar('salesExpenseChart',['Sales','Order costs','Expenses'],[sales,costs,exp],'Sales vs expenses');let cat={};db.inventory.forEach(i=>cat[i.cat]=(cat[i.cat]||0)+(+i.qty||0)*(+i.cost||0));drawBar('inventoryChart',Object.keys(cat),Object.values(cat),'Inventory value');let done=db.orders.filter(o=>orderStatus(o)==='Done').length, not=db.orders.length-done;drawBar('statusChart',['Done','Not done'],[done,not],'Order count');let best=Object.entries(month).sort((a,b)=>b[1]-a[1])[0];aBest.textContent=best?`Best tracked month: ${best[0]} with ${money(best[1])} profit before expenses.`:'Add orders to see best month.';aNotes.textContent=`Connected data: ${db.orders.length} orders, ${db.inventory.length} stock items, ${db.customers.length} customers, ${db.invoices.length} invoices and ${db.expenses.length} expenses.`}
 setupNav();calcDate.value=orderDate.value=eDate.value=invDate.value=today();addCalcLine();render();
+
+
+// v1.1.0 premium controls polish: improve mobile date behaviour without changing saved data.
+(function(){
+  function polishDates(){
+    document.querySelectorAll('input[type="date"]').forEach(function(el){
+      el.classList.add('fs-date');
+      el.setAttribute('aria-label', el.getAttribute('aria-label') || 'Choose date');
+      el.addEventListener('focus', function(){ el.parentElement && el.parentElement.classList.add('is-editing-date'); });
+      el.addEventListener('blur', function(){ el.parentElement && el.parentElement.classList.remove('is-editing-date'); });
+    });
+  }
+  function polishCards(){
+    document.querySelectorAll('.card').forEach(function(card, i){ card.style.animationDelay = Math.min(i*18,180)+'ms'; });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', function(){polishDates(); polishCards();});
+  else {polishDates(); polishCards();}
+})();
