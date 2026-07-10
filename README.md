@@ -23,6 +23,18 @@ No complicated software. No monthly subscription. No one else handling your data
 
 ---
 
+ ## Designed for real florist life
+
+Version 2 introduces the **Petal & Porcelain** interface: sophisticated enough to feel professional, soft enough to feel welcoming, and straightforward enough to use during a busy working day.
+
+It includes three purpose-built layouts:
+
+- **Laptop/desktop:** an elegant sidebar workspace with roomy dashboards
+- **iPad/tablet:** a centred two-row command bar and touch-friendly columns
+- **Phone:** a compact two-row bottom dock designed for one-handed use
+
+---
+
 ## 🌷 Why I made this
 
 I wanted something that felt useful for real florists — not cold, corporate or overly technical. Florists need tools that work quickly on a phone, look beautiful, and help us understand our numbers without needing to be accountants.
