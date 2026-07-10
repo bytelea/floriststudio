@@ -6,6 +6,7 @@
   "invoices": [],
   "settings": {
     "businessName": "Example Florist",
-    "businessUser": "@exampleflorist"
+    "businessUser": "@exampleflorist",
+    "invoicePolicy": "A booking is confirmed once the agreed retainer is received. The remaining balance is due by the date agreed with the florist. Changes and cancellations are subject to the florist\u2019s written terms and applicable consumer law."
   }
 }

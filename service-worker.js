@@ -1,4 +1,4 @@
-const CACHE_NAME = 'florist-studio-v1.3.5';
+const CACHE_NAME = 'florist-studio-v2.0.0';
 const ASSETS = [
   './',
   './index.html',

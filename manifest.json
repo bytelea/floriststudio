@@ -4,7 +4,7 @@
   "description": "Florist Studio by Eternal Blooms: a local-first florist workspace for pricing, orders, inventory, invoices and profit projections.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fff8f7",
+  "background_color": "#fbf5f4",
   "theme_color": "#8f4058",
   "icons": [
     {

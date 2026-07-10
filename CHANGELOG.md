@@ -1,21 +1,13 @@
 # Changelog
 
-## v1.3.5
-- Added a dedicated iPad/tablet navigation layout.
-- Navigation now uses two centred rows on medium-width screens instead of clipping off-screen.
-- Improved tablet spacing and single-column fallback for narrower iPads.
+## 2.0.0 — Petal & Porcelain
 
-## v1.3.4 — Launch-ready navigation polish
-
-- Kept desktop navigation as one clean, orderly line.
-- Rebuilt mobile navigation as a centred compact 5 x 2 bottom menu.
-- Moved the mobile nav as low as the browser safely allows.
-- Reduced mobile nav height so it no longer floats too high over the content.
-- Bumped CSS/JS/service-worker cache versions for GitHub Pages.
-- Kept the bouquet 💐 favicon.
-
-## v1.3.3
-
-- Centred mobile navigation.
-- Improved desktop nav consistency.
-- Added bouquet favicon.
+- Introduced a full visual design system with dusty rose, plum, sage and warm porcelain tones.
+- Added three dedicated responsive experiences rather than one stretched layout:
+  - laptop/desktop sidebar workspace
+  - iPad/tablet two-row command bar
+  - phone two-row bottom dock
+- Redesigned cards, forms, buttons, metrics, invoices and focus states for consistency.
+- Improved typography, spacing, contrast and touch targets.
+- Preserved the existing connected calculator, orders, inventory, customer, invoice, expense and analytics functionality.
+- Refreshed the README with the story and purpose behind Florist Studio.
