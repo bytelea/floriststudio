@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.5
+- Added a dedicated iPad/tablet navigation layout.
+- Navigation now uses two centred rows on medium-width screens instead of clipping off-screen.
+- Improved tablet spacing and single-column fallback for narrower iPads.
+
 ## v1.3.4 — Launch-ready navigation polish
 
 - Kept desktop navigation as one clean, orderly line.

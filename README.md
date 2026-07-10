@@ -54,3 +54,7 @@ If Florist Studio helps you, you can support future updates here:
 Instagram: https://www.instagram.com/eternalblooms.ie/
 
 Made with care by **Eternal Blooms**.
+
+
+### Tablet support
+Florist Studio includes a dedicated centred two-row navigation layout for iPad and other tablet-sized screens.
