@@ -1,0 +1,24 @@
+{
+  "orders": [],
+  "expenses": [],
+  "inventory": [],
+  "customers": [],
+  "invoices": [],
+  "events": [],
+  "recipes": [],
+  "suppliers": [],
+  "proposals": [],
+  "settings": {
+    "businessName": "Example Florist",
+    "businessUser": "@exampleflorist",
+    "currency": "EUR",
+    "locale": "en-IE",
+    "theme": "system",
+    "measurement": "metric",
+    "invoicePolicy": "A booking is confirmed once the agreed retainer is received. The remaining balance is due by the date agreed with the florist. Changes and cancellations are subject to the florist’s written terms and applicable consumer law."
+  },
+  "meta": {
+    "updatedAt": null
+  },
+  "version": "2.7.0"
+}
