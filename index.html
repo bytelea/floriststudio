@@ -14,7 +14,7 @@
 <!-- Florist Studio v2.7 Functional Reliability -->
 <link href="manifest.json" rel="manifest"/>
 <link href="assets/images/icon-192.png" rel="apple-touch-icon"/>
-<link href="assets/css/style.css?v=3.2.0" rel="stylesheet"/>
+<link href="assets/css/style.css?v=3.3.0" rel="stylesheet"/>
 </head>
 <body>
 <div aria-live="polite" class="save-indicator" id="saveIndicator" role="status">
@@ -813,13 +813,43 @@
 </div>
 </section>
 
-<section class="page" data-kicker="Privacy &amp; cloud readiness" id="privacy">
-<div class="card privacy-hero"><div><span class="eyebrow">GDPR-first foundation</span><h2>Privacy Centre</h2><p>Manage consent, retention, exports and deletion requests from one place. This supports GDPR workflows; your final policies and business practices should still be reviewed professionally.</p></div><span class="privacy-status">🔒 Local private mode</span></div>
-<div class="grid">
-<div class="card cloud-account-card"><h2>Secure cloud account</h2><p class="mini">Your Supabase project is preconfigured. Create an account or sign in to keep one private workspace synchronised across your devices.</p><div id="cloudSignedOut"><div class="field-group"><label>Email address</label><input id="cloudEmail" autocomplete="email" inputmode="email" placeholder="you@example.com" type="email"/></div><div class="field-group"><label>Password</label><input id="cloudPassword" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" type="password"/></div><div class="actions"><button class="primary" onclick="cloudSignIn()">Sign in</button><button onclick="cloudCreateAccount()">Create account</button></div></div><div id="cloudSignedIn" hidden><p class="cloud-user-line">Signed in as <b id="cloudAccountEmail"></b></p><div class="actions"><button class="primary" onclick="cloudPushNow()">Upload this device</button><button onclick="cloudPullNow()">Restore from cloud</button><button onclick="cloudSignOut()">Sign out</button></div></div><details class="cloud-technical"><summary>Technical connection details</summary><div class="field-group"><label>Supabase project URL</label><input id="cloudUrl" readonly/></div><div class="field-group"><label>Public anonymous key</label><input id="cloudAnonKey" readonly type="password"/></div></details><p class="field-help" id="cloudStatus" aria-live="polite">Checking cloud account…</p><p class="field-help">Before the first sync, run <code>supabase-setup.sql</code> once in your Supabase SQL Editor.</p></div>
-<div class="card"><h2>Data protection defaults</h2><label class="switch-row"><input checked="" id="privacyMinimise" type="checkbox"/><span class="switch"></span><span>Collect only necessary customer data</span></label><label class="switch-row"><input checked="" id="privacyConsent" type="checkbox"/><span class="switch"></span><span>Require loyalty consent records</span></label><label class="switch-row"><input checked="" id="privacyAutoLock" type="checkbox"/><span class="switch"></span><span>Protect customer portals with private tokens</span></label><div class="field-group"><label>Default customer retention</label><select id="privacyRetention"><option value="24">24 months after last activity</option><option value="36">36 months after last activity</option><option value="60">5 years after last activity</option><option value="manual">Manual review only</option></select></div><button onclick="savePrivacySettings()">Save privacy defaults</button></div>
+<section class="page privacy-page" data-kicker="Privacy &amp; cloud readiness" id="privacy">
+<div class="privacy-page-header">
+  <div><span class="eyebrow">GDPR-first workspace</span><h2>Privacy Centre</h2><p>Connect your private cloud account, choose sensible data defaults, and handle customer access or deletion requests from one clear workspace.</p></div>
+  <span class="privacy-status">🔒 <span>Local private mode</span></span>
 </div>
-<div class="grid"><div class="card"><h2>Customer rights tools</h2><div class="field-group"><label>Customer</label><select id="privacyCustomer"></select></div><div class="actions"><button onclick="exportCustomerData()">Export their data</button><button class="danger" onclick="eraseCustomerData()">Erase customer data</button></div><p class="field-help">Deletion also removes their loyalty card and detaches their identity from orders while retaining essential accounting records.</p></div><div class="card"><h2>Accountability log</h2><div class="privacy-log" id="privacyLog"></div></div></div>
+<div class="privacy-layout">
+  <section class="card privacy-panel cloud-account-card">
+    <div class="privacy-panel-head"><span class="privacy-step">1</span><div><h3>Cloud account</h3><p>Sign in to synchronise this private workspace across your own devices.</p></div></div>
+    <div id="cloudSignedOut">
+      <div class="privacy-form-grid"><div class="field-group"><label>Email address</label><input id="cloudEmail" autocomplete="email" inputmode="email" placeholder="you@example.com" type="email"/></div><div class="field-group"><label>Password</label><input id="cloudPassword" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" type="password"/></div></div>
+      <div class="actions"><button class="primary" onclick="cloudSignIn()">Sign in</button><button onclick="cloudCreateAccount()">Create account</button></div>
+    </div>
+    <div id="cloudSignedIn" hidden><p class="cloud-user-line">Signed in as <b id="cloudAccountEmail"></b></p><div class="actions"><button class="primary" onclick="cloudPushNow()">Upload this device</button><button onclick="cloudPullNow()">Restore from cloud</button><button onclick="cloudSignOut()">Sign out</button></div></div>
+    <p class="field-help privacy-status-line" id="cloudStatus" aria-live="polite">Checking cloud account…</p>
+    <details class="cloud-technical"><summary>Technical connection details</summary><div class="field-group"><label>Supabase project URL</label><input id="cloudUrl" readonly/></div><div class="field-group"><label>Public anonymous key</label><input id="cloudAnonKey" readonly type="password"/></div><p class="field-help">The database setup script only needs to be run once.</p></details>
+  </section>
+  <section class="card privacy-panel">
+    <div class="privacy-panel-head"><span class="privacy-step">2</span><div><h3>Data defaults</h3><p>Choose how the dashboard should treat customer information by default.</p></div></div>
+    <div class="privacy-toggle-list">
+      <label class="switch-row"><input checked id="privacyMinimise" type="checkbox"/><span class="switch"></span><span><b>Data minimisation</b><small>Collect only information needed to fulfil an order.</small></span></label>
+      <label class="switch-row"><input checked id="privacyConsent" type="checkbox"/><span class="switch"></span><span><b>Loyalty consent</b><small>Require a consent record before creating a Bloom Club card.</small></span></label>
+      <label class="switch-row"><input checked id="privacyAutoLock" type="checkbox"/><span class="switch"></span><span><b>Private customer links</b><small>Protect customer portals with unique private tokens.</small></span></label>
+    </div>
+    <div class="field-group"><label>Default retention period</label><select id="privacyRetention"><option value="24">24 months after last activity</option><option value="36">36 months after last activity</option><option value="60">5 years after last activity</option><option value="manual">Manual review only</option></select></div>
+    <button onclick="savePrivacySettings()">Save privacy defaults</button>
+  </section>
+  <section class="card privacy-panel">
+    <div class="privacy-panel-head"><span class="privacy-step">3</span><div><h3>Customer rights</h3><p>Export a customer record or erase personal information when requested.</p></div></div>
+    <div class="field-group"><label>Choose customer</label><select id="privacyCustomer"></select></div>
+    <div class="actions"><button onclick="exportCustomerData()">Export their data</button><button class="danger" onclick="eraseCustomerData()">Erase customer data</button></div>
+    <p class="field-help">Erasure removes their loyalty card and detaches their identity from orders while retaining essential accounting records.</p>
+  </section>
+  <section class="card privacy-panel privacy-log-panel">
+    <div class="privacy-panel-head"><span class="privacy-step">4</span><div><h3>Accountability log</h3><p>A simple record of privacy-related actions completed in this workspace.</p></div></div>
+    <div class="privacy-log" id="privacyLog"></div>
+  </section>
+</div>
 </section>
 <section class="page" data-kicker="Marketing ideas" id="content">
 <div class="card">

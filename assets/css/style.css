@@ -7879,3 +7879,137 @@ html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="da
   main#pages{padding-inline:12px!important}
   .card,.stat{border-radius:15px!important}
 }
+
+/* =========================================================
+   Florist Studio v3.3 — proportion, page rhythm and focused workflows
+   ========================================================= */
+:root{
+  --ui-content-max:1280px;
+  --ui-page-pad:clamp(20px,2.8vw,42px);
+  --ui-section-gap:clamp(18px,2vw,28px);
+}
+main#pages{padding:28px var(--ui-page-pad) 64px!important}
+.page{width:min(100%,var(--ui-content-max))!important;gap:var(--ui-section-gap)!important;overflow:visible!important}
+.page::before{
+  display:block!important;
+  position:static!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0 2px!important;
+  line-height:1.4!important;
+  letter-spacing:.14em!important;
+  overflow-wrap:anywhere!important;
+}
+.page h2{line-height:1.08!important;overflow-wrap:anywhere}
+.card{padding:clamp(20px,2.2vw,28px)!important}
+
+/* Events: keep form and planning board proportional and prevent clipping. */
+#studio-events .studio-layout{
+  display:grid!important;
+  grid-template-columns:minmax(340px,440px) minmax(0,1fr)!important;
+  gap:24px!important;
+  align-items:start!important;
+}
+#studio-events .studio-form{width:100%!important;max-width:none!important}
+#studio-events .studio-form .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+#studio-events .studio-form input,
+#studio-events .studio-form select,
+#studio-events .studio-form textarea{width:100%!important;max-width:100%!important}
+#studio-events .studio-form textarea{min-height:120px!important;resize:vertical}
+#studio-events .studio-section-title{padding:4px 0 12px!important}
+#studio-events .studio-list{min-height:220px!important}
+#studio-events .empty-state,#eventCards:empty{
+  min-height:160px!important;
+  border:1px dashed var(--ui-border)!important;
+  border-radius:16px!important;
+}
+
+/* Bloom Club: smaller card preview, clearer hierarchy and balanced columns. */
+#loyalty .loyalty-hero{padding:26px!important;gap:20px!important}
+#loyalty .loyalty-hero h2{font-size:clamp(1.55rem,2.4vw,2.15rem)!important;max-width:680px!important}
+#loyalty .loyalty-layout{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr)!important;
+  gap:20px!important;
+  margin:0!important;
+  align-items:start!important;
+}
+#loyalty .form-grid{gap:14px!important}
+#loyalty .wallet-preview{padding:20px!important;position:sticky!important;top:104px!important}
+#loyalty .wallet-card{
+  min-height:250px!important;
+  aspect-ratio:1.58/1!important;
+  padding:22px!important;
+  border-radius:22px!important;
+  box-shadow:0 16px 36px rgba(96,46,70,.2)!important;
+}
+#loyalty .wallet-card h3{font-size:1.55rem!important;margin:14px 0 2px!important}
+#loyalty .stamp-track{margin:14px 0!important;gap:6px!important}
+#loyalty .stamp-track span{width:28px!important;height:28px!important;font-size:.95rem!important}
+#loyalty .wallet-buttons button{min-height:44px!important;padding:10px 12px!important;font-size:.9rem!important}
+#loyalty .consent-check{margin:16px 0!important;border:1px solid var(--ui-border)!important;background:var(--ui-surface-2)!important}
+#loyalty .loyalty-member-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))!important}
+
+/* Privacy: step-based, compact, intuitive and aligned. */
+.privacy-page-header{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:24px;
+  padding:26px 28px;border:1px solid var(--ui-border);border-radius:18px;background:var(--ui-surface);box-shadow:var(--ui-shadow)
+}
+.privacy-page-header h2{margin:4px 0 8px!important;font-size:clamp(1.8rem,3vw,2.5rem)!important}
+.privacy-page-header p{max-width:760px;margin:0!important;color:var(--ui-muted)}
+.privacy-status{display:inline-flex!important;align-items:center!important;gap:8px!important;padding:9px 13px!important;font-size:.86rem!important;border:1px solid var(--ui-border)!important;background:var(--ui-surface-2)!important}
+.privacy-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.privacy-panel{display:flex;flex-direction:column;gap:18px;min-height:0!important}
+.privacy-panel-head{display:flex;align-items:flex-start;gap:13px;padding-bottom:15px;border-bottom:1px solid var(--ui-border)}
+.privacy-panel-head h3{margin:0 0 4px!important;font-family:inherit!important;font-size:1.2rem!important;line-height:1.2!important}
+.privacy-panel-head p{margin:0!important;color:var(--ui-muted);font-size:.92rem;line-height:1.5}
+.privacy-step{flex:0 0 30px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--ui-accent-soft);color:var(--ui-accent-strong);font-weight:800;font-size:.82rem}
+.privacy-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.privacy-toggle-list{display:grid;gap:8px}
+.privacy-toggle-list .switch-row{display:grid!important;grid-template-columns:auto auto minmax(0,1fr)!important;align-items:start!important;gap:10px!important;padding:12px!important;border:1px solid var(--ui-border)!important;border-radius:13px!important;background:var(--ui-surface-2)!important}
+.privacy-toggle-list .switch-row>span:last-child{display:grid;gap:2px;min-width:0}
+.privacy-toggle-list small{color:var(--ui-muted);font-weight:400;line-height:1.4}
+.privacy-status-line{margin:0!important;padding:10px 12px;border-radius:10px;background:var(--ui-surface-2)}
+.privacy-log-panel{min-height:250px!important}
+.privacy-log:empty::before{content:"No privacy actions recorded yet.";display:block;padding:24px;text-align:center;color:var(--ui-muted);border:1px dashed var(--ui-border);border-radius:14px}
+
+/* Installation area: useful, but no longer dominates the working product. */
+.install-hub{
+  width:min(calc(100% - (2 * var(--ui-page-pad))),var(--ui-content-max))!important;
+  margin:22px auto 46px!important;
+  padding:26px!important;
+  grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr)!important;
+  gap:24px!important;
+  border-radius:20px!important;
+}
+.install-hub h2{font-size:clamp(1.7rem,3vw,2.6rem)!important;line-height:1.02!important}
+.install-hub-copy>p:not(.install-privacy-note){font-size:.98rem!important;line-height:1.6!important}
+.install-platform-card{min-height:68px!important;padding:12px 14px!important}
+.install-platform-icon{width:42px!important;height:42px!important}
+.footer{width:min(calc(100% - (2 * var(--ui-page-pad))),var(--ui-content-max))!important;margin:0 auto 40px!important}
+
+@media(max-width:1050px){
+  #studio-events .studio-layout{grid-template-columns:minmax(320px,390px) minmax(0,1fr)!important}
+  #loyalty .loyalty-layout{grid-template-columns:minmax(0,1fr) 320px!important}
+  .privacy-layout{grid-template-columns:1fr!important}
+  .install-hub{grid-template-columns:1fr!important}
+}
+@media(max-width:800px){
+  main#pages{padding:18px 14px 96px!important}
+  .page::before{padding:0!important;font-size:.68rem!important}
+  #studio-events .studio-layout,#loyalty .loyalty-layout{grid-template-columns:1fr!important}
+  #studio-events .studio-form .row,.privacy-form-grid{grid-template-columns:1fr!important}
+  #loyalty .wallet-preview{position:static!important;order:0!important}
+  #loyalty .wallet-card{min-height:220px!important;aspect-ratio:auto!important}
+  .privacy-page-header{flex-direction:column;padding:20px!important}
+  .privacy-status{align-self:flex-start}
+  .install-hub{width:calc(100% - 28px)!important;margin:18px auto 92px!important;padding:20px!important}
+}
+@media(max-width:480px){
+  .card,.privacy-page-header{border-radius:14px!important}
+  #loyalty .loyalty-hero{padding:20px!important}
+  #loyalty .wallet-card{padding:18px!important}
+  .privacy-toggle-list .switch-row{grid-template-columns:auto auto minmax(0,1fr)!important}
+  .actions{display:grid!important;grid-template-columns:1fr!important}
+  .actions button{width:100%!important}
+}
