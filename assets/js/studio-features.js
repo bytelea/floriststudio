@@ -117,7 +117,7 @@
       ["Sent", "Viewed", "Changes requested"].includes(proposal.status),
     ).length;
     $("studioUpcoming").textContent = String(upcoming);
-    $("studioRecipes").textContent = String(db.recipes.length);
+    if ($("studioLoyaltyCount")) $("studioLoyaltyCount").textContent = String((db.loyaltyCards || []).length);
     $("studioSuppliers").textContent = String(db.suppliers.length);
     $("studioApprovals").textContent = String(pending);
   }
@@ -1061,11 +1061,7 @@
     addStudioQuickAction();
     $("eventDate").value = today();
     $("proposalDueDate").value = today();
-    if (!$("recipeStemRows").children.length) addRecipeStemRow();
-    ["recipeYield", "recipeWaste", "recipeLabourHours", "recipeLabourRate", "recipeOther", "recipeOverhead", "recipeMargin"].forEach(
-      (id) => $(id).addEventListener("input", calculateRecipe),
-    );
-    const tab = localStorage.ebStudioTab || "events";
+    const tab = localStorage.ebStudioTab === "recipes" ? "events" : (localStorage.ebStudioTab || "events");
     switchStudioTab(tab);
     render();
     const hash = location.hash.slice(1);

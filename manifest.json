@@ -1,7 +1,7 @@
 {
-  "name": "Eternal Blooms — Florist Studio",
+  "name": "Florist Studio v3.0",
   "short_name": "Florist Studio",
-  "description": "A calm, installable florist operating studio for events, stem recipes, suppliers, orders, clients, calendars, pricing and invoices.",
+  "description": "Privacy-first florist studio with Bloom Club digital loyalty.",
   "id": "./index.html",
   "start_url": "./index.html#home",
   "scope": "./",

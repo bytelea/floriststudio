@@ -1,1367 +1,1008 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover"
-    />
-    <meta name="theme-color" content="#5f3046" id="themeColorMeta" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Florist Studio" />
-    <meta
-      name="description"
-      content="A calm, visual florist operating studio for events, recipes, orders, suppliers, clients, calendars and invoices."
-    />
-    <title>Florist Studio</title>
-    <link rel="icon" type="image/png" href="assets/images/icon-192.png" />
-    <!-- Florist Studio v2.7 Functional Reliability -->
-    <link rel="manifest" href="manifest.json" />
-    <link rel="apple-touch-icon" href="assets/images/icon-192.png" />
-    <link rel="stylesheet" href="assets/css/style.css?v=2.7.0" />
-  </head>
-  <body>
-    <div
-      id="saveIndicator"
-      class="save-indicator"
-      role="status"
-      aria-live="polite"
-    >
-      <span class="save-dot"></span><span id="saveIndicatorText">Ready</span>
-    </div>
-    <div class="app">
-      <a class="skip-link" href="#pages">Skip to workspace</a>
-      <header class="hero" aria-labelledby="topName">
-        <div class="hero-brand">
-          <img
-            id="topLogo"
-            class="brand-logo"
-            src="assets/images/eternal-blooms-logo-alt.png"
-            alt="Florist Studio business logo"
-          />
-          <div class="hero-copy">
-            <span class="eyebrow">Your calm florist operating studio</span>
-            <h1 id="topName">Eternal Blooms</h1>
-            <p id="topLabel">Plan beautifully. Price confidently. Deliver calmly.</p>
-          </div>
-        </div>
-        <div class="hero-actions" aria-label="Workspace shortcuts">
-          <button type="button" onclick="showPage('calendar')">View calendar</button>
-          <button type="button" class="primary" onclick="promptInstall()">Install app</button>
-        </div>
-      </header>
-      <nav class="nav" id="nav" aria-label="Primary workspace navigation"></nav>
-      <main id="pages" tabindex="-1">
-        <section class="page active" id="home" data-kicker="Today at a glance">
-          <div class="three">
-            <div class="stat">Total sales<b id="sSales">€0</b></div>
-            <div class="stat">Profit made<b id="sProfit">€0</b></div>
-            <div class="stat">Projected profit<b id="sProjected">€0</b></div>
-          </div>
-          <div class="command-grid">
-            <div class="card command-card command-wide">
-              <div class="section-heading">
-                <div>
-                  <span class="eyebrow">Command centre</span>
-                  <h2>This week</h2>
-                </div>
-                <span class="section-icon">🌷</span>
-              </div>
-              <div id="dashboardUpcoming" class="dashboard-list"></div>
-            </div>
-            <div class="card command-card">
-              <span class="eyebrow">Money to collect</span
-              ><strong id="dashboardOutstanding" class="command-number"
-                >€0</strong
-              >
-              <p id="dashboardPaymentNote" class="mini">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#5f3046" id="themeColorMeta" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="Florist Studio" name="apple-mobile-web-app-title"/>
+<meta content="A privacy-first florist studio for orders, customers, digital loyalty, inventory, proposals and business operations." name="description"/>
+<title>Florist Studio v3.0</title>
+<link href="assets/images/icon-192.png" rel="icon" type="image/png"/>
+<!-- Florist Studio v2.7 Functional Reliability -->
+<link href="manifest.json" rel="manifest"/>
+<link href="assets/images/icon-192.png" rel="apple-touch-icon"/>
+<link href="assets/css/style.css?v=3.0.0" rel="stylesheet"/>
+</head>
+<body>
+<div aria-live="polite" class="save-indicator" id="saveIndicator" role="status">
+<span class="save-dot"></span><span id="saveIndicatorText">Ready</span>
+</div>
+<div class="app">
+<a class="skip-link" href="#pages">Skip to workspace</a>
+<header aria-labelledby="topName" class="hero">
+<div class="hero-brand">
+<img alt="Florist Studio business logo" class="brand-logo" id="topLogo" src="assets/images/eternal-blooms-logo-alt.png"/>
+<div class="hero-copy">
+<span class="eyebrow">Your calm florist operating studio</span>
+<h1 id="topName">Eternal Blooms</h1>
+<p id="topLabel">Plan beautifully. Price confidently. Deliver calmly.</p>
+</div>
+</div>
+<div aria-label="Workspace shortcuts" class="hero-actions">
+<button onclick="showPage('calendar')" type="button">View calendar</button>
+<button class="primary" onclick="promptInstall()" type="button">Install app</button>
+</div>
+</header>
+<nav aria-label="Primary workspace navigation" class="nav" id="nav"></nav>
+<main id="pages" tabindex="-1">
+<section class="page active" data-kicker="Today at a glance" id="home"><div class="dashboard-toolbar"><div><span class="eyebrow">Your workspace</span><h2>My dashboard</h2><p class="mini">Choose the information that matters to your flower business.</p></div><button class="dashboard-customise-button" onclick="openDashboardCustomiser()" type="button">🗂️ Customise dashboard</button></div>
+<div class="three" data-dashboard-widget="three-0">
+<div class="stat">Total sales<b id="sSales">€0</b></div>
+<div class="stat">Profit made<b id="sProfit">€0</b></div>
+<div class="stat">Projected profit<b id="sProjected">€0</b></div>
+</div>
+<div class="command-grid" data-dashboard-widget="command-grid-0">
+<div class="card command-card command-wide">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Command centre</span>
+<h2>This week</h2>
+</div>
+<span class="section-icon">🌷</span>
+</div>
+<div class="dashboard-list" id="dashboardUpcoming"></div>
+</div>
+<div class="card command-card">
+<span class="eyebrow">Money to collect</span><strong class="command-number" id="dashboardOutstanding">€0</strong>
+<p class="mini" id="dashboardPaymentNote">
                 No outstanding invoices.
               </p>
-              <button onclick="showPage('invoices')">Open invoices</button>
-            </div>
-            <div class="card command-card">
-              <span class="eyebrow">Quick actions</span>
-              <div class="quick-actions">
-                <button class="primary" onclick="showPage('calculator')">
-                  New quote</button
-                ><button onclick="showPage('orders')">Add order</button
-                ><button onclick="showPage('inventory')">Add stock</button
-                ><button onclick="showPage('customers')">Add client</button>
-              </div>
-            </div>
-          </div>
-          <div class="grid">
-            <div class="card">
-              <h2>Personalise</h2>
-              <div class="row">
-                <div>
-                  <label>Business name</label
-                  ><input id="businessName" placeholder="Eternal Blooms" />
-                </div>
-                <div>
-                  <label>Username / subtitle</label
-                  ><input id="businessUser" placeholder="@yourflorist" />
-                </div>
-              </div>
-              <div class="row">
-                <div>
-                  <label>Currency</label
-                  ><select id="currencySetting">
-                    <option value="EUR">EUR — €</option>
-                    <option value="GBP">GBP — £</option>
-                    <option value="USD">USD — $</option>
-                    <option value="CAD">CAD — C$</option>
-                    <option value="AUD">AUD — A$</option>
-                    <option value="NZD">NZD — NZ$</option>
-                    <option value="ZAR">ZAR — R</option>
-                    <option value="AED">AED</option>
-                    <option value="INR">INR — ₹</option>
-                    <option value="JPY">JPY — ¥</option>
-                  </select>
-                </div>
-                <div>
-                  <label>Language & region</label
-                  ><select id="localeSetting">
-                    <option value="en-IE">English (Ireland)</option>
-                    <option value="en-GB">English (UK)</option>
-                    <option value="en-US">English (US)</option>
-                    <option value="en-CA">English (Canada)</option>
-                    <option value="en-AU">English (Australia)</option>
-                    <option value="fr-FR">Français</option>
-                    <option value="de-DE">Deutsch</option>
-                    <option value="es-ES">Español</option>
-                    <option value="it-IT">Italiano</option>
-                    <option value="nl-NL">Nederlands</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div>
-                  <label>Appearance</label
-                  ><select id="themeSetting">
-                    <option value="system">Follow device</option>
-                    <option value="light">Light</option>
-                    <option value="dark">Dark</option>
-                  </select>
-                </div>
-                <div>
-                  <label>Measurements</label
-                  ><select id="measurementSetting">
-                    <option value="metric">Metric (cm / m)</option>
-                    <option value="imperial">Imperial (in / ft)</option>
-                  </select>
-                </div>
-              </div>
-              <label>Invoice policy</label
-              ><textarea
-                id="invoicePolicy"
-                rows="4"
-                placeholder="Short booking, payment and cancellation policy"
-              ></textarea
-              ><span class="field-help"
-                >Shown on every invoice. Have the final wording reviewed for
-                your own business.</span
-              ><label>Upload logo</label
-              ><input id="logoFile" type="file" accept="image/*" />
-              <div class="actions">
-                <button class="primary" onclick="saveBrand()">
-                  Save branding</button
-                ><button onclick="resetBrand()">Reset Eternal Blooms</button>
-              </div>
-            </div>
-            <div class="card">
-              <div class="section-heading">
-                <div>
-                  <span class="eyebrow">Private by design</span>
-                  <h2>Save & install</h2>
-                </div>
-                <span class="section-icon">☁️</span>
-              </div>
-              <p id="fileStatus" class="mini">
+<button onclick="showPage('invoices')">Open invoices</button>
+</div>
+<div class="card command-card">
+<span class="eyebrow">Quick actions</span>
+<div class="quick-actions">
+<button class="primary" onclick="showPage('calculator')">
+                  New quote</button><button onclick="showPage('orders')">Add order</button><button onclick="showPage('inventory')">Add stock</button><button onclick="showPage('customers')">Add client</button>
+</div>
+</div>
+</div>
+<div class="grid" data-dashboard-widget="grid-0">
+<div class="card">
+<h2>Personalise</h2>
+<div class="row">
+<div>
+<label>Business name</label><input id="businessName" placeholder="Eternal Blooms"/>
+</div>
+<div>
+<label>Username / subtitle</label><input id="businessUser" placeholder="@yourflorist"/>
+</div>
+</div>
+<div class="row">
+<div>
+<label>Currency</label><select id="currencySetting">
+<option value="EUR">EUR — €</option>
+<option value="GBP">GBP — £</option>
+<option value="USD">USD — $</option>
+<option value="CAD">CAD — C$</option>
+<option value="AUD">AUD — A$</option>
+<option value="NZD">NZD — NZ$</option>
+<option value="ZAR">ZAR — R</option>
+<option value="AED">AED</option>
+<option value="INR">INR — ₹</option>
+<option value="JPY">JPY — ¥</option>
+</select>
+</div>
+<div>
+<label>Language &amp; region</label><select id="localeSetting">
+<option value="en-IE">English (Ireland)</option>
+<option value="en-GB">English (UK)</option>
+<option value="en-US">English (US)</option>
+<option value="en-CA">English (Canada)</option>
+<option value="en-AU">English (Australia)</option>
+<option value="fr-FR">Français</option>
+<option value="de-DE">Deutsch</option>
+<option value="es-ES">Español</option>
+<option value="it-IT">Italiano</option>
+<option value="nl-NL">Nederlands</option>
+</select>
+</div>
+</div>
+<div class="row">
+<div>
+<label>Appearance</label><select id="themeSetting">
+<option value="system">Follow device</option>
+<option value="light">Light</option>
+<option value="dark">Dark</option>
+</select>
+</div>
+<div>
+<label>Measurements</label><select id="measurementSetting">
+<option value="metric">Metric (cm / m)</option>
+<option value="imperial">Imperial (in / ft)</option>
+</select>
+</div>
+</div>
+<label>Invoice policy</label><textarea id="invoicePolicy" placeholder="Short booking, payment and cancellation policy" rows="4"></textarea><span class="field-help">Shown on every invoice. Have the final wording reviewed for
+                your own business.</span><label>Upload logo</label><input accept="image/*" id="logoFile" type="file"/>
+<div class="actions">
+<button class="primary" onclick="saveBrand()">
+                  Save branding</button><button onclick="resetBrand()">Reset Eternal Blooms</button>
+</div>
+</div>
+<div class="card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Private by design</span>
+<h2>Save &amp; install</h2>
+</div>
+<span class="section-icon">☁️</span>
+</div>
+<p class="mini" id="fileStatus">
                 Your work autosaves on this device. Connect a file for an extra
                 live copy.
               </p>
-              <p id="storageSummary" class="storage-summary">
+<p class="storage-summary" id="storageSummary">
                 Browser backup ready.
               </p>
-              <div class="actions">
-                <button class="primary" onclick="promptInstall()">
-                  Install app</button
-                ><button onclick="createLocalFile()">Create device file</button
-                ><button onclick="openLocalFile()">Open file</button
-                ><button onclick="saveToLocalFile()">Save now</button
-                ><button onclick="shareBackup()">Share backup</button
-                ><button onclick="exportData()">Download backup</button
-                ><button onclick="importFile.click()">Import</button
-                ><input
-                  id="importFile"
-                  type="file"
-                  accept="application/json"
-                  hidden
-                />
-              </div>
-              <p class="field-help">
+<div class="actions">
+<button class="primary" onclick="promptInstall()">
+                  Install app</button><button onclick="createLocalFile()">Create device file</button><button onclick="openLocalFile()">Open file</button><button onclick="saveToLocalFile()">Save now</button><button onclick="shareBackup()">Share backup</button><button onclick="exportData()">Download backup</button><button onclick="importFile.click()">Import</button><input accept="application/json" hidden="" id="importFile" type="file"/>
+</div>
+<p class="field-help">
                 On supported desktop browsers, the connected file updates
                 automatically. On iPhone and iPad, Share backup opens the native
                 Files/Share sheet.
               </p>
-            </div>
-          </div>
-          <div class="grid">
-            <div class="card">
-              <h2>Profit trend</h2>
-              <canvas class="chart" id="profitChart"></canvas>
-              <div class="actions">
-                <button onclick="downloadChart('profitChart', 'profit-trend')">
+</div>
+</div>
+<div class="grid" data-dashboard-widget="grid-1">
+<div class="card">
+<h2>Profit trend</h2>
+<canvas class="chart" id="profitChart"></canvas>
+<div class="actions">
+<button onclick="downloadChart('profitChart', 'profit-trend')">
                   Download graph
                 </button>
-              </div>
-            </div>
-            <div class="card">
-              <h2>Low stock</h2>
-              <div id="lowStock"></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="page" id="studio" data-kicker="Events and creative planning">
-          <div class="studio-shell">
-            <div class="card studio-intro">
-              <span class="eyebrow">Florist operations suite</span>
-              <h2>Event Studio</h2>
-              <p class="mini">
-                Plan weddings, design profitable stem recipes, compare suppliers
+</div>
+</div>
+<div class="card">
+<h2>Low stock</h2>
+<div id="lowStock"></div>
+</div>
+</div>
+</section>
+<section class="page" data-kicker="Events and creative planning" id="studio">
+<div class="studio-shell">
+<div class="card studio-intro">
+<span class="eyebrow">Florist operations suite</span>
+<h2>Event Studio</h2>
+<p class="mini">
+                Plan weddings, design profitable client journeys, compare suppliers
                 and present client-ready proposals from one connected workspace.
               </p>
-              <div class="studio-metrics">
-                <div class="studio-metric">
-                  <span>Upcoming events</span><b id="studioUpcoming">0</b>
-                </div>
-                <div class="studio-metric">
-                  <span>Stem recipes</span><b id="studioRecipes">0</b>
-                </div>
-                <div class="studio-metric">
-                  <span>Suppliers</span><b id="studioSuppliers">0</b>
-                </div>
-                <div class="studio-metric">
-                  <span>Awaiting approval</span><b id="studioApprovals">0</b>
-                </div>
-              </div>
-            </div>
-            <div
-              class="studio-tabs"
-              role="tablist"
-              aria-label="Event Studio tools"
-            >
-              <button
-                class="studio-tab active"
-                data-studio-tab="events"
-                onclick="switchStudioTab('events')"
-              >
-                💍 Weddings & events
+<div class="studio-metrics">
+<div class="studio-metric">
+<span>Upcoming events</span><b id="studioUpcoming">0</b>
+</div>
+<div class="studio-metric">
+<span>Bloom Club members</span><b id="studioLoyaltyCount">0</b>
+</div>
+<div class="studio-metric">
+<span>Suppliers</span><b id="studioSuppliers">0</b>
+</div>
+<div class="studio-metric">
+<span>Awaiting approval</span><b id="studioApprovals">0</b>
+</div>
+</div>
+</div>
+<div aria-label="Event Studio tools" class="studio-tabs" role="tablist">
+<button class="studio-tab active" data-studio-tab="events" onclick="switchStudioTab('events')">
+                💍 Weddings &amp; events
               </button>
-              <button
-                class="studio-tab"
-                data-studio-tab="recipes"
-                onclick="switchStudioTab('recipes')"
-              >
-                💐 Stem recipes
-              </button>
-              <button
-                class="studio-tab"
-                data-studio-tab="suppliers"
-                onclick="switchStudioTab('suppliers')"
-              >
+
+<button class="studio-tab" data-studio-tab="suppliers" onclick="switchStudioTab('suppliers')">
                 🚚 Suppliers
               </button>
-              <button
-                class="studio-tab"
-                data-studio-tab="portal"
-                onclick="switchStudioTab('portal')"
-              >
+<button class="studio-tab" data-studio-tab="portal" onclick="switchStudioTab('portal')">
                 🤍 Client portal
               </button>
-            </div>
-
-            <section class="studio-panel active" id="studio-events">
-              <div class="studio-layout">
-                <div class="card studio-form">
-                  <div class="section-heading">
-                    <div>
-                      <span class="eyebrow">New booking plan</span>
-                      <h2>Wedding or event</h2>
-                    </div>
-                    <span class="section-icon">💍</span>
-                  </div>
-                  <div class="row">
-                    <input
-                      id="eventTitle"
-                      placeholder="Sophie & James wedding"
-                    /><select id="eventType">
-                      <option>Wedding</option>
-                      <option>Corporate event</option>
-                      <option>Private party</option>
-                      <option>Funeral / memorial</option>
-                      <option>Styled shoot</option>
-                      <option>Other event</option>
-                    </select>
-                  </div>
-                  <div class="row">
-                    <input id="eventDate" type="date" /><input
-                      id="eventVenue"
-                      placeholder="Venue"
-                    />
-                  </div>
-                  <div class="row">
-                    <select id="eventCustomer"></select
-                    ><input
-                      id="eventBudget"
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      placeholder="Floral budget"
-                    />
-                  </div>
-                  <div class="row">
-                    <input
-                      id="eventPalette"
-                      placeholder="Blush, ivory, sage"
-                    /><select id="eventStatus">
-                      <option>Enquiry</option>
-                      <option>Booked</option>
-                      <option>Designing</option>
-                      <option>Preparing</option>
-                      <option>Completed</option>
-                    </select>
-                  </div>
-                  <textarea
-                    id="eventNotes"
-                    rows="4"
-                    placeholder="Design brief, installation details, ceremony timing, access notes"
-                  ></textarea>
-                  <button class="primary" onclick="addEventPlan()">
+</div>
+<section class="studio-panel active" id="studio-events">
+<div class="studio-layout">
+<div class="card studio-form">
+<div class="section-heading">
+<div>
+<span class="eyebrow">New booking plan</span>
+<h2>Wedding or event</h2>
+</div>
+<span class="section-icon">💍</span>
+</div>
+<div class="row">
+<input id="eventTitle" placeholder="Sophie &amp; James wedding"/><select id="eventType">
+<option>Wedding</option>
+<option>Corporate event</option>
+<option>Private party</option>
+<option>Funeral / memorial</option>
+<option>Styled shoot</option>
+<option>Other event</option>
+</select>
+</div>
+<div class="row">
+<input id="eventDate" type="date"/><input id="eventVenue" placeholder="Venue"/>
+</div>
+<div class="row">
+<select id="eventCustomer"></select><input id="eventBudget" min="0" placeholder="Floral budget" step="0.01" type="number"/>
+</div>
+<div class="row">
+<input id="eventPalette" placeholder="Blush, ivory, sage"/><select id="eventStatus">
+<option>Enquiry</option>
+<option>Booked</option>
+<option>Designing</option>
+<option>Preparing</option>
+<option>Completed</option>
+</select>
+</div>
+<textarea id="eventNotes" placeholder="Design brief, installation details, ceremony timing, access notes" rows="4"></textarea>
+<button class="primary" onclick="addEventPlan()">
                     Create event plan
                   </button>
-                </div>
-                <div>
-                  <div class="studio-section-title">
-                    <div>
-                      <span class="eyebrow">Planning board</span>
-                      <h2>Events</h2>
-                    </div>
-                  </div>
-                  <div id="eventCards" class="studio-list"></div>
-                </div>
-              </div>
-            </section>
+</div>
+<div>
+<div class="studio-section-title">
+<div>
+<span class="eyebrow">Planning board</span>
+<h2>Events</h2>
+</div>
+</div>
+<div class="studio-list" id="eventCards"></div>
+</div>
+</div>
+</section>
 
-            <section class="studio-panel" id="studio-recipes">
-              <div class="card recipe-builder-card">
-                <div class="section-heading">
-                  <div>
-                    <span class="eyebrow">Production recipe &amp; pricing</span>
-                    <h2 id="recipeBuilderTitle">Build a floral recipe</h2>
-                    <p class="mini">
-                      Create a repeatable ingredient list, calculate the true production cost,
-                      set a healthy margin and turn the finished recipe into an order.
-                    </p>
-                  </div>
-                  <span class="section-icon">💐</span>
-                </div>
-
-                <input id="recipeEditId" type="hidden" value="" />
-                <div class="recipe-identity-grid">
-                  <div class="field-group">
-                    <label for="recipeName">Recipe name</label>
-                    <input id="recipeName" placeholder="Garden-style bridal bouquet" />
-                  </div>
-                  <div class="field-group">
-                    <label for="recipeCategory">Design type</label>
-                    <select id="recipeCategory">
-                      <option>Bridal bouquet</option>
-                      <option>Bridesmaid bouquet</option>
-                      <option>Buttonhole</option>
-                      <option>Table arrangement</option>
-                      <option>Arch / installation</option>
-                      <option>Funeral tribute</option>
-                      <option>Gift bouquet</option>
-                      <option>Other design</option>
-                    </select>
-                  </div>
-                  <div class="field-group">
-                    <label for="recipeYield">Number of finished designs</label>
-                    <input id="recipeYield" type="number" min="1" step="1" value="1" />
-                  </div>
-                </div>
-
-                <div class="recipe-workspace recipe-workspace-v2">
-                  <div class="recipe-builder-main">
-                    <section class="ingredient-panel" aria-labelledby="recipeIngredientTitle">
-                      <div class="ingredient-panel-head">
-                        <div>
-                          <span class="eyebrow">Ingredients</span>
-                          <h3 id="recipeIngredientTitle">Stem and material list</h3>
-                          <p class="mini">Choose stock when available or enter a custom flower, foliage or mechanic.</p>
-                        </div>
-                        <button type="button" onclick="addRecipeStemRow()">+ Add ingredient</button>
-                      </div>
-                      <div class="stem-builder" id="recipeStemRows"></div>
-                    </section>
-
-                    <section class="recipe-cost-inputs" aria-labelledby="recipeCostingTitle">
-                      <div class="recipe-subheading">
-                        <div>
-                          <span class="eyebrow">Production costs</span>
-                          <h3 id="recipeCostingTitle">Time, waste and margin</h3>
-                        </div>
-                      </div>
-                      <div class="recipe-cost-grid">
-                        <div class="field-group">
-                          <label for="recipeWaste">Wastage allowance %</label>
-                          <input id="recipeWaste" type="number" min="0" max="100" step="1" value="10" />
-                        </div>
-                        <div class="field-group">
-                          <label for="recipeLabourHours">Labour hours</label>
-                          <input id="recipeLabourHours" type="number" min="0" step="0.25" value="1" />
-                        </div>
-                        <div class="field-group">
-                          <label for="recipeLabourRate">Hourly labour rate</label>
-                          <input id="recipeLabourRate" type="number" min="0" step="0.01" value="15" />
-                        </div>
-                        <div class="field-group">
-                          <label for="recipeOther">Mechanics &amp; materials</label>
-                          <input id="recipeOther" type="number" min="0" step="0.01" value="0" />
-                        </div>
-                        <div class="field-group">
-                          <label for="recipeOverhead">Overhead allocation</label>
-                          <input id="recipeOverhead" type="number" min="0" step="0.01" value="0" />
-                        </div>
-                        <div class="field-group">
-                          <label for="recipeMargin">Target gross margin %</label>
-                          <input id="recipeMargin" type="number" min="0" max="95" step="1" value="50" />
-                        </div>
-                      </div>
-                    </section>
-
-                    <div class="field-group">
-                      <label for="recipeNotes">Making notes</label>
-                      <textarea id="recipeNotes" rows="4" placeholder="Mechanics, dimensions, substitutions, conditioning and transport notes"></textarea>
-                    </div>
-
-                    <div class="recipe-builder-actions">
-                      <button id="recipeSaveButton" class="primary" type="button" onclick="saveStemRecipe()">Save recipe</button>
-                      <button type="button" onclick="resetRecipeBuilder()">Clear builder</button>
-                    </div>
-                  </div>
-
-                  <aside class="recipe-summary-panel" aria-live="polite">
-                    <div class="recipe-summary-head">
-                      <div>
-                        <span class="eyebrow">Live costing</span>
-                        <h3>Recipe summary</h3>
-                      </div>
-                      <span class="recipe-yield-badge"><b id="recipeStemCount">0</b> stems</span>
-                    </div>
-                    <div class="recipe-summary-grid">
-                      <div><span>Stem cost</span><b id="recipeStemCost">€0</b></div>
-                      <div><span>True cost</span><b id="recipeCost">€0</b></div>
-                      <div><span>Selling price</span><b id="recipePrice">€0</b></div>
-                      <div><span>Profit</span><b id="recipeProfit">€0</b></div>
-                      <div><span>Gross margin</span><b id="recipeGrossMargin">0%</b></div>
-                      <div><span>Cost per design</span><b id="recipeUnitCost">€0</b></div>
-                    </div>
-                    <div id="recipeVisual" class="recipe-visual recipe-production-preview">
-                      <div class="recipe-empty">Add an ingredient to begin the production recipe.</div>
-                    </div>
-                  </aside>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="studio-section-title">
-                  <div>
-                    <span class="eyebrow">Reusable design library</span>
-                    <h2>Saved recipes</h2>
-                    <p class="mini">Edit, duplicate or convert a proven recipe into a customer order.</p>
-                  </div>
-                </div>
-                <div id="recipeCards" class="studio-list"></div>
-              </div>
-            </section>
-
-            <section class="studio-panel" id="studio-suppliers">
-              <div class="studio-two-forms">
-                <div class="card studio-form">
-                  <span class="eyebrow">Directory</span>
-                  <h2>Add supplier</h2>
-                  <div class="form-grid two-column-form">
-                    <div class="field-group">
-                      <label for="supplierName">Supplier name</label>
-                      <input id="supplierName" placeholder="Grower or wholesaler" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierContact">Contact person</label>
-                      <input id="supplierContact" placeholder="Contact name" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierEmail">Email</label>
-                      <input id="supplierEmail" type="email" placeholder="orders@example.com" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierPhone">Phone</label>
-                      <input id="supplierPhone" placeholder="Phone number" />
-                    </div>
-                    <div class="field-group field-span-2">
-                      <label for="supplierWebsite">Website</label>
-                      <input id="supplierWebsite" placeholder="https://" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierLeadDays">Lead time in days</label>
-                      <input id="supplierLeadDays" type="number" min="0" placeholder="0" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierMinimum">Minimum order</label>
-                      <input id="supplierMinimum" type="number" min="0" step="0.01" placeholder="0.00" />
-                    </div>
-                    <div class="field-group field-span-2">
-                      <label for="supplierNotes">Supplier notes</label>
-                      <textarea id="supplierNotes" rows="4" placeholder="Delivery days, account number and quality notes"></textarea>
-                    </div>
-                  </div>
-                  <button class="primary" onclick="addSupplier()">Save supplier</button>
-                </div>
-                <div class="card studio-form">
-                  <span class="eyebrow">Price book</span>
-                  <h2>Add supplier price</h2>
-                  <div class="form-grid two-column-form">
-                    <div class="field-group field-span-2">
-                      <label for="supplierPriceSupplier">Supplier</label>
-                      <select id="supplierPriceSupplier"></select>
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierItemName">Flower or product</label>
-                      <input id="supplierItemName" placeholder="Quicksand rose" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierItemUnit">Buying unit</label>
-                      <input id="supplierItemUnit" placeholder="Per stem / bunch / box" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierItemPrice">Unit price</label>
-                      <input id="supplierItemPrice" type="number" min="0" step="0.01" placeholder="0.00" />
-                    </div>
-                    <div class="field-group">
-                      <label for="supplierItemSeason">Season or availability</label>
-                      <input id="supplierItemSeason" placeholder="Year-round / spring" />
-                    </div>
-                  </div>
-                  <button class="primary" onclick="addSupplierPrice()">Add price quote</button>
-                </div>
-              </div>
-              <div class="card">
-                <span class="eyebrow">Automatic comparison</span>
-                <h2>Best supplier prices</h2>
-                <div id="supplierComparison"></div>
-              </div>
-              <div class="card">
-                <span class="eyebrow">Your network</span>
-                <h2>Supplier directory</h2>
-                <div id="supplierCards" class="studio-list"></div>
-              </div>
-            </section>
-
-            <section class="studio-panel" id="studio-portal">
-              <div class="studio-layout portal-layout">
-                <div class="card studio-form proposal-form-card">
-                  <div class="section-heading">
-                    <div>
-                      <span class="eyebrow">Client presentation</span>
-                      <h2>Create proposal</h2>
-                    </div>
-                    <span class="section-icon">🤍</span>
-                  </div>
-                  <div class="field-group">
-                    <label for="proposalEvent">Connected event</label>
-                    <select id="proposalEvent" onchange="fillProposalFromEvent()"></select>
-                  </div>
-                  <div class="form-grid two-column-form">
-                    <div class="field-group">
-                      <label for="proposalClient">Client name</label>
-                      <input id="proposalClient" placeholder="Client name" />
-                    </div>
-                    <div class="field-group">
-                      <label for="proposalTitle">Proposal title</label>
-                      <input id="proposalTitle" placeholder="Wedding floral proposal" />
-                    </div>
-                    <div class="field-group field-span-2">
-                      <label for="proposalSummary">Proposal summary</label>
-                      <textarea id="proposalSummary" rows="8" placeholder="Design direction, included florals, delivery and installation details"></textarea>
-                    </div>
-                    <div class="field-group">
-                      <label for="proposalTotal">Proposal total</label>
-                      <input id="proposalTotal" type="number" min="0" step="0.01" placeholder="0.00" />
-                    </div>
-                    <div class="field-group">
-                      <label for="proposalDeposit">Deposit required</label>
-                      <input id="proposalDeposit" type="number" min="0" step="0.01" placeholder="0.00" />
-                    </div>
-                    <div class="field-group field-span-2">
-                      <label for="proposalDueDate">Decision requested by</label>
-                      <input id="proposalDueDate" type="date" />
-                    </div>
-                  </div>
-                  <p class="portal-note">
+<section class="studio-panel" id="studio-suppliers">
+<div class="studio-two-forms">
+<div class="card studio-form">
+<span class="eyebrow">Directory</span>
+<h2>Add supplier</h2>
+<div class="form-grid two-column-form">
+<div class="field-group">
+<label for="supplierName">Supplier name</label>
+<input id="supplierName" placeholder="Grower or wholesaler"/>
+</div>
+<div class="field-group">
+<label for="supplierContact">Contact person</label>
+<input id="supplierContact" placeholder="Contact name"/>
+</div>
+<div class="field-group">
+<label for="supplierEmail">Email</label>
+<input id="supplierEmail" placeholder="orders@example.com" type="email"/>
+</div>
+<div class="field-group">
+<label for="supplierPhone">Phone</label>
+<input id="supplierPhone" placeholder="Phone number"/>
+</div>
+<div class="field-group field-span-2">
+<label for="supplierWebsite">Website</label>
+<input id="supplierWebsite" placeholder="https://"/>
+</div>
+<div class="field-group">
+<label for="supplierLeadDays">Lead time in days</label>
+<input id="supplierLeadDays" min="0" placeholder="0" type="number"/>
+</div>
+<div class="field-group">
+<label for="supplierMinimum">Minimum order</label>
+<input id="supplierMinimum" min="0" placeholder="0.00" step="0.01" type="number"/>
+</div>
+<div class="field-group field-span-2">
+<label for="supplierNotes">Supplier notes</label>
+<textarea id="supplierNotes" placeholder="Delivery days, account number and quality notes" rows="4"></textarea>
+</div>
+</div>
+<button class="primary" onclick="addSupplier()">Save supplier</button>
+</div>
+<div class="card studio-form">
+<span class="eyebrow">Price book</span>
+<h2>Add supplier price</h2>
+<div class="form-grid two-column-form">
+<div class="field-group field-span-2">
+<label for="supplierPriceSupplier">Supplier</label>
+<select id="supplierPriceSupplier"></select>
+</div>
+<div class="field-group">
+<label for="supplierItemName">Flower or product</label>
+<input id="supplierItemName" placeholder="Quicksand rose"/>
+</div>
+<div class="field-group">
+<label for="supplierItemUnit">Buying unit</label>
+<input id="supplierItemUnit" placeholder="Per stem / bunch / box"/>
+</div>
+<div class="field-group">
+<label for="supplierItemPrice">Unit price</label>
+<input id="supplierItemPrice" min="0" placeholder="0.00" step="0.01" type="number"/>
+</div>
+<div class="field-group">
+<label for="supplierItemSeason">Season or availability</label>
+<input id="supplierItemSeason" placeholder="Year-round / spring"/>
+</div>
+</div>
+<button class="primary" onclick="addSupplierPrice()">Add price quote</button>
+</div>
+</div>
+<div class="card">
+<span class="eyebrow">Automatic comparison</span>
+<h2>Best supplier prices</h2>
+<div id="supplierComparison"></div>
+</div>
+<div class="card">
+<span class="eyebrow">Your network</span>
+<h2>Supplier directory</h2>
+<div class="studio-list" id="supplierCards"></div>
+</div>
+</section>
+<section class="studio-panel" id="studio-portal">
+<div class="studio-layout portal-layout">
+<div class="card studio-form proposal-form-card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Client presentation</span>
+<h2>Create proposal</h2>
+</div>
+<span class="section-icon">🤍</span>
+</div>
+<div class="field-group">
+<label for="proposalEvent">Connected event</label>
+<select id="proposalEvent" onchange="fillProposalFromEvent()"></select>
+</div>
+<div class="form-grid two-column-form">
+<div class="field-group">
+<label for="proposalClient">Client name</label>
+<input id="proposalClient" placeholder="Client name"/>
+</div>
+<div class="field-group">
+<label for="proposalTitle">Proposal title</label>
+<input id="proposalTitle" placeholder="Wedding floral proposal"/>
+</div>
+<div class="field-group field-span-2">
+<label for="proposalSummary">Proposal summary</label>
+<textarea id="proposalSummary" placeholder="Design direction, included florals, delivery and installation details" rows="8"></textarea>
+</div>
+<div class="field-group">
+<label for="proposalTotal">Proposal total</label>
+<input id="proposalTotal" min="0" placeholder="0.00" step="0.01" type="number"/>
+</div>
+<div class="field-group">
+<label for="proposalDeposit">Deposit required</label>
+<input id="proposalDeposit" min="0" placeholder="0.00" step="0.01" type="number"/>
+</div>
+<div class="field-group field-span-2">
+<label for="proposalDueDate">Decision requested by</label>
+<input id="proposalDueDate" type="date"/>
+</div>
+</div>
+<p class="portal-note">
                     Approvals are recorded privately on this device. The downloadable proposal is view-only until optional cloud sharing is added.
                   </p>
-                  <div class="proposal-form-actions">
-                    <button class="primary" onclick="addProposal()">Create client proposal</button>
-                  </div>
-                </div>
-                <div class="proposal-list-column">
-                  <div class="studio-section-title">
-                    <div>
-                      <span class="eyebrow">Approval tracker</span>
-                      <h2>Client proposals</h2>
-                    </div>
-                  </div>
-                  <div id="proposalCards" class="studio-list"></div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </section>
-
-        <section class="page" id="calculator" data-kicker="Pricing workspace">
-          <div class="card">
-            <h2>Calculator</h2>
-            <p class="mini">
+<div class="proposal-form-actions">
+<button class="primary" onclick="addProposal()">Create client proposal</button>
+</div>
+</div>
+<div class="proposal-list-column">
+<div class="studio-section-title">
+<div>
+<span class="eyebrow">Approval tracker</span>
+<h2>Client proposals</h2>
+</div>
+</div>
+<div class="studio-list" id="proposalCards"></div>
+</div>
+</div>
+</section>
+</div>
+</section>
+<section class="page" data-kicker="Pricing workspace" id="calculator">
+<div class="card">
+<h2>Calculator</h2>
+<p class="mini">
               Choose stock items, add labour/fees, then save the quote directly
               as an order. Saving as an order reserves/deducts the stock used.
             </p>
-            <label>Bouquet / order name</label
-            ><input
-              id="calcName"
-              placeholder="Bridal bouquet, birthday bouquet"
-            />
-            <div id="calcItems"></div>
-            <button onclick="addCalcLine()">+ Add stock item</button>
-            <div class="row">
-              <div>
-                <label>Labour €</label
-                ><input id="labour" type="number" value="0" />
-              </div>
-              <div>
-                <label>Other supplies €</label
-                ><input id="supplies" type="number" value="0" />
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                <label>Markup % <span class="mini">cost × markup</span></label
-                ><input id="markup" type="number" value="100" />
-              </div>
-              <div>
-                <label>Delivery / fees €</label
-                ><input id="fees" type="number" value="0" />
-              </div>
-            </div>
-            <div class="three">
-              <div class="stat">Stock cost<b id="cStock">€0</b></div>
-              <div class="stat">Suggested price<b id="cPrice">€0</b></div>
-              <div class="stat">Estimated profit<b id="cProfit">€0</b></div>
-            </div>
-            <div class="row">
-              <div>
-                <label>Order date</label><input id="calcDate" type="date" />
-              </div>
-              <div>
-                <label>Customer</label
-                ><select id="calcCustomer"></select>
-              </div>
-            </div>
-            <label>Notes</label
-            ><textarea
-              id="calcNotes"
-              rows="2"
-              placeholder="Colours, delivery notes, occasion"
-            ></textarea>
-            <div class="actions">
-              <button class="primary" onclick="saveCalcAsOrder()">
-                Save calculator as order</button
-              ><button onclick="clearCalc()">Clear</button>
-            </div>
-          </div>
-        </section>
-        <section class="page" id="orders" data-kicker="Order operations">
-          <div class="card feature-card">
-            <div class="section-heading">
-              <div>
-                <span class="eyebrow">Booking details</span>
-                <h2>Orders</h2>
-                <p class="mini">
+<label>Bouquet / order name</label><input id="calcName" placeholder="Bridal bouquet, birthday bouquet"/>
+<div id="calcItems"></div>
+<button onclick="addCalcLine()">+ Add stock item</button>
+<div class="row">
+<div>
+<label>Labour €</label><input id="labour" type="number" value="0"/>
+</div>
+<div>
+<label>Other supplies €</label><input id="supplies" type="number" value="0"/>
+</div>
+</div>
+<div class="row">
+<div>
+<label>Markup % <span class="mini">cost × markup</span></label><input id="markup" type="number" value="100"/>
+</div>
+<div>
+<label>Delivery / fees €</label><input id="fees" type="number" value="0"/>
+</div>
+</div>
+<div class="three">
+<div class="stat">Stock cost<b id="cStock">€0</b></div>
+<div class="stat">Suggested price<b id="cPrice">€0</b></div>
+<div class="stat">Estimated profit<b id="cProfit">€0</b></div>
+</div>
+<div class="row">
+<div>
+<label>Order date</label><input id="calcDate" type="date"/>
+</div>
+<div>
+<label>Customer</label><select id="calcCustomer"></select>
+</div>
+</div>
+<label>Notes</label><textarea id="calcNotes" placeholder="Colours, delivery notes, occasion" rows="2"></textarea>
+<div class="actions">
+<button class="primary" onclick="saveCalcAsOrder()">
+                Save calculator as order</button><button onclick="clearCalc()">Clear</button>
+</div>
+</div>
+</section>
+<section class="page" data-kicker="Order operations" id="orders">
+<div class="card feature-card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Booking details</span>
+<h2>Orders</h2>
+<p class="mini">
                   Record the full order value and keep the customer’s retainer
                   or deposit connected to the invoice.
                 </p>
-              </div>
-              <span class="section-icon">📋</span>
-            </div>
-            <div class="row">
-              <input id="orderName" placeholder="Order name" /><input
-                id="orderDate"
-                type="date"
-              />
-            </div>
-            <div class="row order-calendar-fields">
-              <div>
-                <label for="orderStartTime">Start time (optional)</label>
-                <input id="orderStartTime" type="time" />
-              </div>
-              <div>
-                <label for="orderEndTime">End time (optional)</label>
-                <input id="orderEndTime" type="time" />
-              </div>
-            </div>
-            <label for="orderLocation">Delivery address or venue</label>
-            <input
-              id="orderLocation"
-              placeholder="Optional — shown in calendar events"
-            />
-            <div class="row">
-              <input
-                id="orderPrice"
-                type="number"
-                min="0"
-                step="0.01"
-                placeholder="Selling price €"
-              /><input
-                id="orderCost"
-                type="number"
-                min="0"
-                step="0.01"
-                placeholder="Cost €"
-              />
-            </div>
-            <div class="row">
-              <select id="orderCustomer"></select
-              ><select id="orderStatus">
-                <option>Auto by date</option>
-                <option>Not done</option>
-                <option>Done</option>
-              </select>
-            </div>
-            <div class="payment-panel">
-              <div>
-                <span class="eyebrow">Payment tracking</span
-                ><strong>Retainer / deposit</strong>
-                <p class="mini">
+</div>
+<span class="section-icon">📋</span>
+</div>
+<div class="row">
+<input id="orderName" placeholder="Order name"/><input id="orderDate" type="date"/>
+</div>
+<div class="row order-calendar-fields">
+<div>
+<label for="orderStartTime">Start time (optional)</label>
+<input id="orderStartTime" type="time"/>
+</div>
+<div>
+<label for="orderEndTime">End time (optional)</label>
+<input id="orderEndTime" type="time"/>
+</div>
+</div>
+<label for="orderLocation">Delivery address or venue</label>
+<input id="orderLocation" placeholder="Optional — shown in calendar events"/>
+<div class="row">
+<input id="orderPrice" min="0" placeholder="Selling price €" step="0.01" type="number"/><input id="orderCost" min="0" placeholder="Cost €" step="0.01" type="number"/>
+</div>
+<div class="row">
+<select id="orderCustomer"></select><select id="orderStatus">
+<option>Auto by date</option>
+<option>Not done</option>
+<option>Done</option>
+</select>
+</div>
+<div class="payment-panel">
+<div>
+<span class="eyebrow">Payment tracking</span><strong>Retainer / deposit</strong>
+<p class="mini">
                   Tick when received and enter the amount paid.
                 </p>
-              </div>
-              <label class="switch-row"
-                ><input id="orderDepositPaid" type="checkbox" /><span
-                  class="switch"
-                  aria-hidden="true"
-                ></span
-                ><span>Paid</span></label
-              ><input
-                id="orderDepositAmount"
-                type="number"
-                min="0"
-                step="0.01"
-                placeholder="Deposit amount €"
-              />
-            </div>
-            <textarea id="orderNotes" placeholder="Notes"></textarea
-            ><button class="primary" onclick="addManualOrder()">
+</div>
+<label class="switch-row"><input id="orderDepositPaid" type="checkbox"/><span aria-hidden="true" class="switch"></span><span>Paid</span></label><input id="orderDepositAmount" min="0" placeholder="Deposit amount €" step="0.01" type="number"/>
+</div>
+<textarea id="orderNotes" placeholder="Notes"></textarea><div class="image-upload-field"><label for="orderImages">Customer inspiration images</label><input accept="image/*" id="orderImages" multiple="" type="file"/><div class="upload-gallery empty" id="orderImagesPreview"><span>🌸</span><small>Add screenshots or inspiration pictures sent by the customer</small></div><p class="field-help">Images are compressed on this device. Cloud sync becomes available after connecting a database.</p></div><button class="primary" onclick="addManualOrder()">
               Add manual order
             </button>
-          </div>
-          <div class="card">
-            <div class="section-heading">
-              <div>
-                <span class="eyebrow">Bookings</span>
-                <h2>Order list</h2>
-              </div>
-              <span class="section-icon">💐</span>
-            </div>
-            <table class="desktop">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Order</th>
-                  <th>Customer</th>
-                  <th>Status</th>
-                  <th>Deposit</th>
-                  <th>Balance</th>
-                  <th>Profit</th>
-                  <th>Stock</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="ordersBody"></tbody>
-            </table>
-            <div id="ordersCards" class="mobile-list"></div>
-          </div>
-        </section>
-        <section class="page" id="inventory" data-kicker="Stock control">
-          <div class="card">
-            <h2>Inventory</h2>
-            <div class="row">
-              <input id="iName" placeholder="Roses, ribbon, oasis" /><select
-                id="iCat"
-              >
-                <option>Fresh flowers</option>
-                <option>Foliage</option>
-                <option>Supplies</option>
-                <option>Packaging</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="row">
-              <input id="iQty" type="number" placeholder="Quantity" /><input
-                id="iUnit"
-                placeholder="Unit e.g. stems, rolls"
-              />
-            </div>
-            <div class="row">
-              <input
-                id="iCost"
-                type="number"
-                placeholder="Cost per unit €"
-              /><input
-                id="iMin"
-                type="number"
-                placeholder="Low stock alert qty"
-              />
-            </div>
-            <button class="primary" onclick="addInventory()">
+</div>
+<div class="card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Bookings</span>
+<h2>Order list</h2>
+</div>
+<span class="section-icon">💐</span>
+</div>
+<table class="desktop">
+<thead>
+<tr>
+<th>Date</th>
+<th>Order</th>
+<th>Customer</th>
+<th>Status</th>
+<th>Deposit</th>
+<th>Balance</th>
+<th>Profit</th>
+<th>Stock</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="ordersBody"></tbody>
+</table>
+<div class="mobile-list" id="ordersCards"></div>
+</div>
+</section>
+<section class="page" data-kicker="Stock control" id="inventory">
+<div class="card">
+<h2>Inventory</h2>
+<div class="row">
+<input id="iName" placeholder="Roses, ribbon, oasis"/><select id="iCat">
+<option>Fresh flowers</option>
+<option>Foliage</option>
+<option>Supplies</option>
+<option>Packaging</option>
+<option>Other</option>
+</select>
+</div>
+<div class="row">
+<input id="iQty" placeholder="Quantity" type="number"/><input id="iUnit" placeholder="Unit e.g. stems, rolls"/>
+</div>
+<div class="row">
+<input id="iCost" placeholder="Cost per unit €" type="number"/><input id="iMin" placeholder="Low stock alert qty" type="number"/>
+</div>
+<div class="image-upload-field"><label for="inventoryImage">Item image</label><input accept="image/*" capture="environment" id="inventoryImage" type="file"/><div class="upload-preview empty" id="inventoryImagePreview"><span>📷</span><small>Add a clear product or flower photo</small></div></div><button class="primary" onclick="addInventory()">
               Add inventory
             </button>
-          </div>
-          <div class="card">
-            <h2>Stock list</h2>
-            <table class="desktop">
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Category</th>
-                  <th>Qty</th>
-                  <th>Cost</th>
-                  <th>Value</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="inventoryBody"></tbody>
-            </table>
-            <div id="inventoryCards" class="mobile-list"></div>
-          </div>
-        </section>
-        <section class="page" id="expenses" data-kicker="Business costs">
-          <div class="card">
-            <h2>Expenses</h2>
-            <div class="row">
-              <input id="eName" placeholder="Expense name" /><input
-                id="eDate"
-                type="date"
-              />
-            </div>
-            <div class="row">
-              <input id="eAmount" type="number" placeholder="Amount €" /><select
-                id="eCat"
-              >
-                <option>Wholesale flowers</option>
-                <option>Packaging</option>
-                <option>Fuel / delivery</option>
-                <option>Marketing</option>
-                <option>Rent / studio</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <button class="primary" onclick="addExpense()">Add expense</button>
-          </div>
-          <div class="card">
-            <h2>Expense list</h2>
-            <table class="desktop">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Amount</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="expensesBody"></tbody>
-            </table>
-            <div id="expensesCards" class="mobile-list"></div>
-          </div>
-        </section>
-        <section class="page" id="calendar" data-kicker="Schedule and delivery">
-          <div class="card calendar-overview">
-            <div class="calendar-toolbar">
-              <div>
-                <span class="eyebrow">Bookings at a glance</span>
-                <h2 id="calendarMonthLabel">Calendar</h2>
-                <p class="mini">
+</div>
+<div class="card">
+<h2>Stock list</h2>
+<table class="desktop">
+<thead>
+<tr>
+<th>Item</th>
+<th>Category</th>
+<th>Qty</th>
+<th>Cost</th>
+<th>Value</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="inventoryBody"></tbody>
+</table>
+<div class="mobile-list" id="inventoryCards"></div>
+</div>
+</section>
+<section class="page" data-kicker="Business costs" id="expenses">
+<div class="card">
+<h2>Expenses</h2>
+<div class="row">
+<input id="eName" placeholder="Expense name"/><input id="eDate" type="date"/>
+</div>
+<div class="row">
+<input id="eAmount" placeholder="Amount €" type="number"/><select id="eCat">
+<option>Wholesale flowers</option>
+<option>Packaging</option>
+<option>Fuel / delivery</option>
+<option>Marketing</option>
+<option>Rent / studio</option>
+<option>Other</option>
+</select>
+</div>
+<button class="primary" onclick="addExpense()">Add expense</button>
+</div>
+<div class="card">
+<h2>Expense list</h2>
+<table class="desktop">
+<thead>
+<tr>
+<th>Date</th>
+<th>Name</th>
+<th>Category</th>
+<th>Amount</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="expensesBody"></tbody>
+</table>
+<div class="mobile-list" id="expensesCards"></div>
+</div>
+</section>
+<section class="page" data-kicker="Schedule and delivery" id="calendar">
+<div class="card calendar-overview">
+<div class="calendar-toolbar">
+<div>
+<span class="eyebrow">Bookings at a glance</span>
+<h2 id="calendarMonthLabel">Calendar</h2>
+<p class="mini">
                   Every dated order appears automatically. Select a day to see
                   its bookings and send an order to a device calendar.
                 </p>
-              </div>
-              <div class="calendar-controls" aria-label="Calendar navigation">
-                <button
-                  class="icon-button"
-                  onclick="changeCalendarMonth(-1)"
-                  aria-label="Previous month"
-                >
+</div>
+<div aria-label="Calendar navigation" class="calendar-controls">
+<button aria-label="Previous month" class="icon-button" onclick="changeCalendarMonth(-1)">
                   ‹
                 </button>
-                <button onclick="goToCalendarToday()">Today</button>
-                <button
-                  class="icon-button"
-                  onclick="changeCalendarMonth(1)"
-                  aria-label="Next month"
-                >
+<button onclick="goToCalendarToday()">Today</button>
+<button aria-label="Next month" class="icon-button" onclick="changeCalendarMonth(1)">
                   ›
                 </button>
-              </div>
-            </div>
-
-            <div class="calendar-sync-panel">
-              <div>
-                <strong>Use your device calendar</strong>
-                <p class="mini">
+</div>
+</div>
+<div class="calendar-sync-panel">
+<div>
+<strong>Use your device calendar</strong>
+<p class="mini">
                   Add individual orders to Google Calendar, or export an .ics
                   calendar file for Apple Calendar, Outlook and Google import.
                 </p>
-              </div>
-              <div class="actions">
-                <button class="primary" onclick="exportAllOrdersICS()">
+</div>
+<div class="actions">
+<button class="primary" onclick="exportAllOrdersICS()">
                   Export all orders (.ics)
                 </button>
-                <button onclick="shareAllOrdersICS()">
+<button onclick="shareAllOrdersICS()">
                   Share calendar file
                 </button>
-                <button onclick="openGoogleCalendarHome()">
+<button onclick="openGoogleCalendarHome()">
                   Open Google Calendar
                 </button>
-              </div>
-            </div>
-
-            <div class="calendar-layout">
-              <div class="calendar-board">
-                <div
-                  id="calendarWeekdays"
-                  class="calendar-weekdays"
-                  aria-hidden="true"
-                ></div>
-                <div
-                  id="calendarGrid"
-                  class="calendar-grid"
-                  role="grid"
-                  aria-label="Order calendar"
-                ></div>
-              </div>
-              <aside class="calendar-agenda" aria-live="polite">
-                <span class="eyebrow">Selected day</span>
-                <h3 id="calendarSelectedLabel">Today</h3>
-                <div id="calendarDayOrders" class="calendar-day-orders"></div>
-              </aside>
-            </div>
-            <div class="calendar-legend">
-              <span><i class="calendar-dot upcoming"></i>Upcoming</span>
-              <span><i class="calendar-dot completed"></i>Completed</span>
-              <span><i class="calendar-dot selected"></i>Selected day</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="section-heading">
-              <div>
-                <span class="eyebrow">All bookings</span>
-                <h2>Calendar order list</h2>
-                <p class="mini">
+</div>
+</div>
+<div class="calendar-layout">
+<div class="calendar-board">
+<div aria-hidden="true" class="calendar-weekdays" id="calendarWeekdays"></div>
+<div aria-label="Order calendar" class="calendar-grid" id="calendarGrid" role="grid"></div>
+</div>
+<aside aria-live="polite" class="calendar-agenda">
+<span class="eyebrow">Selected day</span>
+<h3 id="calendarSelectedLabel">Today</h3>
+<div class="calendar-day-orders" id="calendarDayOrders"></div>
+</aside>
+</div>
+<div class="calendar-legend">
+<span><i class="calendar-dot upcoming"></i>Upcoming</span>
+<span><i class="calendar-dot completed"></i>Completed</span>
+<span><i class="calendar-dot selected"></i>Selected day</span>
+</div>
+</div>
+<div class="card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">All bookings</span>
+<h2>Calendar order list</h2>
+<p class="mini">
                   This list stays below the visual calendar for quick scanning
                   and calendar export.
                 </p>
-              </div>
-              <span class="section-icon">📅</span>
-            </div>
-            <table class="desktop">
-              <thead>
-                <tr>
-                  <th>Date &amp; time</th>
-                  <th>Order</th>
-                  <th>Customer</th>
-                  <th>Status</th>
-                  <th>Location</th>
-                  <th>Add to calendar</th>
-                  <th>Profit</th>
-                </tr>
-              </thead>
-              <tbody id="calendarBody"></tbody>
-            </table>
-            <div id="calendarCards" class="mobile-list"></div>
-          </div>
-        </section>
-        <section class="page" id="customers" data-kicker="Client relationships">
-          <div class="card">
-            <h2>Customers</h2>
-            <div class="row">
-              <input id="cuName" placeholder="Customer name" /><input
-                id="cuPhone"
-                placeholder="Phone"
-              />
-            </div>
-            <div class="row">
-              <input id="cuEmail" placeholder="Email" /><input
-                id="cuPref"
-                placeholder="Flower/style preferences"
-              />
-            </div>
-            <textarea id="cuNotes" placeholder="Notes"></textarea
-            ><button class="primary" onclick="addCustomer()">
+</div>
+<span class="section-icon">📅</span>
+</div>
+<table class="desktop">
+<thead>
+<tr>
+<th>Date &amp; time</th>
+<th>Order</th>
+<th>Customer</th>
+<th>Status</th>
+<th>Location</th>
+<th>Add to calendar</th>
+<th>Profit</th>
+</tr>
+</thead>
+<tbody id="calendarBody"></tbody>
+</table>
+<div class="mobile-list" id="calendarCards"></div>
+</div>
+</section>
+<section class="page" data-kicker="Client relationships" id="customers">
+<div class="card">
+<h2>Customers</h2>
+<div class="row">
+<input id="cuName" placeholder="Customer name"/><input id="cuPhone" placeholder="Phone"/>
+</div>
+<div class="row">
+<input id="cuEmail" placeholder="Email"/><input id="cuPref" placeholder="Flower/style preferences"/>
+</div>
+<textarea id="cuNotes" placeholder="Notes"></textarea><button class="primary" onclick="addCustomer()">
               Add customer
             </button>
-          </div>
-          <div class="card">
-            <h2>Customer list</h2>
-            <table class="desktop">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Contact</th>
-                  <th>Preferences</th>
-                  <th>Notes</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="customersBody"></tbody>
-            </table>
-            <div id="customersCards" class="mobile-list"></div>
-          </div>
-        </section>
-        <section class="page" id="invoices" data-kicker="Billing and documents">
-          <div class="card feature-card">
-            <div class="section-heading">
-              <div>
-                <span class="eyebrow">Billing</span>
-                <h2>Invoices</h2>
-                <p class="mini">
+</div>
+<div class="card">
+<h2>Customer list</h2>
+<table class="desktop">
+<thead>
+<tr>
+<th>Name</th>
+<th>Contact</th>
+<th>Preferences</th>
+<th>Notes</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="customersBody"></tbody>
+</table>
+<div class="mobile-list" id="customersCards"></div>
+</div>
+</section>
+
+<section class="page" data-kicker="Bloom Club &amp; digital loyalty" id="loyalty">
+<div class="loyalty-hero card">
+<div><span class="eyebrow">Bloom Club</span><h2>Turn every bouquet into a lasting relationship</h2><p>Create a private digital card for each client, add stamps at the till and share their customer portal. Apple and Google Wallet activation is ready to connect when cloud credentials are available.</p></div>
+<button class="primary" onclick="showLoyaltyCreate()">Create loyalty card</button>
+</div>
+<div class="loyalty-layout">
+<div class="card">
+<div class="section-heading"><div><span class="eyebrow">Card setup</span><h2>Create or update a card</h2></div><span class="section-icon">🌷</span></div>
+<input id="loyaltyEditId" type="hidden"/>
+<div class="form-grid two-column-form">
+<div class="field-group"><label for="loyaltyCustomer">Customer</label><select id="loyaltyCustomer"></select></div>
+<div class="field-group"><label for="loyaltyProgram">Programme name</label><input id="loyaltyProgram" value="Bloom Club"/></div>
+<div class="field-group"><label for="loyaltyGoal">Stamps needed</label><input id="loyaltyGoal" max="50" min="2" type="number" value="10"/></div>
+<div class="field-group"><label for="loyaltyReward">Reward</label><input id="loyaltyReward" value="A complimentary seasonal bouquet"/></div>
+</div>
+<label class="consent-check"><input id="loyaltyConsent" type="checkbox"/><span><b>Customer has agreed to join</b><small>Record consent before creating a digital membership.</small></span></label>
+<div class="actions"><button class="primary" onclick="saveLoyaltyCard()">Save loyalty card</button><button onclick="resetLoyaltyForm()">Clear</button></div>
+</div>
+<aside class="wallet-preview card">
+<span class="eyebrow">Customer preview</span>
+<div class="wallet-card" id="walletCardPreview"><div class="wallet-card-top"><span>ETERNAL BLOOMS</span><span>🌸</span></div><h3>Bloom Club</h3><p>Select a member to preview their card.</p><div class="stamp-track" id="walletStampTrack"></div><div class="wallet-code">•••• ••••</div></div>
+<div class="wallet-buttons"><button disabled="" title="Connect Apple credentials to activate"> Add to Apple Wallet</button><button disabled="" title="Connect Google Wallet credentials to activate">Add to Google Wallet</button></div>
+<p class="field-help">The web card works first. Official Wallet buttons activate after a secure cloud service and issuer accounts are connected.</p>
+</aside>
+</div>
+<div class="card"><div class="section-heading"><div><span class="eyebrow">Members</span><h2>Bloom Club cards</h2></div><span class="pill" id="loyaltyMemberCount">0 members</span></div><div class="loyalty-member-grid" id="loyaltyCards"></div></div>
+</section>
+<section class="page" data-kicker="Billing and documents" id="invoices">
+<div class="card feature-card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Billing</span>
+<h2>Invoices</h2>
+<p class="mini">
                   Create a branded invoice from an order or enter one manually.
                   Deposit and remaining balance are shown clearly.
                 </p>
-              </div>
-              <span class="section-icon">🧾</span>
-            </div>
-            <div class="row">
-              <select id="invoiceOrder"></select
-              ><button onclick="invoiceFromOrder()">
+</div>
+<span class="section-icon">🧾</span>
+</div>
+<div class="row">
+<select id="invoiceOrder"></select><button onclick="invoiceFromOrder()">
                 Create invoice from order
               </button>
-            </div>
-            <div class="row">
-              <input id="invCustomer" placeholder="Customer name" /><input
-                id="invDate"
-                type="date"
-              />
-            </div>
-            <div class="row">
-              <input id="invItem" placeholder="Item / bouquet" /><input
-                id="invAmount"
-                type="number"
-                min="0"
-                step="0.01"
-                placeholder="Total amount €"
-              />
-            </div>
-            <div class="payment-panel compact">
-              <label
-                ><span class="eyebrow">Deposit received</span
-                ><input
-                  id="invDepositAmount"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  placeholder="Deposit amount €" /></label
-              ><label class="switch-row"
-                ><input id="invDepositPaid" type="checkbox" /><span
-                  class="switch"
-                  aria-hidden="true"
-                ></span
-                ><span>Paid</span></label
-              >
-            </div>
-            <select id="invStatus">
-              <option>Unpaid</option>
-              <option>Sent</option>
-              <option>Part-paid</option>
-              <option>Paid</option></select
-            ><button class="primary" onclick="addInvoice()">
+</div>
+<div class="row">
+<input id="invCustomer" placeholder="Customer name"/><input id="invDate" type="date"/>
+</div>
+<div class="row">
+<input id="invItem" placeholder="Item / bouquet"/><input id="invAmount" min="0" placeholder="Total amount €" step="0.01" type="number"/>
+</div>
+<div class="payment-panel compact">
+<label><span class="eyebrow">Deposit received</span><input id="invDepositAmount" min="0" placeholder="Deposit amount €" step="0.01" type="number"/></label><label class="switch-row"><input id="invDepositPaid" type="checkbox"/><span aria-hidden="true" class="switch"></span><span>Paid</span></label>
+</div>
+<select id="invStatus">
+<option>Unpaid</option>
+<option>Sent</option>
+<option>Part-paid</option>
+<option>Paid</option></select><button class="primary" onclick="addInvoice()">
               Create manual invoice
             </button>
-          </div>
-          <div class="card">
-            <div class="section-heading">
-              <div>
-                <span class="eyebrow">Documents</span>
-                <h2>Invoice list</h2>
-              </div>
-              <span class="section-icon">📄</span>
-            </div>
-            <table class="desktop">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Customer</th>
-                  <th>Item</th>
-                  <th>Total</th>
-                  <th>Deposit</th>
-                  <th>Balance</th>
-                  <th>Status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="invoicesBody"></tbody>
-            </table>
-            <div id="invoicesCards" class="mobile-list"></div>
-            <h3>Invoice preview</h3>
-            <div id="invoicePreview" class="invoice-preview">
+</div>
+<div class="card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Documents</span>
+<h2>Invoice list</h2>
+</div>
+<span class="section-icon">📄</span>
+</div>
+<table class="desktop">
+<thead>
+<tr>
+<th>Date</th>
+<th>Customer</th>
+<th>Item</th>
+<th>Total</th>
+<th>Deposit</th>
+<th>Balance</th>
+<th>Status</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="invoicesBody"></tbody>
+</table>
+<div class="mobile-list" id="invoicesCards"></div>
+<h3>Invoice preview</h3>
+<div class="invoice-preview" id="invoicePreview">
               Choose Preview on an invoice.
             </div>
-          </div>
-        </section>
-        <section class="page" id="content" data-kicker="Marketing ideas">
-          <div class="card">
-            <h2>Content ideas</h2>
-            <div class="row">
-              <select id="ideaType">
-                <option>Instagram reel</option>
-                <option>Carousel post</option>
-                <option>Story idea</option>
-                <option>Caption</option></select
-              ><input
-                id="ideaTheme"
-                placeholder="wedding bouquet, spring flowers, behind the scenes"
-              />
-            </div>
-            <button class="primary" onclick="generateIdea()">
+</div>
+</section>
+
+<section class="page" data-kicker="Privacy &amp; cloud readiness" id="privacy">
+<div class="card privacy-hero"><div><span class="eyebrow">GDPR-first foundation</span><h2>Privacy Centre</h2><p>Manage consent, retention, exports and deletion requests from one place. This supports GDPR workflows; your final policies and business practices should still be reviewed professionally.</p></div><span class="privacy-status">🔒 Local private mode</span></div>
+<div class="grid">
+<div class="card cloud-account-card"><h2>Secure cloud account</h2><p class="mini">Your Supabase project is preconfigured. Create an account or sign in to keep one private workspace synchronised across your devices.</p><div id="cloudSignedOut"><div class="field-group"><label>Email address</label><input id="cloudEmail" autocomplete="email" inputmode="email" placeholder="you@example.com" type="email"/></div><div class="field-group"><label>Password</label><input id="cloudPassword" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" type="password"/></div><div class="actions"><button class="primary" onclick="cloudSignIn()">Sign in</button><button onclick="cloudCreateAccount()">Create account</button></div></div><div id="cloudSignedIn" hidden><p class="cloud-user-line">Signed in as <b id="cloudAccountEmail"></b></p><div class="actions"><button class="primary" onclick="cloudPushNow()">Upload this device</button><button onclick="cloudPullNow()">Restore from cloud</button><button onclick="cloudSignOut()">Sign out</button></div></div><details class="cloud-technical"><summary>Technical connection details</summary><div class="field-group"><label>Supabase project URL</label><input id="cloudUrl" readonly/></div><div class="field-group"><label>Public anonymous key</label><input id="cloudAnonKey" readonly type="password"/></div></details><p class="field-help" id="cloudStatus" aria-live="polite">Checking cloud account…</p><p class="field-help">Before the first sync, run <code>supabase-setup.sql</code> once in your Supabase SQL Editor.</p></div>
+<div class="card"><h2>Data protection defaults</h2><label class="switch-row"><input checked="" id="privacyMinimise" type="checkbox"/><span class="switch"></span><span>Collect only necessary customer data</span></label><label class="switch-row"><input checked="" id="privacyConsent" type="checkbox"/><span class="switch"></span><span>Require loyalty consent records</span></label><label class="switch-row"><input checked="" id="privacyAutoLock" type="checkbox"/><span class="switch"></span><span>Protect customer portals with private tokens</span></label><div class="field-group"><label>Default customer retention</label><select id="privacyRetention"><option value="24">24 months after last activity</option><option value="36">36 months after last activity</option><option value="60">5 years after last activity</option><option value="manual">Manual review only</option></select></div><button onclick="savePrivacySettings()">Save privacy defaults</button></div>
+</div>
+<div class="grid"><div class="card"><h2>Customer rights tools</h2><div class="field-group"><label>Customer</label><select id="privacyCustomer"></select></div><div class="actions"><button onclick="exportCustomerData()">Export their data</button><button class="danger" onclick="eraseCustomerData()">Erase customer data</button></div><p class="field-help">Deletion also removes their loyalty card and detaches their identity from orders while retaining essential accounting records.</p></div><div class="card"><h2>Accountability log</h2><div class="privacy-log" id="privacyLog"></div></div></div>
+</section>
+<section class="page" data-kicker="Marketing ideas" id="content">
+<div class="card">
+<h2>Content ideas</h2>
+<div class="row">
+<select id="ideaType">
+<option>Instagram reel</option>
+<option>Carousel post</option>
+<option>Story idea</option>
+<option>Caption</option></select><input id="ideaTheme" placeholder="wedding bouquet, spring flowers, behind the scenes"/>
+</div>
+<button class="primary" onclick="generateIdea()">
               Generate idea
             </button>
-            <div id="ideaOutput" class="hint">Your idea will appear here.</div>
-          </div>
-        </section>
-        <section class="page" id="analytics" data-kicker="Business intelligence">
-          <div class="three">
-            <div class="stat">Average order<b id="aAverage">€0</b></div>
-            <div class="stat">Total expenses<b id="aExpenses">€0</b></div>
-            <div class="stat">Unpaid invoices<b id="aUnpaid">€0</b></div>
-          </div>
-          <div class="grid">
-            <div class="card">
-              <h2>Sales vs expenses</h2>
-              <canvas class="chart" id="salesExpenseChart"></canvas
-              ><button
-                onclick="downloadChart('salesExpenseChart', 'sales-expenses')"
-              >
+<div class="hint" id="ideaOutput">Your idea will appear here.</div>
+</div>
+</section>
+<section class="page" data-kicker="Business intelligence" id="analytics">
+<div class="three">
+<div class="stat">Average order<b id="aAverage">€0</b></div>
+<div class="stat">Total expenses<b id="aExpenses">€0</b></div>
+<div class="stat">Unpaid invoices<b id="aUnpaid">€0</b></div>
+</div>
+<div class="grid">
+<div class="card">
+<h2>Sales vs expenses</h2>
+<canvas class="chart" id="salesExpenseChart"></canvas><button onclick="downloadChart('salesExpenseChart', 'sales-expenses')">
                 Download graph
               </button>
-            </div>
-            <div class="card">
-              <h2>Inventory value by category</h2>
-              <canvas class="chart" id="inventoryChart"></canvas
-              ><button
-                onclick="downloadChart('inventoryChart', 'inventory-value')"
-              >
+</div>
+<div class="card">
+<h2>Inventory value by category</h2>
+<canvas class="chart" id="inventoryChart"></canvas><button onclick="downloadChart('inventoryChart', 'inventory-value')">
                 Download graph
               </button>
-            </div>
-          </div>
-          <div class="grid">
-            <div class="card">
-              <h2>Order status</h2>
-              <canvas class="chart" id="statusChart"></canvas
-              ><button onclick="downloadChart('statusChart', 'order-status')">
+</div>
+</div>
+<div class="grid">
+<div class="card">
+<h2>Order status</h2>
+<canvas class="chart" id="statusChart"></canvas><button onclick="downloadChart('statusChart', 'order-status')">
                 Download graph
               </button>
-            </div>
-            <div class="card">
-              <h2>Business notes</h2>
-              <p id="aBest" class="mini"></p>
-              <p id="aNotes" class="mini"></p>
-            </div>
-          </div>
-        </section>
-      </main>
-      <section class="install-hub" id="downloadApp" aria-labelledby="installHubTitle">
-        <div class="install-hub-glow" aria-hidden="true"></div>
-        <div class="install-hub-copy">
-          <span class="eyebrow">Florist Studio on every screen</span>
-          <h2 id="installHubTitle">Take your studio with you</h2>
-          <p>
+</div>
+<div class="card">
+<h2>Business notes</h2>
+<p class="mini" id="aBest"></p>
+<p class="mini" id="aNotes"></p>
+</div>
+</div>
+</section>
+</main>
+<section aria-labelledby="installHubTitle" class="install-hub" id="downloadApp">
+<div aria-hidden="true" class="install-hub-glow"></div>
+<div class="install-hub-copy">
+<span class="eyebrow">Florist Studio on every screen</span>
+<h2 id="installHubTitle">Take your studio with you</h2>
+<p>
             Florist Studio detects this device and opens the correct installation flow.
             Your workspace keeps the same calm design on desktop, Android, iPhone and iPad/tablet.
           </p>
-          <div class="install-detected" role="status" aria-live="polite">
-            <span class="install-detected-icon" aria-hidden="true">✦</span>
-            <span><b id="detectedDeviceLabel">Checking this device…</b><small id="installSupportText">Preparing installation options.</small></span>
-          </div>
-          <div class="install-hub-actions">
-            <button type="button" class="primary install-smart-button" id="smartInstallButton" onclick="handleSmartInstall()">
-              <span aria-hidden="true">↓</span><span id="smartInstallButtonLabel">Install on this device</span>
-            </button>
-            <button type="button" id="installHelpButton" onclick="openInstallGuide()">View installation steps</button>
-          </div>
-          <p class="install-privacy-note">
-            <span aria-hidden="true">⌁</span>
+<div aria-live="polite" class="install-detected" role="status">
+<span aria-hidden="true" class="install-detected-icon">✦</span>
+<span><b id="detectedDeviceLabel">Checking this device…</b><small id="installSupportText">Preparing installation options.</small></span>
+</div>
+<div class="install-hub-actions">
+<button class="primary install-smart-button" id="smartInstallButton" onclick="handleSmartInstall()" type="button">
+<span aria-hidden="true">↓</span><span id="smartInstallButtonLabel">Install on this device</span>
+</button>
+<button id="installHelpButton" onclick="openInstallGuide()" type="button">View installation steps</button>
+</div>
+<p class="install-privacy-note">
+<span aria-hidden="true">⌁</span>
             One responsive app, not four separate data copies. Your local records stay on this device unless you export or share them.
           </p>
-        </div>
-        <div class="install-platforms" aria-label="Install options by device">
-          <button type="button" class="install-platform-card" data-install-platform="desktop" onclick="handleSmartInstall('desktop')">
-            <span class="install-platform-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8M12 16v4"></path></svg>
-            </span>
-            <span class="install-platform-copy"><b>Desktop</b><small>Windows, Mac or Linux</small></span>
-            <span class="install-platform-state">Install</span>
-          </button>
-          <button type="button" class="install-platform-card" data-install-platform="android" onclick="handleSmartInstall('android')">
-            <span class="install-platform-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="3"></rect><path d="M10 6h4M11 18h2"></path></svg>
-            </span>
-            <span class="install-platform-copy"><b>Android</b><small>Phone installation</small></span>
-            <span class="install-platform-state">Install</span>
-          </button>
-          <button type="button" class="install-platform-card" data-install-platform="iphone" onclick="handleSmartInstall('iphone')">
-            <span class="install-platform-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="3"></rect><path d="M10 5h4M11 19h2"></path></svg>
-            </span>
-            <span class="install-platform-copy"><b>iPhone</b><small>Add to Home Screen</small></span>
-            <span class="install-platform-state">Steps</span>
-          </button>
-          <button type="button" class="install-platform-card" data-install-platform="tablet" onclick="handleSmartInstall('tablet')">
-            <span class="install-platform-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"></rect><path d="M11 18h2"></path></svg>
-            </span>
-            <span class="install-platform-copy"><b>iPad / tablet</b><small>Full-screen tablet workspace</small></span>
-            <span class="install-platform-state">Steps</span>
-          </button>
-        </div>
-      </section>
-      <footer class="footer">
-        <img
-          id="footerLogo"
-          src="assets/images/eternal-blooms-logo-alt.png"
-          alt="Eternal Blooms logo"
-        />
-        <p>
-          <b>Florist Studio</b> was created by
-          <a href="https://www.instagram.com/eternalblooms.ie/" target="_blank"
-            >Eternal Blooms</a
-          >.
+</div>
+<div aria-label="Install options by device" class="install-platforms">
+<button class="install-platform-card" data-install-platform="desktop" onclick="handleSmartInstall('desktop')" type="button">
+<span aria-hidden="true" class="install-platform-icon">
+<svg viewbox="0 0 24 24"><rect height="12" rx="2" width="18" x="3" y="4"></rect><path d="M8 20h8M12 16v4"></path></svg>
+</span>
+<span class="install-platform-copy"><b>Desktop</b><small>Windows, Mac or Linux</small></span>
+<span class="install-platform-state">Install</span>
+</button>
+<button class="install-platform-card" data-install-platform="android" onclick="handleSmartInstall('android')" type="button">
+<span aria-hidden="true" class="install-platform-icon">
+<svg viewbox="0 0 24 24"><rect height="18" rx="3" width="12" x="6" y="3"></rect><path d="M10 6h4M11 18h2"></path></svg>
+</span>
+<span class="install-platform-copy"><b>Android</b><small>Phone installation</small></span>
+<span class="install-platform-state">Install</span>
+</button>
+<button class="install-platform-card" data-install-platform="iphone" onclick="handleSmartInstall('iphone')" type="button">
+<span aria-hidden="true" class="install-platform-icon">
+<svg viewbox="0 0 24 24"><rect height="19" rx="3" width="10" x="7" y="2.5"></rect><path d="M10 5h4M11 19h2"></path></svg>
+</span>
+<span class="install-platform-copy"><b>iPhone</b><small>Add to Home Screen</small></span>
+<span class="install-platform-state">Steps</span>
+</button>
+<button class="install-platform-card" data-install-platform="tablet" onclick="handleSmartInstall('tablet')" type="button">
+<span aria-hidden="true" class="install-platform-icon">
+<svg viewbox="0 0 24 24"><rect height="18" rx="3" width="16" x="4" y="3"></rect><path d="M11 18h2"></path></svg>
+</span>
+<span class="install-platform-copy"><b>iPad / tablet</b><small>Full-screen tablet workspace</small></span>
+<span class="install-platform-state">Steps</span>
+</button>
+</div>
+</section>
+<footer class="footer">
+<img alt="Eternal Blooms logo" id="footerLogo" src="assets/images/eternal-blooms-logo-alt.png"/>
+<p>
+<b>Florist Studio</b> was created by
+          <a href="https://www.instagram.com/eternalblooms.ie/" target="_blank">Eternal Blooms</a>.
         </p>
-        <p>If you enjoy using this tool, I'd love to see your creations! 🌸</p>
-        <p>
+<p>If you enjoy using this tool, I'd love to see your creations! 🌸</p>
+<p>
           Follow
-          <a href="https://www.instagram.com/eternalblooms.ie/" target="_blank"
-            >@eternalblooms.ie</a
-          >
+          <a href="https://www.instagram.com/eternalblooms.ie/" target="_blank">@eternalblooms.ie</a>
           on Instagram for bouquet inspiration, florist tips and future updates.
         </p>
-        <a
-          id="kofiLink"
-          class="kofi"
-          href="https://ko-fi.com/eternalblooms"
-          target="_blank"
-          >☕ Support future updates on Ko-fi</a
-        >
-      <span class="footer-version">Florist Studio v2.7 · Reliable Studio</span>
-      </footer>
-    </div>
-      <div class="install-guide-modal" id="installGuideModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="installGuideTitle" hidden>
-        <button type="button" class="install-guide-backdrop" aria-label="Close installation guide" onclick="closeInstallGuide()"></button>
-        <div class="install-guide-sheet" role="document">
-          <div class="install-guide-head">
-            <div>
-              <span class="eyebrow" id="installGuideEyebrow">Install Florist Studio</span>
-              <h2 id="installGuideTitle">Add the app to your device</h2>
-            </div>
-            <button type="button" class="icon-button" onclick="closeInstallGuide()" aria-label="Close installation guide">×</button>
-          </div>
-          <div class="install-guide-device" id="installGuideDevice"></div>
-          <ol class="install-guide-steps" id="installGuideSteps"></ol>
-          <p class="install-guide-note" id="installGuideNote"></p>
-          <div class="install-guide-actions">
-            <button type="button" onclick="closeInstallGuide()">Not now</button>
-            <button type="button" class="primary" id="installGuideAction" onclick="runInstallFromGuide()">Install now</button>
-          </div>
-        </div>
-      </div>
-      <div id="mobileMoreBackdrop" class="mobile-more-backdrop" onclick="closeMobileMore()" hidden></div>
-      <aside id="mobileMoreMenu" class="mobile-more-menu" aria-label="More workspace sections" aria-hidden="true">
-        <div class="mobile-more-head">
-          <div><span class="eyebrow">Workspace</span><h2>More tools</h2></div>
-          <button type="button" class="icon-button" onclick="closeMobileMore()" aria-label="Close more tools">×</button>
-        </div>
-        <div id="mobileMoreMenuList" class="mobile-more-list"></div>
-      </aside>
-    <nav class="bottom-nav" id="bottomNav" aria-label="Mobile workspace navigation"></nav>
-    <script src="assets/js/app.js?v=2.7.0"></script>
-    <script src="assets/js/studio-features.js?v=2.7.0"></script>
-    <script src="assets/js/install-manager.js?v=2.7.0"></script>
-
-    <div
-      class="client-portal-modal"
-      id="clientPortalModal"
-      aria-hidden="true"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="portalTitle"
-    >
-      <div class="portal-sheet">
-        <button
-          class="portal-close icon-button"
-          onclick="closeClientPortal()"
-          aria-label="Close portal"
-        >
+<a class="kofi" href="https://ko-fi.com/eternalblooms" id="kofiLink" target="_blank">☕ Support future updates on Ko-fi</a>
+<span class="footer-version">Florist Studio v2.7 · Reliable Studio</span>
+</footer>
+</div>
+<div aria-hidden="true" aria-labelledby="installGuideTitle" aria-modal="true" class="install-guide-modal" hidden="" id="installGuideModal" role="dialog">
+<button aria-label="Close installation guide" class="install-guide-backdrop" onclick="closeInstallGuide()" type="button"></button>
+<div class="install-guide-sheet" role="document">
+<div class="install-guide-head">
+<div>
+<span class="eyebrow" id="installGuideEyebrow">Install Florist Studio</span>
+<h2 id="installGuideTitle">Add the app to your device</h2>
+</div>
+<button aria-label="Close installation guide" class="icon-button" onclick="closeInstallGuide()" type="button">×</button>
+</div>
+<div class="install-guide-device" id="installGuideDevice"></div>
+<ol class="install-guide-steps" id="installGuideSteps"></ol>
+<p class="install-guide-note" id="installGuideNote"></p>
+<div class="install-guide-actions">
+<button onclick="closeInstallGuide()" type="button">Not now</button>
+<button class="primary" id="installGuideAction" onclick="runInstallFromGuide()" type="button">Install now</button>
+</div>
+</div>
+</div>
+<div class="mobile-more-backdrop" hidden="" id="mobileMoreBackdrop" onclick="closeMobileMore()"></div>
+<aside aria-hidden="true" aria-label="More workspace sections" class="mobile-more-menu" id="mobileMoreMenu">
+<div class="mobile-more-head">
+<div><span class="eyebrow">Workspace</span><h2>More tools</h2></div>
+<button aria-label="Close more tools" class="icon-button" onclick="closeMobileMore()" type="button">×</button>
+</div>
+<div class="mobile-more-list" id="mobileMoreMenuList"></div>
+</aside>
+<div aria-hidden="true" class="v3-modal" hidden="" id="dashboardCustomiser"><div class="v3-modal-sheet"><div class="modal-head"><div><span class="eyebrow">Personal workspace</span><h2>Customise dashboard</h2></div><button class="icon-button" onclick="closeDashboardCustomiser()">×</button></div><p>Switch sections on or off. Your choices save automatically on this device.</p><div class="dashboard-switches" id="dashboardSwitches"></div><div class="actions"><button onclick="resetDashboardLayout()">Restore defaults</button><button class="primary" onclick="closeDashboardCustomiser()">Done</button></div></div></div><nav aria-label="Mobile workspace navigation" class="bottom-nav" id="bottomNav"></nav>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/app.js?v=2.7.0"></script>
+<script src="assets/js/studio-features.js?v=2.7.0"></script>
+<script src="assets/js/install-manager.js?v=2.7.0"></script><script src="assets/js/v3-features.js?v=3.0.0"></script>
+<script src="assets/js/cloud-sync.js?v=3.1.0"></script>
+<div aria-hidden="true" aria-labelledby="portalTitle" aria-modal="true" class="client-portal-modal" id="clientPortalModal" role="dialog">
+<div class="portal-sheet">
+<button aria-label="Close portal" class="portal-close icon-button" onclick="closeClientPortal()">
           ×
         </button>
-        <input id="portalProposalId" type="hidden" />
-        <div class="portal-brand">
-          <img src="assets/images/eternal-blooms-logo.png" alt="" /><span
-            class="eyebrow"
-            id="portalBrand"
-            >Florist Studio</span
-          >
-          <h2 id="portalTitle">Floral proposal</h2>
-          <p id="portalClientGreeting"></p>
-        </div>
-        <div class="portal-summary" id="portalSummary"></div>
-        <div class="portal-money">
-          <div>Total<b id="portalTotal">€0</b></div>
-          <div>Deposit<b id="portalDeposit">€0</b></div>
-          <div>Balance<b id="portalBalance">€0</b></div>
-        </div>
-        <p><b>Decision requested by:</b> <span id="portalDueDate"></span></p>
-        <label>Your name</label
-        ><input
-          id="portalSignature"
-          placeholder="Client name / approval signature"
-        />
-        <label>Notes or requested changes</label
-        ><textarea
-          id="portalDecisionNote"
-          rows="3"
-          placeholder="Optional"
-        ></textarea>
-        <div class="portal-decisions">
-          <button onclick="portalDecision('Changes requested')">
-            Request changes</button
-          ><button class="primary" onclick="portalDecision('Approved')">
+<input id="portalProposalId" type="hidden"/>
+<div class="portal-brand">
+<img alt="" src="assets/images/eternal-blooms-logo.png"/><span class="eyebrow" id="portalBrand">Florist Studio</span>
+<h2 id="portalTitle">Floral proposal</h2>
+<p id="portalClientGreeting"></p>
+</div>
+<div class="portal-summary" id="portalSummary"></div>
+<div class="portal-money">
+<div>Total<b id="portalTotal">€0</b></div>
+<div>Deposit<b id="portalDeposit">€0</b></div>
+<div>Balance<b id="portalBalance">€0</b></div>
+</div>
+<p><b>Decision requested by:</b> <span id="portalDueDate"></span></p>
+<label>Your name</label><input id="portalSignature" placeholder="Client name / approval signature"/>
+<label>Notes or requested changes</label><textarea id="portalDecisionNote" placeholder="Optional" rows="3"></textarea>
+<div class="portal-decisions">
+<button onclick="portalDecision('Changes requested')">
+            Request changes</button><button class="primary" onclick="portalDecision('Approved')">
             Approve proposal
           </button>
-        </div>
-      </div>
-    </div>
-  </body>
+</div>
+</div>
+</div>
+</body>
 </html>
