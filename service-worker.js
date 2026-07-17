@@ -1,9 +1,9 @@
-const CACHE_NAME = "florist-studio-v3.1.0";
+const CACHE_NAME = "florist-studio-v3.2.0";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./assets/css/style.css?v=3.0.0",
+  "./assets/css/style.css?v=3.2.0",
   "./assets/js/app.js?v=2.7.0",
   "./assets/js/studio-features.js?v=2.7.0",
   "./assets/js/install-manager.js?v=2.7.0",

@@ -7593,3 +7593,289 @@ html[data-theme="dark"] .dashboard-toolbar{background:linear-gradient(135deg,rgb
 #cloudStatus[data-state="error"]{color:#a33446;font-weight:700}
 #cloudStatus[data-state="working"]{color:var(--fs-plum);font-weight:700}
 .cloud-account-card code{font-size:.82em;overflow-wrap:anywhere}
+
+/* =========================================================
+   Florist Studio v3.2 — Professional UI overhaul
+   Final cascade layer: calmer, tighter, responsive and robust.
+   ========================================================= */
+:root{
+  --ui-bg:#f6f4f3;
+  --ui-surface:#ffffff;
+  --ui-surface-2:#fbfaf9;
+  --ui-text:#2c2228;
+  --ui-muted:#746970;
+  --ui-border:#e7e0e3;
+  --ui-accent:#793f59;
+  --ui-accent-strong:#603044;
+  --ui-accent-soft:#f5eaf0;
+  --ui-success:#267052;
+  --ui-shadow:0 1px 2px rgba(31,22,27,.04),0 12px 32px rgba(31,22,27,.07);
+  --ui-radius:18px;
+  --ui-sidebar:252px;
+}
+*{box-sizing:border-box}
+html{background:var(--ui-bg);scroll-behavior:smooth}
+body{
+  margin:0!important;
+  min-height:100dvh;
+  overflow-x:hidden!important;
+  background:var(--ui-bg)!important;
+  color:var(--ui-text)!important;
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  font-size:15px;
+  line-height:1.55;
+}
+h1,h2,h3,h4{color:var(--ui-text)!important;letter-spacing:-.025em}
+h1{font-size:clamp(2rem,4vw,3.4rem)!important;line-height:1.04!important}
+h2{font-size:clamp(1.35rem,2vw,1.75rem)!important;line-height:1.2!important}
+p,.mini{color:var(--ui-muted)!important}
+button,input,select,textarea{font:inherit}
+button{
+  min-height:42px;
+  border:1px solid var(--ui-border)!important;
+  border-radius:12px!important;
+  padding:10px 15px!important;
+  background:var(--ui-surface)!important;
+  color:var(--ui-text)!important;
+  box-shadow:none!important;
+  font-weight:700!important;
+  transition:transform .15s ease,border-color .15s ease,background .15s ease,box-shadow .15s ease;
+}
+button:hover{transform:translateY(-1px);border-color:#cfbec6!important;box-shadow:0 6px 16px rgba(47,31,39,.08)!important}
+button.primary,.primary{
+  color:#fff!important;
+  border-color:var(--ui-accent)!important;
+  background:var(--ui-accent)!important;
+}
+button.primary:hover,.primary:hover{background:var(--ui-accent-strong)!important}
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--ui-border)!important;
+  border-radius:12px!important;
+  background:var(--ui-surface)!important;
+  color:var(--ui-text)!important;
+  box-shadow:0 1px 2px rgba(31,22,27,.025) inset!important;
+}
+input:focus,select:focus,textarea:focus{outline:3px solid rgba(121,63,89,.13)!important;border-color:var(--ui-accent)!important}
+
+.app{
+  display:grid!important;
+  grid-template-columns:var(--ui-sidebar) minmax(0,1fr)!important;
+  grid-template-rows:auto 1fr!important;
+  width:100%!important;
+  min-height:100dvh!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  gap:0!important;
+}
+.hero{
+  grid-column:2!important;
+  grid-row:1!important;
+  position:sticky!important;
+  top:0!important;
+  z-index:100!important;
+  min-height:88px!important;
+  margin:0!important;
+  padding:18px clamp(24px,4vw,54px)!important;
+  border:0!important;
+  border-bottom:1px solid var(--ui-border)!important;
+  border-radius:0!important;
+  background:rgba(255,255,255,.88)!important;
+  backdrop-filter:blur(18px)!important;
+  box-shadow:none!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:22px!important;
+}
+.hero::before,.hero::after{display:none!important}
+.hero-brand{display:flex!important;align-items:center!important;gap:14px!important;min-width:0}
+.hero .brand-logo{width:52px!important;height:52px!important;flex:0 0 52px!important;border-radius:14px!important;border:1px solid var(--ui-border)!important;padding:3px!important;box-shadow:none!important}
+.hero-copy .eyebrow{display:none!important}
+.hero-copy h1{font-family:Georgia,"Times New Roman",serif!important;font-size:1.5rem!important;line-height:1.1!important;margin:0!important}
+.hero-copy p{font-size:.9rem!important;margin:4px 0 0!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:520px}
+.hero-actions{display:flex!important;gap:10px!important;align-items:center!important;flex-wrap:nowrap!important}
+.hero-actions button{white-space:nowrap!important}
+
+.nav{
+  grid-column:1!important;
+  grid-row:1 / span 2!important;
+  position:fixed!important;
+  inset:0 auto 0 0!important;
+  z-index:120!important;
+  width:var(--ui-sidebar)!important;
+  height:100dvh!important;
+  margin:0!important;
+  padding:22px 14px!important;
+  overflow-y:auto!important;
+  border:0!important;
+  border-right:1px solid var(--ui-border)!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:4px!important;
+  scrollbar-width:thin;
+}
+.nav::before{
+  content:"Florist Studio";
+  display:block;
+  margin:0 8px 18px;
+  padding:0 0 18px;
+  border-bottom:1px solid var(--ui-border);
+  color:var(--ui-text);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.28rem;
+  font-weight:700;
+}
+.nav button,.nav a{
+  width:100%!important;
+  min-height:44px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:12px!important;
+  margin:0!important;
+  padding:10px 12px!important;
+  border:0!important;
+  border-radius:11px!important;
+  background:transparent!important;
+  color:#574b52!important;
+  box-shadow:none!important;
+  font-size:.95rem!important;
+  font-weight:650!important;
+  text-align:left!important;
+}
+.nav button:hover,.nav a:hover{transform:none!important;background:#f7f3f5!important;color:var(--ui-text)!important}
+.nav button.active,.nav a.active{
+  background:var(--ui-accent-soft)!important;
+  color:var(--ui-accent-strong)!important;
+}
+
+main#pages{
+  grid-column:2!important;
+  grid-row:2!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:34px clamp(24px,4vw,54px) 80px!important;
+  overflow:visible!important;
+}
+.page{width:min(100%,1480px)!important;margin:0 auto!important;padding:0!important}
+.page::before{font-size:.72rem!important;letter-spacing:.12em!important;color:#976178!important;margin:0 0 14px!important}
+
+.dashboard-toolbar{
+  margin:0 0 22px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.dashboard-toolbar h2{margin:4px 0 5px!important}
+.dashboard-customise-button{background:var(--ui-surface)!important}
+.card,.stat,.command-card,.loyalty-hero,.privacy-hero,.proposal-form-card,.studio-form,.recipe-builder-card{
+  border:1px solid var(--ui-border)!important;
+  border-radius:var(--ui-radius)!important;
+  background:var(--ui-surface)!important;
+  box-shadow:var(--ui-shadow)!important;
+}
+.card{padding:22px!important}
+.three{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;margin-bottom:18px!important}
+.stat{min-height:126px!important;padding:22px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;color:var(--ui-muted)!important}
+.stat b{display:block!important;margin-top:7px!important;color:var(--ui-text)!important;font-size:clamp(1.8rem,3vw,2.35rem)!important;letter-spacing:-.04em!important}
+.grid,.command-grid{gap:16px!important}
+.command-grid{grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(230px,.7fr))!important}
+.quick-actions{gap:9px!important}
+.eyebrow{font-family:inherit!important;font-size:.7rem!important;font-weight:800!important;letter-spacing:.12em!important;color:#956278!important}
+
+/* Remove the large promotional/footer block from the working canvas. */
+footer,.footer,.app-footer,[class*="support-card"]{max-width:100%!important}
+
+/* Modal repair: always overlays the current viewport and never becomes page content. */
+.v3-modal{
+  position:fixed!important;
+  inset:0!important;
+  z-index:99999!important;
+  width:100vw!important;
+  height:100dvh!important;
+  margin:0!important;
+  padding:20px!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:auto!important;
+  background:rgba(25,20,23,.58)!important;
+  backdrop-filter:blur(10px)!important;
+}
+.v3-modal[hidden]{display:none!important}
+.v3-modal-sheet{
+  position:relative!important;
+  width:min(560px,calc(100vw - 32px))!important;
+  max-height:calc(100dvh - 40px)!important;
+  margin:auto!important;
+  padding:26px!important;
+  overflow:auto!important;
+  border:1px solid var(--ui-border)!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  box-shadow:0 28px 90px rgba(20,13,17,.28)!important;
+}
+.modal-head{position:sticky!important;top:-26px!important;z-index:2!important;margin:-26px -26px 16px!important;padding:22px 26px 14px!important;background:#fff!important;border-bottom:1px solid var(--ui-border)!important}
+.dashboard-switches{gap:8px!important}
+.dashboard-switches label{display:flex!important;align-items:center!important;gap:12px!important;padding:12px 14px!important;border:1px solid var(--ui-border)!important;border-radius:12px!important;background:var(--ui-surface-2)!important}
+.dashboard-switches input{width:auto!important}
+
+/* Dark mode remains professional rather than heavily tinted. */
+html[data-theme="dark"]{
+  --ui-bg:#171416;--ui-surface:#211d20;--ui-surface-2:#272226;--ui-text:#f5eff2;--ui-muted:#b7aeb3;--ui-border:#3a3337;--ui-accent:#c57b9b;--ui-accent-strong:#dda1ba;--ui-accent-soft:#35252d;
+}
+html[data-theme="dark"] body,html[data-theme="dark"] html{background:var(--ui-bg)!important}
+html[data-theme="dark"] .hero{background:rgba(33,29,32,.9)!important}
+html[data-theme="dark"] .nav,html[data-theme="dark"] .v3-modal-sheet,html[data-theme="dark"] .modal-head{background:var(--ui-surface)!important}
+html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="dark"] textarea,html[data-theme="dark"] button{background:var(--ui-surface-2)!important;color:var(--ui-text)!important}
+
+@media(max-width:1050px){
+  :root{--ui-sidebar:220px}
+  .command-grid{grid-template-columns:1fr 1fr!important}
+  .command-wide{grid-column:1/-1!important}
+}
+@media(max-width:800px){
+  body{padding-bottom:76px!important}
+  .app{display:block!important;min-height:100dvh!important}
+  .nav{display:none!important}
+  .hero{
+    position:sticky!important;
+    top:0!important;
+    min-height:72px!important;
+    padding:12px 16px!important;
+    border-bottom:1px solid var(--ui-border)!important;
+  }
+  .hero .brand-logo{width:44px!important;height:44px!important;flex-basis:44px!important}
+  .hero-copy h1{font-size:1.15rem!important}
+  .hero-copy p{display:none!important}
+  .hero-actions button:first-child{display:none!important}
+  .hero-actions button{min-height:40px!important;padding:8px 12px!important;font-size:.82rem!important}
+  main#pages{padding:22px 16px 98px!important}
+  .page::before{margin-bottom:10px!important}
+  .dashboard-toolbar{align-items:flex-start!important;gap:14px!important}
+  .dashboard-customise-button{width:100%!important}
+  .three{grid-template-columns:1fr!important;gap:10px!important}
+  .stat{min-height:104px!important;padding:18px!important}
+  .command-grid,.grid{grid-template-columns:1fr!important}
+  .card{padding:18px!important}
+  .bottom-nav{display:flex!important;position:fixed!important;left:8px!important;right:8px!important;bottom:max(8px,env(safe-area-inset-bottom))!important;z-index:500!important;border:1px solid var(--ui-border)!important;border-radius:18px!important;background:rgba(255,255,255,.94)!important;box-shadow:0 14px 40px rgba(28,18,24,.18)!important;backdrop-filter:blur(18px)!important;overflow-x:auto!important}
+  html[data-theme="dark"] .bottom-nav{background:rgba(33,29,32,.94)!important}
+  .bottom-nav button{min-width:68px!important;padding:9px 8px!important;border:0!important;background:transparent!important;font-size:.72rem!important}
+  .v3-modal{padding:10px!important;align-items:end!important}
+  .v3-modal-sheet{width:100%!important;max-height:88dvh!important;border-radius:22px 22px 14px 14px!important;padding:22px!important}
+  .modal-head{top:-22px!important;margin:-22px -22px 14px!important;padding:18px 22px 12px!important}
+}
+@media(max-width:480px){
+  .hero-actions button{font-size:0!important;width:42px!important;padding:8px!important}
+  .hero-actions button.primary::after{content:"Install";font-size:.76rem!important}
+  main#pages{padding-inline:12px!important}
+  .card,.stat{border-radius:15px!important}
+}
