@@ -1,7 +1,7 @@
 {
-  "name": "Florist Studio v3.0",
+  "name": "Florist Studio v3.4",
   "short_name": "Florist Studio",
-  "description": "Privacy-first florist studio with Bloom Club digital loyalty.",
+  "description": "Responsive, privacy-first florist workspace with orders, customers, inventory, events, Bloom Club loyalty and secure Supabase sync.",
   "id": "./index.html",
   "start_url": "./index.html#home",
   "scope": "./",
