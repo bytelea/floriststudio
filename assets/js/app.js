@@ -64,6 +64,7 @@ const NAV_ICONS = {
   invoices: '<path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 11h6M9 15h6M9 19h3"/>',
   content: '<path d="M9 18h6M10 22h4"/><path d="M8.2 14.8A7 7 0 1 1 15.8 14.8C14.8 15.5 14.3 16.2 14.2 18h-4.4c-.1-1.8-.6-2.5-1.6-3.2Z"/>',
   analytics: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/><path d="m3 8 6-5 6 7 6-5"/>',
+  install: '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 20h14"/>',
   more: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
 };
 function navIcon(id) {

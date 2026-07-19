@@ -9,9 +9,9 @@
 <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Florist Studio" name="apple-mobile-web-app-title"/>
 <meta content="A privacy-first florist studio for orders, customers, digital loyalty, inventory, proposals and business operations." name="description"/>
-<title>Florist Studio v3.5</title>
+<title>Florist Studio v3.6</title>
 <link href="assets/images/icon-192.png" rel="icon" type="image/png"/>
-<!-- Florist Studio v3.5 · Release-ready responsive cloud build -->
+<!-- Florist Studio v3.6 · Release-ready responsive cloud build -->
 <link href="manifest.json" rel="manifest"/>
 <link href="assets/images/icon-192.png" rel="apple-touch-icon"/>
 <link href="assets/css/style.css?v=3.4.0" rel="stylesheet"/>
@@ -33,7 +33,7 @@
 </div>
 <div aria-label="Workspace shortcuts" class="hero-actions">
 <button onclick="showPage('calendar')" type="button">View calendar</button>
-<button class="primary" onclick="promptInstall()" type="button">Install app</button>
+<button class="primary" onclick="showPage('install')" type="button">Install app</button>
 </div>
 </header>
 <nav aria-label="Primary workspace navigation" class="nav" id="nav"></nav>
@@ -901,8 +901,7 @@
 </div>
 </div>
 </section>
-</main>
-<section aria-labelledby="installHubTitle" class="install-hub" id="downloadApp">
+<section aria-labelledby="installHubTitle" class="page install-page" data-kicker="Install Florist Studio" id="install"><div class="install-hub">
 <div aria-hidden="true" class="install-hub-glow"></div>
 <div class="install-hub-copy">
 <span class="eyebrow">Florist Studio on every screen</span>
@@ -956,7 +955,9 @@
 <span class="install-platform-state">Steps</span>
 </button>
 </div>
-</section>
+</div></section>
+</main>
+
 <footer class="footer">
 <img alt="Eternal Blooms logo" id="footerLogo" src="assets/images/eternal-blooms-logo-alt.png"/>
 <p>
@@ -970,7 +971,7 @@
           on Instagram for bouquet inspiration, florist tips and future updates.
         </p>
 <a class="kofi" href="https://ko-fi.com/eternalblooms" id="kofiLink" target="_blank">☕ Support future updates on Ko-fi</a>
-<span class="footer-version">Florist Studio v3.5 · Cloud-ready responsive release</span>
+<span class="footer-version">Florist Studio v3.7 · Mobile polish and dedicated install page</span>
 </footer>
 </div>
 <div aria-hidden="true" aria-labelledby="installGuideTitle" aria-modal="true" class="install-guide-modal" hidden="" id="installGuideModal" role="dialog">
@@ -1004,7 +1005,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/app.js?v=2.7.0"></script>
 <script src="assets/js/studio-features.js?v=2.7.0"></script>
-<script src="assets/js/install-manager.js?v=2.7.0"></script><script src="assets/js/v3-features.js?v=3.0.0"></script>
+<script src="assets/js/install-manager.js?v=3.7.0"></script><script src="assets/js/v3-features.js?v=3.7.0"></script>
 <script src="assets/js/cloud-sync.js?v=3.1.0"></script>
 <div aria-hidden="true" aria-labelledby="portalTitle" aria-modal="true" class="client-portal-modal" id="clientPortalModal" role="dialog">
 <div class="portal-sheet">

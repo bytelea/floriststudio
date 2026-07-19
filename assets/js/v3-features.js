@@ -307,6 +307,7 @@
     if (!pages.some(p => p[0] === 'studio')) pages.splice(1,0,['studio','Studio','🌷']);
     if (!pages.some(p => p[0] === 'loyalty')) pages.splice(7,0,['loyalty','Bloom Club','🌸']);
     if (!pages.some(p => p[0] === 'privacy')) pages.push(['privacy','Privacy','🔒']);
+    if (!pages.some(p => p[0] === 'install')) pages.push(['install','Install','⬇️']);
     NAV_ICONS.loyalty='<path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.6-7 11-7 11Z"/><path d="M9 12h6M12 9v6"/>';
     NAV_ICONS.privacy='<rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>';
     if (typeof setupNav === 'function') setupNav();
