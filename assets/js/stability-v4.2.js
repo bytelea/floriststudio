@@ -1,4 +1,4 @@
-/* Florist Studio v4.2 — targeted layout and editing repair layer. */
+/* Florist Studio v4.3 — stable headings, loyalty stamps and order status controls. */
 (() => {
   'use strict';
   const byId = id => document.getElementById(id);
@@ -32,16 +32,32 @@
   }
 
   function renderOrdersStable() {
+    const body = byId('ordersBody');
     const cards = byId('ordersCards');
-    if (!cards || !window.db) return;
+    if ((!body && !cards) || !window.db) return;
     const balance = o => Math.max(0, (+o.price || 0) - (+o.depositAmount || 0));
-    cards.innerHTML = db.orders.map(o => {
+    const stateButtons = o => `<div class="order-state-controls">
+      <button type="button" class="order-state-button ${o.depositPaid ? 'is-on' : 'is-off'}" onclick="toggleOrderDeposit(${o.id})">${o.depositPaid ? '✓ Deposit paid' : '○ Deposit not paid'}</button>
+      <button type="button" class="order-state-button ${orderStatus(o)==='Done' ? 'is-on' : 'is-off'}" onclick="toggleOrderComplete(${o.id})">${orderStatus(o)==='Done' ? '✓ Order completed' : '○ Mark order completed'}</button>
+    </div>`;
+    if (body) body.innerHTML = db.orders.map(o => {
+      const stock = (o.stockUsed || []).map(s => `${s.qty} ${esc(s.unit)} ${esc(s.name)}`).join(', ') || 'No stock assigned';
+      return `<tr class="${orderStatus(o)==='Done'?'order-complete':''}">
+        <td>${esc(o.date || '')}</td><td><b>${esc(o.name)}</b><br><small>${esc(o.notes || '')}</small></td><td>${esc(o.customerName || '—')}</td>
+        <td><span class="pill ${orderStatus(o)==='Done'?'done':'notdone'}">${orderStatus(o)}</span></td>
+        <td>${o.depositPaid ? 'Paid' : 'Not paid'}${+o.depositAmount ? `<br><small>${money(o.depositAmount)}</small>` : ''}</td>
+        <td>${money(balance(o))}</td><td>${money((+o.price||0)-(+o.cost||0))}</td><td>${stock}</td>
+        <td><div class="order-row-controls"><button onclick="toggleOrderDeposit(${o.id})">${o.depositPaid?'Deposit paid':'Mark deposit paid'}</button><button onclick="toggleOrderComplete(${o.id})">${orderStatus(o)==='Done'?'Reopen':'Complete'}</button><button onclick="invoiceOrder.value='${o.id}';invoiceFromOrder()">Invoice</button><button onclick="openGoogleCalendar(${o.id})">Google</button><button onclick="downloadOrderICS(${o.id})">Calendar</button><button class="danger" onclick="del('orders',${o.id})">Delete</button></div></td>
+      </tr>`;
+    }).join('');
+    if (cards) cards.innerHTML = db.orders.map(o => {
       const stock = (o.stockUsed || []).map(s => `<li>${s.qty} ${esc(s.unit)} ${esc(s.name)}</li>`).join('');
       const images = (o.images || []).slice(0,4).map(src => `<img src="${src}" alt="Order inspiration">`).join('');
-      return `<article class="mobile-card order-card-stable">
+      return `<article class="mobile-card order-card-stable ${orderStatus(o)==='Done'?'order-complete':''}">
         ${images ? `<div class="order-gallery">${images}</div>` : ''}
         <div class="order-card-title"><div><b>${esc(o.name)}</b><p>${formatDate(o.date)} · ${esc(o.customerName || 'No customer')}</p></div><span class="pill ${orderStatus(o)==='Done'?'done':'notdone'}">${orderStatus(o)}</span></div>
         <div class="order-metrics"><span>Sale<b>${money(o.price)}</b></span><span>Deposit<b>${money(o.depositAmount)}</b></span><span>Balance<b>${money(balance(o))}</b></span><span>Profit<b>${money((+o.price||0)-(+o.cost||0))}</b></span></div>
+        ${stateButtons(o)}
         ${stock ? `<details class="stock-details"><summary>Stock used (${(o.stockUsed||[]).length})</summary><ul>${stock}</ul></details>` : '<p class="mini">No stock assigned.</p>'}
         <div class="actions"><button onclick="invoiceOrder.value='${o.id}';invoiceFromOrder()">Invoice</button><button onclick="openGoogleCalendar(${o.id})">Google</button><button onclick="downloadOrderICS(${o.id})">Calendar file</button><button class="danger" onclick="del('orders',${o.id})">Delete</button></div>
       </article>`;
@@ -123,6 +139,60 @@
     item.image = previewImg?.src?.startsWith('data:') ? previewImg.src : (byId('inventoryImagePreview').dataset.existingImage || item.image || '');
     cancelInventoryEdit();
     save();
+  };
+
+  const pageTitles = {
+    home: 'Dashboard', calculator: 'Pricing', studio: 'Weddings & Events', orders: 'Orders',
+    inventory: 'Inventory', expenses: 'Expenses', calendar: 'Calendar', loyalty: 'Bloom Club',
+    customers: 'Customers', invoices: 'Invoices', content: 'Ideas', analytics: 'Analytics',
+    privacy: 'Privacy Centre', install: 'Install Florist Studio'
+  };
+
+  function restorePageTitles() {
+    Object.entries(pageTitles).forEach(([id, title]) => {
+      const page = byId(id);
+      if (!page || page.querySelector(':scope > .page-title-v43')) return;
+      const heading = document.createElement('h1');
+      heading.className = 'page-title-v43';
+      heading.textContent = title;
+      page.prepend(heading);
+    });
+  }
+
+  function improveLoyaltyStamps() {
+    const track = byId('walletStampTrack') || document.querySelector('#walletCardPreview .stamp-track');
+    if (!track) return;
+    if (!track.children.length) {
+      const goal = Math.max(2, Number(byId('loyaltyGoal')?.value) || 10);
+      track.innerHTML = Array.from({length: goal}, () => '<span aria-label="Empty stamp">✿</span>').join('');
+    } else {
+      [...track.children].forEach(stamp => {
+        const filled = stamp.classList.contains('filled');
+        stamp.textContent = filled ? '🌸' : '✿';
+        stamp.setAttribute('aria-label', filled ? 'Flower stamp earned' : 'Empty flower stamp');
+      });
+    }
+  }
+
+  window.toggleOrderDeposit = function(id) {
+    const order = db.orders.find(item => item.id === Number(id));
+    if (!order) return;
+    order.depositPaid = !order.depositPaid;
+    save();
+  };
+
+  window.toggleOrderComplete = function(id) {
+    const order = db.orders.find(item => item.id === Number(id));
+    if (!order) return;
+    order.manualStatus = orderStatus(order) === 'Done' ? 'Not done' : 'Done';
+    save();
+  };
+
+  const previousAfterRender = afterRender;
+  afterRender = function enhancedAfterRender() {
+    previousAfterRender();
+    restorePageTitles();
+    improveLoyaltyStamps();
   };
 
   document.addEventListener('DOMContentLoaded', afterRender);

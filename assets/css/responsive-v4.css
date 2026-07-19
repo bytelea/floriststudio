@@ -260,3 +260,98 @@ canvas.chart{width:100%!important;height:300px!important;min-height:240px;object
   .wallet-card{padding:18px!important;min-height:220px!important}
   .wallet-card h3{margin-top:12px}
 }
+
+/* Florist Studio v4.3 — headings, loyalty stamps and order controls */
+.page-title-v43{
+  margin:0 0 18px;
+  font-family:Georgia,serif;
+  font-size:clamp(2rem,4vw,3.35rem);
+  line-height:1;
+  letter-spacing:-.045em;
+  color:var(--ink);
+}
+/* Remove only the decorative micro-headings that sit above major headings. */
+.page > .eyebrow,
+.page > .section-heading > div > .eyebrow,
+.page > .card:first-of-type > .section-heading > div > .eyebrow,
+.loyalty-hero .eyebrow,
+.wallet-preview > .eyebrow,
+#studio > .studio-hero .eyebrow,
+#orders > .card:first-of-type .eyebrow,
+#invoices > .card:first-of-type .eyebrow{display:none!important}
+
+/* Keep page content comfortably below the restored heading. */
+.page-title-v43 + *{margin-top:0}
+
+/* Loyalty stamps are now visible, tappable-size flower holders. */
+#loyalty .wallet-code{display:none!important}
+#loyalty .stamp-track{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(46px,1fr));
+  gap:12px!important;
+  width:100%;
+  margin:22px 0!important;
+}
+#loyalty .stamp-track span{
+  width:100%!important;
+  aspect-ratio:1;
+  height:auto!important;
+  min-width:46px;
+  min-height:46px;
+  border:2px solid rgba(255,255,255,.7);
+  border-radius:18px!important;
+  display:grid!important;
+  place-items:center;
+  background:rgba(255,255,255,.11)!important;
+  color:rgba(255,255,255,.92)!important;
+  font-size:1.55rem!important;
+  line-height:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28);
+}
+#loyalty .stamp-track span.filled{
+  background:#fff!important;
+  color:#813f5d!important;
+  border-color:#fff;
+  box-shadow:0 8px 20px rgba(70,27,48,.18);
+}
+
+/* Clear, one-tap order state controls. */
+.order-state-controls{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:14px 0;
+}
+.order-state-button{
+  width:100%;
+  min-height:50px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  white-space:normal;
+}
+.order-state-button.is-on{
+  background:var(--sage,#eaf1e8);
+  border-color:rgba(55,118,77,.28);
+  color:#245d38;
+}
+.order-state-button.is-off{
+  background:#fff5f5;
+  border-color:rgba(153,65,65,.2);
+  color:#8d3b45;
+}
+.order-row-controls{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.order-row-controls .order-state-button{width:auto;min-height:40px;padding:8px 12px;font-size:.86rem}
+.order-complete{opacity:.78;background:linear-gradient(180deg,rgba(234,241,232,.72),rgba(255,255,255,.92))}
+
+@media(max-width:767px){
+  .page-title-v43{padding:4px 2px 0;font-size:2.15rem;margin-bottom:14px}
+  #loyalty .stamp-track{grid-template-columns:repeat(5,minmax(42px,1fr));gap:8px!important}
+  #loyalty .stamp-track span{min-width:42px;min-height:42px;border-radius:14px!important;font-size:1.35rem!important}
+  .order-state-controls{grid-template-columns:1fr}
+}
+@media(min-width:768px) and (max-width:1099px){
+  #loyalty .stamp-track{grid-template-columns:repeat(5,minmax(44px,1fr))}
+}

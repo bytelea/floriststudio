@@ -1,10 +1,10 @@
-const CACHE_NAME = "florist-studio-v4.2";
+const CACHE_NAME = "florist-studio-v4.3";
 const APP_SHELL = [
   "./", "./index.html", "./manifest.json",
-  "./assets/css/style.css?v=4.1.0", "./assets/css/responsive-v4.css?v=4.2.0",
+  "./assets/css/style.css?v=4.1.0", "./assets/css/responsive-v4.css?v=4.3.0",
   "./assets/js/app.js?v=4.2.0", "./assets/js/studio-features.js?v=4.2.0",
   "./assets/js/install-manager.js?v=4.2.0", "./assets/js/v3-features.js?v=4.2.0",
-  "./assets/js/cloud-sync.js?v=4.2.0", "./assets/js/stability-v4.2.js?v=4.2.0",
+  "./assets/js/cloud-sync.js?v=4.2.0", "./assets/js/stability-v4.2.js?v=4.3.0",
   "./assets/images/icon-192.png", "./assets/images/icon-512.png",
   "./assets/images/icon-maskable-512.png", "./assets/images/eternal-blooms-logo.png",
   "./assets/images/eternal-blooms-logo-alt.png"
