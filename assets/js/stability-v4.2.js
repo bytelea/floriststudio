@@ -197,3 +197,129 @@
 
   document.addEventListener('DOMContentLoaded', afterRender);
 })();
+
+/* Florist Studio v4.4 — seamless order, invoice and calendar status sync. */
+(() => {
+  'use strict';
+  const el = id => document.getElementById(id);
+
+  function linkedOrder(invoice) {
+    return invoice?.orderId ? db.orders.find(order => String(order.id) === String(invoice.orderId)) : null;
+  }
+
+  function setInvoicePaid(invoice, paid) {
+    invoice.status = paid ? 'Paid' : (invoice.depositPaid && Number(invoice.depositAmount || 0) > 0 ? 'Part-paid' : 'Unpaid');
+    if (paid) {
+      invoice.depositPaid = true;
+      invoice.depositAmount = Number(invoice.amount || 0);
+    }
+    const order = linkedOrder(invoice);
+    if (order) {
+      if (paid) {
+        order.depositPaid = true;
+        order.depositAmount = Number(order.price || invoice.amount || 0);
+      } else if (Number(order.depositAmount || 0) >= Number(order.price || 0)) {
+        order.depositAmount = 0;
+        order.depositPaid = false;
+      }
+    }
+  }
+
+  window.toggleInvoicePaid = function(id) {
+    const invoice = db.invoices.find(item => item.id === Number(id));
+    if (!invoice) return;
+    setInvoicePaid(invoice, invoice.status !== 'Paid');
+    save();
+  };
+
+  window.toggleInvoiceDeposit = function(id) {
+    const invoice = db.invoices.find(item => item.id === Number(id));
+    if (!invoice) return;
+    invoice.depositPaid = !invoice.depositPaid;
+    const order = linkedOrder(invoice);
+    if (order) order.depositPaid = invoice.depositPaid;
+    if (invoice.status !== 'Paid') invoice.status = invoice.depositPaid && Number(invoice.depositAmount || 0) > 0 ? 'Part-paid' : 'Unpaid';
+    save();
+  };
+
+  const priorToggleOrderDeposit = window.toggleOrderDeposit;
+  window.toggleOrderDeposit = function(id) {
+    priorToggleOrderDeposit(id);
+    const order = db.orders.find(item => item.id === Number(id));
+    if (!order) return;
+    db.invoices.filter(invoice => String(invoice.orderId) === String(id)).forEach(invoice => {
+      invoice.depositPaid = order.depositPaid;
+      if (invoice.status !== 'Paid') invoice.status = order.depositPaid && Number(invoice.depositAmount || 0) > 0 ? 'Part-paid' : 'Unpaid';
+    });
+    save();
+  };
+
+  const priorToggleOrderComplete = window.toggleOrderComplete;
+  window.toggleOrderComplete = function(id) {
+    priorToggleOrderComplete(id);
+    const order = db.orders.find(item => item.id === Number(id));
+    if (!order) return;
+    db.invoices.filter(invoice => String(invoice.orderId) === String(id)).forEach(invoice => {
+      invoice.orderClosed = orderStatus(order) === 'Done';
+    });
+    save();
+  };
+
+  function invoiceSwitches(invoice) {
+    const paid = invoice.status === 'Paid';
+    return `<div class="status-switches">
+      <button class="status-switch ${invoice.depositPaid ? 'is-on' : 'is-off'}" onclick="toggleInvoiceDeposit(${invoice.id})">${invoice.depositPaid ? '✓ Deposit paid' : '○ Deposit unpaid'}</button>
+      <button class="status-switch ${paid ? 'is-on' : 'is-off'}" onclick="toggleInvoicePaid(${invoice.id})">${paid ? '✓ Invoice paid' : '○ Mark invoice paid'}</button>
+    </div>`;
+  }
+
+  function refreshInvoiceCards() {
+    const cards = el('invoicesCards');
+    if (!cards || !window.db) return;
+    cards.innerHTML = db.invoices.map(invoice => {
+      const balance = invoice.status === 'Paid' ? 0 : Math.max(0, Number(invoice.amount || 0) - Number(invoice.depositAmount || 0));
+      return `<article class="mobile-card invoice-card-stable ${invoice.status === 'Paid' ? 'is-paid' : ''}">
+        <div class="invoice-card-title"><div><b>${esc(invoice.customer)}</b><p>${formatDate(invoice.date)} · ${esc(invoice.item)}</p></div><span class="pill ${invoice.status === 'Paid' ? 'done' : 'notdone'}">${esc(invoice.status)}</span></div>
+        <div class="invoice-metrics"><span>Total<b>${money(invoice.amount)}</b></span><span>Deposit<b>${money(invoice.depositAmount)}</b></span><span>Balance<b>${money(balance)}</b></span></div>
+        ${invoiceSwitches(invoice)}
+        <div class="actions"><button onclick="previewInvoice(${invoice.id})">Preview</button><button onclick="downloadInvoice(${invoice.id})">Download</button><button onclick="printInvoice(${invoice.id})">PDF</button><button class="danger" onclick="del('invoices',${invoice.id})">Delete</button></div>
+      </article>`;
+    }).join('');
+  }
+
+  function enhanceCalendarAgenda() {
+    const list = el('calendarDayOrders');
+    if (!list) return;
+    const orders = typeof ordersForDate === 'function' ? ordersForDate(calendarSelectedDate) : [];
+    [...list.querySelectorAll('.calendar-agenda-order')].forEach((card, index) => {
+      const order = orders[index];
+      if (!order || card.querySelector('.calendar-status-controls')) return;
+      card.classList.toggle('is-complete', orderStatus(order) === 'Done');
+      const controls = document.createElement('div');
+      controls.className = 'calendar-status-controls';
+      controls.innerHTML = `<button class="status-switch ${order.depositPaid ? 'is-on' : 'is-off'}" onclick="toggleOrderDeposit(${order.id})">${order.depositPaid ? '✓ Deposit paid' : '○ Deposit unpaid'}</button><button class="status-switch ${orderStatus(order) === 'Done' ? 'is-on' : 'is-off'}" onclick="toggleOrderComplete(${order.id})">${orderStatus(order) === 'Done' ? '✓ Order closed' : '○ Close order'}</button>`;
+      const actions = card.querySelector('.calendar-order-actions');
+      card.insertBefore(controls, actions || null);
+    });
+  }
+
+  const priorRenderCalendar = window.renderCalendar;
+  if (typeof priorRenderCalendar === 'function') {
+    window.renderCalendar = function connectedCalendarRender() {
+      priorRenderCalendar();
+      enhanceCalendarAgenda();
+    };
+  }
+
+  const priorRender = window.render;
+  window.render = function connectedStatusRender() {
+    priorRender();
+    refreshInvoiceCards();
+    enhanceCalendarAgenda();
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    refreshInvoiceCards();
+    enhanceCalendarAgenda();
+  });
+})();
