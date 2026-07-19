@@ -8013,3 +8013,291 @@ main#pages{padding:28px var(--ui-page-pad) 64px!important}
   .actions{display:grid!important;grid-template-columns:1fr!important}
   .actions button{width:100%!important}
 }
+
+/* =========================================================
+   Florist Studio v3.5 — mobile containment and navigation repair
+   ========================================================= */
+@media (max-width: 767px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: clip !important;
+  }
+  body { margin: 0 !important; padding: 0 0 calc(82px + env(safe-area-inset-bottom)) !important; }
+  *, *::before, *::after { box-sizing: border-box !important; }
+
+  .app {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    overflow: clip !important;
+  }
+
+  .nav { display: none !important; }
+
+  .hero {
+    position: sticky !important;
+    inset: auto !important;
+    top: 0 !important;
+    z-index: 300 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 68px !important;
+    margin: 0 !important;
+    padding: 10px 12px !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+  .hero-brand {
+    display: grid !important;
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 10px !important;
+    min-width: 0 !important;
+    width: auto !important;
+  }
+  .hero .brand-logo {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    margin: 0 !important;
+  }
+  .hero-copy { min-width: 0 !important; width: auto !important; }
+  .hero-copy .eyebrow, .hero-copy p { display: none !important; }
+  .hero-copy h1 {
+    margin: 0 !important;
+    max-width: 100% !important;
+    font-size: clamp(1.05rem, 5.4vw, 1.3rem) !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .hero-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+  .hero-actions button:first-child { display: none !important; }
+  .hero-actions button.primary {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    min-width: 72px !important;
+    max-width: 88px !important;
+    min-height: 40px !important;
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+    font-size: .78rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+  .hero-actions button.primary::after { content: none !important; }
+
+  main#pages {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 16px 12px 24px !important;
+    overflow: visible !important;
+  }
+  .page, .page.active {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  .page::before {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 8px !important;
+    padding: 0 2px !important;
+    font-size: .64rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: .11em !important;
+  }
+
+  .dashboard-toolbar,
+  .privacy-page-header,
+  .loyalty-hero,
+  .studio-intro,
+  .card,
+  .stat,
+  .command-card,
+  .studio-form,
+  .wallet-preview,
+  .privacy-panel,
+  .install-hub,
+  .footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .dashboard-toolbar {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 14px !important;
+  }
+  .dashboard-toolbar h2,
+  .page h2,
+  .card h2,
+  .privacy-page-header h2,
+  #studio-events .studio-form h2,
+  #loyalty h2 {
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    overflow-wrap: anywhere !important;
+  }
+  .dashboard-toolbar h2 { font-size: clamp(1.75rem, 9vw, 2.35rem) !important; }
+  .dashboard-toolbar p { margin: 0 !important; font-size: .95rem !important; line-height: 1.5 !important; }
+  .dashboard-customise-button { width: 100% !important; min-height: 46px !important; }
+
+  .three,
+  .grid,
+  .command-grid,
+  .row,
+  .form-grid,
+  .studio-layout,
+  .loyalty-layout,
+  .privacy-layout,
+  .privacy-form-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .three { margin-bottom: 12px !important; }
+  .stat { min-height: 96px !important; padding: 18px !important; }
+  .stat b { font-size: clamp(1.75rem, 9vw, 2.25rem) !important; }
+  .card, .command-card, .studio-form, .wallet-preview, .privacy-panel { padding: 18px !important; border-radius: 16px !important; }
+
+  input, select, textarea, button {
+    max-width: 100% !important;
+  }
+  input, select, textarea {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 16px !important;
+  }
+  textarea { resize: vertical !important; }
+  .actions { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
+  .actions button { width: 100% !important; }
+
+  #studio-events .studio-layout,
+  #loyalty .loyalty-layout,
+  .privacy-layout { grid-template-columns: minmax(0, 1fr) !important; }
+  #studio-events .studio-form .row { grid-template-columns: minmax(0, 1fr) !important; }
+  #studio-events .studio-list { min-height: 120px !important; }
+  #loyalty .wallet-preview { position: static !important; order: 0 !important; }
+  #loyalty .wallet-card {
+    width: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: 1.58 / 1 !important;
+    padding: 18px !important;
+    border-radius: 18px !important;
+  }
+  #loyalty .wallet-card h3 { font-size: 1.35rem !important; }
+  #loyalty .consent-check { display: grid !important; grid-template-columns: 24px minmax(0,1fr) !important; gap: 10px !important; }
+  #loyalty .consent-check input { width: 22px !important; height: 22px !important; }
+
+  .privacy-page-header { padding: 18px !important; }
+  .privacy-status { max-width: 100% !important; white-space: normal !important; }
+  .privacy-toggle-list .switch-row { grid-template-columns: auto minmax(0,1fr) !important; }
+
+  .install-hub, .footer {
+    width: calc(100% - 24px) !important;
+    margin: 16px 12px !important;
+    padding: 18px !important;
+  }
+
+  .bottom-nav {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    position: fixed !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    top: auto !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    height: 64px !important;
+    margin: 0 !important;
+    padding: 4px !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+    z-index: 1000 !important;
+  }
+  .bottom-nav button {
+    display: grid !important;
+    place-items: center !important;
+    align-content: center !important;
+    gap: 2px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 56px !important;
+    margin: 0 !important;
+    padding: 4px 2px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    font-size: .62rem !important;
+    line-height: 1 !important;
+  }
+  .bottom-nav .nav-icon { width: 20px !important; height: 20px !important; }
+  .bottom-nav .nav-label {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-more-menu {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: translateY(120%) !important;
+  }
+  .mobile-more-menu.open { transform: translateY(0) !important; }
+
+  img, canvas, svg, table { max-width: 100% !important; }
+  table { width: 100% !important; }
+}
+
+@media (max-width: 360px) {
+  .hero { padding-inline: 10px !important; }
+  .hero-brand { grid-template-columns: 38px minmax(0,1fr) !important; gap: 8px !important; }
+  .hero .brand-logo { width: 38px !important; height: 38px !important; min-width: 38px !important; }
+  .hero-actions button.primary { min-width: 64px !important; max-width: 72px !important; padding-inline: 8px !important; }
+  main#pages { padding-inline: 10px !important; }
+  .card, .command-card, .studio-form, .wallet-preview, .privacy-panel { padding: 16px !important; }
+}

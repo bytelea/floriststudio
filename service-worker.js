@@ -1,14 +1,14 @@
-const CACHE_NAME = "florist-studio-v3.4.0";
+const CACHE_NAME = "florist-studio-v3.5.0";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./assets/css/style.css?v=3.4.0",
+  "./assets/css/style.css?v=3.5.0",
   "./assets/js/app.js?v=2.7.0",
-  "./assets/js/studio-features.js?v=3.4.0",
-  "./assets/js/install-manager.js?v=3.4.0",
-  "./assets/js/v3-features.js?v=3.4.0",
-  "./assets/js/cloud-sync.js?v=3.4.0",
+  "./assets/js/studio-features.js?v=3.5.0",
+  "./assets/js/install-manager.js?v=3.5.0",
+  "./assets/js/v3-features.js?v=3.5.0",
+  "./assets/js/cloud-sync.js?v=3.5.0",
   "./assets/images/icon-192.png",
   "./assets/images/icon-512.png",
   "./assets/images/icon-maskable-512.png",
