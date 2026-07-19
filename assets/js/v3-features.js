@@ -237,10 +237,10 @@
     if ($('inventoryBody')) $('inventoryBody').querySelectorAll('tr').forEach((row,index)=>{
       const item=db.inventory[index]; if (!item) return;
       const cell=row.cells[0];
-      if (item.image && !cell.querySelector('img')) cell.innerHTML=`<div class="table-item-with-image"><img src="${item.image}" alt=""><span>${esc(item.name)}</span></div>`;
+      if (!cell.querySelector('img')) { const src=item.image||'assets/images/inventory-placeholder.svg'; cell.innerHTML=`<div class="table-item-with-image"><img src="${src}" alt="${item.image ? esc(item.name) : 'No photo uploaded'}"><span>${esc(item.name)}</span></div>`; }
     });
     if ($('inventoryCards')) $('inventoryCards').querySelectorAll('.mobile-card').forEach((cardEl,index)=>{
-      const item=db.inventory[index]; if(item?.image && !cardEl.querySelector('.inventory-card-image')) cardEl.insertAdjacentHTML('afterbegin',`<img class="inventory-card-image" src="${item.image}" alt="${esc(item.name)}">`);
+      const item=db.inventory[index]; if(item && !cardEl.querySelector('.inventory-card-image')) { const src=item.image||'assets/images/inventory-placeholder.svg'; cardEl.insertAdjacentHTML('afterbegin',`<img class="inventory-card-image" src="${src}" alt="${item.image ? esc(item.name) : 'No photo uploaded'}">`); }
     });
     if ($('ordersBody')) $('ordersBody').querySelectorAll('tr').forEach((row,index)=>{
       const order=db.orders[index]; if(order?.images?.length && !row.cells[1].querySelector('.order-thumbs')) row.cells[1].insertAdjacentHTML('beforeend',`<div class="order-thumbs">${order.images.slice(0,3).map(src=>`<img src="${src}" alt="Inspiration">`).join('')}${order.images.length>3?`<span>+${order.images.length-3}</span>`:''}</div>`);

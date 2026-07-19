@@ -9,12 +9,13 @@
 <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Florist Studio" name="apple-mobile-web-app-title"/>
 <meta content="A privacy-first florist studio for orders, customers, digital loyalty, inventory, proposals and business operations." name="description"/>
-<title>Florist Studio v3.6</title>
+<title>Florist Studio v4.1</title>
 <link href="assets/images/icon-192.png" rel="icon" type="image/png"/>
-<!-- Florist Studio v3.6 · Release-ready responsive cloud build -->
+<!-- Florist Studio v4.0 · stable desktop, iPad and phone release -->
 <link href="manifest.json" rel="manifest"/>
 <link href="assets/images/icon-192.png" rel="apple-touch-icon"/>
-<link href="assets/css/style.css?v=3.4.0" rel="stylesheet"/>
+<link href="assets/css/style.css?v=4.1.0" rel="stylesheet"/>
+<link href="assets/css/responsive-v4.css?v=4.1.0" rel="stylesheet"/>
 </head>
 <body>
 <div aria-live="polite" class="save-indicator" id="saveIndicator" role="status">
@@ -38,7 +39,7 @@
 </header>
 <nav aria-label="Primary workspace navigation" class="nav" id="nav"></nav>
 <main id="pages" tabindex="-1">
-<section class="page active" data-kicker="Today at a glance" id="home"><div class="dashboard-toolbar"><div><span class="eyebrow">Your workspace</span><h2>My dashboard</h2><p class="mini">Choose the information that matters to your flower business.</p></div><button class="dashboard-customise-button" onclick="openDashboardCustomiser()" type="button">🗂️ Customise dashboard</button></div>
+<section class="page active" id="home"><div class="dashboard-toolbar"><div><span class="eyebrow">Your workspace</span><h2>My dashboard</h2><p class="mini">Choose the information that matters to your flower business.</p></div><button class="dashboard-customise-button" onclick="openDashboardCustomiser()" type="button">🗂️ Customise dashboard</button></div>
 <div class="three" data-dashboard-widget="three-0">
 <div class="stat">Total sales<b id="sSales">€0</b></div>
 <div class="stat">Profit made<b id="sProfit">€0</b></div>
@@ -174,8 +175,8 @@
 <div id="lowStock"></div>
 </div>
 </div>
-</section>
-<section class="page" data-kicker="Events and creative planning" id="studio">
+<aside aria-label="Support Florist Studio" class="card dashboard-support"><div><span class="eyebrow">Support the project</span><h2>Help Florist Studio keep blooming</h2><p class="mini">Florist Studio is independently built by Eternal Blooms. Support future maintenance and thoughtful improvements.</p></div><a class="kofi" href="https://ko-fi.com/eternalblooms" id="kofiLink" rel="noopener noreferrer" target="_blank">☕ Support on Ko-fi</a></aside></section>
+<section class="page" id="studio">
 <div class="studio-shell">
 <div class="card studio-intro">
 <span class="eyebrow">Florist operations suite</span>
@@ -203,7 +204,6 @@
 <button class="studio-tab active" data-studio-tab="events" onclick="switchStudioTab('events')">
                 💍 Weddings &amp; events
               </button>
-
 <button class="studio-tab" data-studio-tab="suppliers" onclick="switchStudioTab('suppliers')">
                 🚚 Suppliers
               </button>
@@ -262,7 +262,6 @@
 </div>
 </div>
 </section>
-
 <section class="studio-panel" id="studio-suppliers">
 <div class="studio-two-forms">
 <div class="card studio-form">
@@ -403,7 +402,7 @@
 </section>
 </div>
 </section>
-<section class="page" data-kicker="Pricing workspace" id="calculator">
+<section class="page" id="calculator">
 <div class="card">
 <h2>Calculator</h2>
 <p class="mini">
@@ -449,7 +448,7 @@
 </div>
 </div>
 </section>
-<section class="page" data-kicker="Order operations" id="orders">
+<section class="page" id="orders">
 <div class="card feature-card">
 <div class="section-heading">
 <div>
@@ -527,7 +526,7 @@
 <div class="mobile-list" id="ordersCards"></div>
 </div>
 </section>
-<section class="page" data-kicker="Stock control" id="inventory">
+<section class="page" id="inventory">
 <div class="card">
 <h2>Inventory</h2>
 <div class="row">
@@ -567,7 +566,7 @@
 <div class="mobile-list" id="inventoryCards"></div>
 </div>
 </section>
-<section class="page" data-kicker="Business costs" id="expenses">
+<section class="page" id="expenses">
 <div class="card">
 <h2>Expenses</h2>
 <div class="row">
@@ -602,7 +601,7 @@
 <div class="mobile-list" id="expensesCards"></div>
 </div>
 </section>
-<section class="page" data-kicker="Schedule and delivery" id="calendar">
+<section class="page" id="calendar">
 <div class="card calendar-overview">
 <div class="calendar-toolbar">
 <div>
@@ -689,7 +688,7 @@
 <div class="mobile-list" id="calendarCards"></div>
 </div>
 </section>
-<section class="page" data-kicker="Client relationships" id="customers">
+<section class="page" id="customers">
 <div class="card">
 <h2>Customers</h2>
 <div class="row">
@@ -719,10 +718,9 @@
 <div class="mobile-list" id="customersCards"></div>
 </div>
 </section>
-
-<section class="page" data-kicker="Bloom Club &amp; digital loyalty" id="loyalty">
+<section class="page" id="loyalty">
 <div class="loyalty-hero card">
-<div><span class="eyebrow">Bloom Club</span><h2>Turn every bouquet into a lasting relationship</h2><p>Create a private digital card for each client, add stamps at the till and share their customer portal. Apple and Google Wallet activation is ready to connect when cloud credentials are available.</p></div>
+<div><span class="eyebrow">Bloom Club</span><h2>Turn every bouquet into a lasting relationship</h2><p>Create a private digital loyalty card for each client, add stamps at the till and share their customer portal. Wallet buttons stay hidden until the integrations are genuinely live.</p></div>
 <button class="primary" onclick="showLoyaltyCreate()">Create loyalty card</button>
 </div>
 <div class="loyalty-layout">
@@ -741,13 +739,13 @@
 <aside class="wallet-preview card">
 <span class="eyebrow">Customer preview</span>
 <div class="wallet-card" id="walletCardPreview"><div class="wallet-card-top"><span>ETERNAL BLOOMS</span><span>🌸</span></div><h3>Bloom Club</h3><p>Select a member to preview their card.</p><div class="stamp-track" id="walletStampTrack"></div><div class="wallet-code">•••• ••••</div></div>
-<div class="wallet-buttons"><button disabled="" title="Connect Apple credentials to activate"> Add to Apple Wallet</button><button disabled="" title="Connect Google Wallet credentials to activate">Add to Google Wallet</button></div>
+<div class="wallet-coming-soon" role="status"><strong>Digital wallet passes are coming later.</strong><p>Bloom Club works inside Florist Studio now. Apple Wallet and Google Wallet will only appear after secure pass signing and issuer setup are complete.</p></div>
 <p class="field-help">The web card works first. Official Wallet buttons activate after a secure cloud service and issuer accounts are connected.</p>
 </aside>
 </div>
 <div class="card"><div class="section-heading"><div><span class="eyebrow">Members</span><h2>Bloom Club cards</h2></div><span class="pill" id="loyaltyMemberCount">0 members</span></div><div class="loyalty-member-grid" id="loyaltyCards"></div></div>
 </section>
-<section class="page" data-kicker="Billing and documents" id="invoices">
+<section class="page" id="invoices">
 <div class="card feature-card">
 <div class="section-heading">
 <div>
@@ -812,46 +810,45 @@
             </div>
 </div>
 </section>
-
-<section class="page privacy-page" data-kicker="Privacy &amp; cloud readiness" id="privacy">
+<section class="page privacy-page" id="privacy">
 <div class="privacy-page-header">
-  <div><span class="eyebrow">GDPR-first workspace</span><h2>Privacy Centre</h2><p>Connect your private cloud account, choose sensible data defaults, and handle customer access or deletion requests from one clear workspace.</p></div>
-  <span class="privacy-status">🔒 <span>Local private mode</span></span>
+<div><span class="eyebrow">GDPR-first workspace</span><h2>Privacy Centre</h2><p>Connect your private cloud account, choose sensible data defaults, and handle customer access or deletion requests from one clear workspace.</p></div>
+<span class="privacy-status">🔒 <span>Local private mode</span></span>
 </div>
 <div class="privacy-layout">
-  <section class="card privacy-panel cloud-account-card">
-    <div class="privacy-panel-head"><span class="privacy-step">1</span><div><h3>Cloud account</h3><p>Sign in to synchronise this private workspace across your own devices.</p></div></div>
-    <div id="cloudSignedOut">
-      <div class="privacy-form-grid"><div class="field-group"><label>Email address</label><input id="cloudEmail" autocomplete="email" inputmode="email" placeholder="you@example.com" type="email"/></div><div class="field-group"><label>Password</label><input id="cloudPassword" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" type="password"/></div></div>
-      <div class="actions"><button class="primary" onclick="cloudSignIn()">Sign in</button><button onclick="cloudCreateAccount()">Create account</button></div>
-    </div>
-    <div id="cloudSignedIn" hidden><p class="cloud-user-line">Signed in as <b id="cloudAccountEmail"></b></p><div class="actions"><button class="primary" onclick="cloudPushNow()">Upload this device</button><button onclick="cloudPullNow()">Restore from cloud</button><button onclick="cloudSignOut()">Sign out</button></div></div>
-    <p class="field-help privacy-status-line" id="cloudStatus" aria-live="polite">Checking cloud account…</p>
-    <details class="cloud-technical"><summary>Technical connection details</summary><div class="field-group"><label>Supabase project URL</label><input id="cloudUrl" readonly/></div><div class="field-group"><label>Public anonymous key</label><input id="cloudAnonKey" readonly type="password"/></div><p class="field-help">The database setup script only needs to be run once.</p></details>
-  </section>
-  <section class="card privacy-panel">
-    <div class="privacy-panel-head"><span class="privacy-step">2</span><div><h3>Data defaults</h3><p>Choose how the dashboard should treat customer information by default.</p></div></div>
-    <div class="privacy-toggle-list">
-      <label class="switch-row"><input checked id="privacyMinimise" type="checkbox"/><span class="switch"></span><span><b>Data minimisation</b><small>Collect only information needed to fulfil an order.</small></span></label>
-      <label class="switch-row"><input checked id="privacyConsent" type="checkbox"/><span class="switch"></span><span><b>Loyalty consent</b><small>Require a consent record before creating a Bloom Club card.</small></span></label>
-      <label class="switch-row"><input checked id="privacyAutoLock" type="checkbox"/><span class="switch"></span><span><b>Private customer links</b><small>Protect customer portals with unique private tokens.</small></span></label>
-    </div>
-    <div class="field-group"><label>Default retention period</label><select id="privacyRetention"><option value="24">24 months after last activity</option><option value="36">36 months after last activity</option><option value="60">5 years after last activity</option><option value="manual">Manual review only</option></select></div>
-    <button onclick="savePrivacySettings()">Save privacy defaults</button>
-  </section>
-  <section class="card privacy-panel">
-    <div class="privacy-panel-head"><span class="privacy-step">3</span><div><h3>Customer rights</h3><p>Export a customer record or erase personal information when requested.</p></div></div>
-    <div class="field-group"><label>Choose customer</label><select id="privacyCustomer"></select></div>
-    <div class="actions"><button onclick="exportCustomerData()">Export their data</button><button class="danger" onclick="eraseCustomerData()">Erase customer data</button></div>
-    <p class="field-help">Erasure removes their loyalty card and detaches their identity from orders while retaining essential accounting records.</p>
-  </section>
-  <section class="card privacy-panel privacy-log-panel">
-    <div class="privacy-panel-head"><span class="privacy-step">4</span><div><h3>Accountability log</h3><p>A simple record of privacy-related actions completed in this workspace.</p></div></div>
-    <div class="privacy-log" id="privacyLog"></div>
-  </section>
+<section class="card privacy-panel cloud-account-card">
+<div class="privacy-panel-head"><span class="privacy-step">1</span><div><h3>Cloud account</h3><p>Sign in to synchronise this private workspace across your own devices.</p></div></div>
+<div id="cloudSignedOut">
+<div class="privacy-form-grid"><div class="field-group"><label>Email address</label><input autocomplete="email" id="cloudEmail" inputmode="email" placeholder="you@example.com" type="email"/></div><div class="field-group"><label>Password</label><input autocomplete="current-password" id="cloudPassword" minlength="8" placeholder="At least 8 characters" type="password"/></div></div>
+<div class="actions"><button class="primary" onclick="cloudSignIn()">Sign in</button><button onclick="cloudCreateAccount()">Create account</button></div>
+</div>
+<div hidden="" id="cloudSignedIn"><p class="cloud-user-line">Signed in as <b id="cloudAccountEmail"></b></p><div class="actions"><button class="primary" onclick="cloudPushNow()">Upload this device</button><button onclick="cloudPullNow()">Restore from cloud</button><button onclick="cloudSignOut()">Sign out</button></div></div>
+<p aria-live="polite" class="field-help privacy-status-line" id="cloudStatus">Checking cloud account…</p>
+<details class="cloud-technical"><summary>Technical connection details</summary><div class="field-group"><label>Supabase project URL</label><input id="cloudUrl" readonly=""/></div><div class="field-group"><label>Public anonymous key</label><input id="cloudAnonKey" readonly="" type="password"/></div><p class="field-help">The database setup script only needs to be run once.</p></details>
+</section>
+<section class="card privacy-panel">
+<div class="privacy-panel-head"><span class="privacy-step">2</span><div><h3>Data defaults</h3><p>Choose how the dashboard should treat customer information by default.</p></div></div>
+<div class="privacy-toggle-list">
+<label class="switch-row"><input checked="" id="privacyMinimise" type="checkbox"/><span class="switch"></span><span><b>Data minimisation</b><small>Collect only information needed to fulfil an order.</small></span></label>
+<label class="switch-row"><input checked="" id="privacyConsent" type="checkbox"/><span class="switch"></span><span><b>Loyalty consent</b><small>Require a consent record before creating a Bloom Club card.</small></span></label>
+<label class="switch-row"><input checked="" id="privacyAutoLock" type="checkbox"/><span class="switch"></span><span><b>Private customer links</b><small>Protect customer portals with unique private tokens.</small></span></label>
+</div>
+<div class="field-group"><label>Default retention period</label><select id="privacyRetention"><option value="24">24 months after last activity</option><option value="36">36 months after last activity</option><option value="60">5 years after last activity</option><option value="manual">Manual review only</option></select></div>
+<button onclick="savePrivacySettings()">Save privacy defaults</button>
+</section>
+<section class="card privacy-panel">
+<div class="privacy-panel-head"><span class="privacy-step">3</span><div><h3>Customer rights</h3><p>Export a customer record or erase personal information when requested.</p></div></div>
+<div class="field-group"><label>Choose customer</label><select id="privacyCustomer"></select></div>
+<div class="actions"><button onclick="exportCustomerData()">Export their data</button><button class="danger" onclick="eraseCustomerData()">Erase customer data</button></div>
+<p class="field-help">Erasure removes their loyalty card and detaches their identity from orders while retaining essential accounting records.</p>
+</section>
+<section class="card privacy-panel privacy-log-panel">
+<div class="privacy-panel-head"><span class="privacy-step">4</span><div><h3>Accountability log</h3><p>A simple record of privacy-related actions completed in this workspace.</p></div></div>
+<div class="privacy-log" id="privacyLog"></div>
+</section>
 </div>
 </section>
-<section class="page" data-kicker="Marketing ideas" id="content">
+<section class="page" id="content">
 <div class="card">
 <h2>Content ideas</h2>
 <div class="row">
@@ -867,7 +864,7 @@
 <div class="hint" id="ideaOutput">Your idea will appear here.</div>
 </div>
 </section>
-<section class="page" data-kicker="Business intelligence" id="analytics">
+<section class="page" id="analytics">
 <div class="three">
 <div class="stat">Average order<b id="aAverage">€0</b></div>
 <div class="stat">Total expenses<b id="aExpenses">€0</b></div>
@@ -901,7 +898,7 @@
 </div>
 </div>
 </section>
-<section aria-labelledby="installHubTitle" class="page install-page" data-kicker="Install Florist Studio" id="install"><div class="install-hub">
+<section aria-labelledby="installHubTitle" class="page install-page" id="install"><div class="install-hub">
 <div aria-hidden="true" class="install-hub-glow"></div>
 <div class="install-hub-copy">
 <span class="eyebrow">Florist Studio on every screen</span>
@@ -957,7 +954,6 @@
 </div>
 </div></section>
 </main>
-
 <footer class="footer">
 <img alt="Eternal Blooms logo" id="footerLogo" src="assets/images/eternal-blooms-logo-alt.png"/>
 <p>
@@ -970,8 +966,8 @@
           <a href="https://www.instagram.com/eternalblooms.ie/" target="_blank">@eternalblooms.ie</a>
           on Instagram for bouquet inspiration, florist tips and future updates.
         </p>
-<a class="kofi" href="https://ko-fi.com/eternalblooms" id="kofiLink" target="_blank">☕ Support future updates on Ko-fi</a>
-<span class="footer-version">Florist Studio v3.7 · Mobile polish and dedicated install page</span>
+
+<span class="footer-version">Florist Studio v4.1 · Responsive stability release</span>
 </footer>
 </div>
 <div aria-hidden="true" aria-labelledby="installGuideTitle" aria-modal="true" class="install-guide-modal" hidden="" id="installGuideModal" role="dialog">
@@ -1003,10 +999,10 @@
 </aside>
 <div aria-hidden="true" class="v3-modal" hidden="" id="dashboardCustomiser"><div class="v3-modal-sheet"><div class="modal-head"><div><span class="eyebrow">Personal workspace</span><h2>Customise dashboard</h2></div><button class="icon-button" onclick="closeDashboardCustomiser()">×</button></div><p>Switch sections on or off. Your choices save automatically on this device.</p><div class="dashboard-switches" id="dashboardSwitches"></div><div class="actions"><button onclick="resetDashboardLayout()">Restore defaults</button><button class="primary" onclick="closeDashboardCustomiser()">Done</button></div></div></div><nav aria-label="Mobile workspace navigation" class="bottom-nav" id="bottomNav"></nav>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/app.js?v=2.7.0"></script>
-<script src="assets/js/studio-features.js?v=2.7.0"></script>
-<script src="assets/js/install-manager.js?v=3.7.0"></script><script src="assets/js/v3-features.js?v=3.7.0"></script>
-<script src="assets/js/cloud-sync.js?v=3.1.0"></script>
+<script src="assets/js/app.js?v=4.1.0"></script>
+<script src="assets/js/studio-features.js?v=4.1.0"></script>
+<script src="assets/js/install-manager.js?v=4.1.0"></script><script src="assets/js/v3-features.js?v=4.1.0"></script>
+<script src="assets/js/cloud-sync.js?v=4.1.0"></script>
 <div aria-hidden="true" aria-labelledby="portalTitle" aria-modal="true" class="client-portal-modal" id="clientPortalModal" role="dialog">
 <div class="portal-sheet">
 <button aria-label="Close portal" class="portal-close icon-button" onclick="closeClientPortal()">

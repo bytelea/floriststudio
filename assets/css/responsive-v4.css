@@ -1,0 +1,169 @@
+/* Florist Studio v4.0 — stable responsive layout layer
+   Loaded after the legacy stylesheet so it can safely normalize desktop,
+   tablet and phone layouts without changing invoice generation. */
+*,*::before,*::after{box-sizing:border-box}
+html{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{width:100%;max-width:100%;margin:0;overflow-x:clip}
+img,svg,canvas,video{max-width:100%}
+button,input,select,textarea{max-width:100%}
+.app{width:min(100%,1600px);max-width:100%;margin-inline:auto;overflow:visible}
+main#pages{min-width:0}
+.page{min-width:0;overflow:visible}
+.page::before{display:block;max-width:100%;padding-inline:clamp(16px,2vw,28px);overflow-wrap:anywhere}
+.hero,.nav,.footer,.card,.studio-form,.wallet-preview,.privacy-panel,.install-hub{min-width:0}
+.hero h1,.page h2,.card h2,.section-heading h2{overflow-wrap:anywhere}
+.row>*,.grid>*,.three>*,.command-grid>*,.form-grid>*,.studio-layout>*,.loyalty-layout>*,.privacy-layout>*{min-width:0}
+input,select,textarea{width:100%;min-width:0}
+
+/* Desktop */
+@media (min-width:1100px){
+  .app{padding:22px}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;padding:26px 30px}
+  .hero-brand{min-width:0}
+  .hero-copy h1{font-size:clamp(2.25rem,4vw,4.4rem)}
+  main#pages{padding-bottom:24px}
+  .page{padding:24px 28px 34px}
+  .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid,.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .studio-layout{grid-template-columns:minmax(360px,460px) minmax(0,1fr);align-items:start}
+  .loyalty-layout{grid-template-columns:minmax(0,1.45fr) minmax(340px,.85fr);align-items:start}
+  .privacy-layout{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+  #loyalty .wallet-card{max-width:520px;margin-inline:auto}
+}
+
+/* iPad / tablet */
+@media (min-width:768px) and (max-width:1099px){
+  .app{padding:14px}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:20px}
+  .hero-copy h1{font-size:clamp(2rem,5vw,3.25rem)}
+  .hero-actions{display:flex;flex-wrap:wrap;justify-content:flex-end}
+  .page{padding:20px}
+  .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid,.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .studio-layout,.loyalty-layout,.privacy-layout{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:16px}
+  #studio-events .studio-form{position:static;width:auto}
+  #loyalty .wallet-card{min-height:260px}
+  .bottom-nav{display:none!important}
+}
+
+/* Phone */
+@media (max-width:767px){
+  :root{--phone-gutter:12px}
+  body{padding:0!important;background-attachment:scroll!important}
+  .app{width:100%;padding:0!important;border:0!important;border-radius:0!important}
+  .hero{position:relative!important;inset:auto!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:10px!important;width:100%!important;min-height:76px!important;padding:10px var(--phone-gutter)!important;margin:0!important;border-radius:0!important;overflow:hidden!important}
+  .hero-brand{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important}
+  .brand-logo{width:48px!important;height:48px!important;min-width:48px!important;border-radius:14px!important}
+  .hero-copy{min-width:0!important}
+  .hero-copy .eyebrow,.hero-copy p{display:none!important}
+  .hero-copy h1{font-size:clamp(1.25rem,6.2vw,1.75rem)!important;line-height:1.05!important;white-space:normal!important;overflow-wrap:anywhere!important;margin:0!important}
+  .hero-actions{display:block!important;min-width:0!important}
+  .hero-actions button:not(.primary){display:none!important}
+  .hero-actions .primary{width:auto!important;max-width:116px!important;min-height:42px!important;height:42px!important;padding:8px 11px!important;font-size:.78rem!important;white-space:nowrap!important;border-radius:13px!important}
+  .nav{display:none!important}
+  main#pages{width:100%!important;padding:0 0 calc(84px + env(safe-area-inset-bottom))!important;margin:0!important;overflow:visible!important}
+  .page{width:100%!important;max-width:100%!important;padding:14px var(--phone-gutter) 20px!important;margin:0!important;overflow:visible!important}
+  .page::before{padding:0 2px 8px!important;margin:0!important;font-size:.72rem!important;line-height:1.25!important;letter-spacing:.15em!important}
+  .dashboard-toolbar,.privacy-page-header,.loyalty-hero,.studio-intro,.card,.command-card,.studio-form,.wallet-preview,.privacy-panel,.install-hub{width:100%!important;max-width:100%!important;margin-inline:0!important;padding:14px!important;border-radius:18px!important}
+  .dashboard-toolbar{display:grid!important;grid-template-columns:1fr!important;gap:12px!important}
+  .dashboard-toolbar h2,.privacy-page-header h2,.loyalty-hero h2,.studio-intro h2,.section-heading h2,.card h2,#studio-events .studio-form h2{font-size:clamp(1.45rem,8vw,2rem)!important;line-height:1.08!important;letter-spacing:-.035em!important;margin-block:.2rem!important}
+  .dashboard-toolbar p,.privacy-page-header p,.loyalty-hero p,.studio-intro p{font-size:.92rem!important;line-height:1.45!important}
+  .dashboard-customise-button{width:100%!important;height:auto!important;min-height:46px!important}
+  .three,.grid,.command-grid,.row,.form-grid,.studio-layout,.loyalty-layout,.privacy-layout,.privacy-form-grid,.install-platforms{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;width:100%!important}
+  .stat{width:100%!important;min-height:116px!important;padding:18px!important;border-radius:18px!important}
+  .stat b,.stat strong{font-size:2.35rem!important}
+  .card,.command-card,.studio-form,.wallet-preview,.privacy-panel{overflow:hidden!important}
+  .section-heading{display:flex!important;align-items:flex-start!important;gap:10px!important}
+  .section-heading>div{min-width:0!important}
+  .section-icon{flex:0 0 auto!important}
+  input,select,textarea{font-size:16px!important;min-height:48px!important;height:auto!important;padding:12px!important;border-radius:13px!important}
+  textarea{min-height:112px!important}
+  .actions{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+  .actions button{flex:1 1 145px!important;width:auto!important;min-width:0!important}
+  .actions .primary{flex-grow:2!important}
+
+  /* Wedding/event planner */
+  #studio-events .studio-layout{display:block!important}
+  #studio-events .studio-form{position:static!important;inset:auto!important;width:100%!important;margin:0 0 12px!important}
+  #studio-events .studio-form .row{display:grid!important;grid-template-columns:1fr!important}
+  #studio-events .studio-list{width:100%!important;min-height:180px!important;padding:14px!important}
+  #studio-events .studio-form .section-heading h2{max-width:none!important}
+
+  /* Bloom Club */
+  #loyalty .loyalty-layout{display:flex!important;flex-direction:column!important;gap:12px!important}
+  #loyalty .studio-form{order:1!important}
+  #loyalty .wallet-preview{order:2!important}
+  #loyalty .form-grid{display:grid!important;grid-template-columns:1fr!important}
+  #loyalty .consent-check{display:grid!important;grid-template-columns:26px minmax(0,1fr)!important;align-items:start!important;gap:12px!important;padding:13px!important;overflow:hidden!important}
+  #loyalty .consent-check input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;margin:1px 0 0!important;padding:0!important;border:2px solid #765266!important;border-radius:7px!important;background:#fff!important;display:grid!important;place-content:center!important}
+  #loyalty .consent-check input[type=checkbox]::before{content:"";width:12px;height:12px;transform:scale(0);transition:transform .1s ease;clip-path:polygon(14% 44%,0 65%,43% 100%,100% 16%,80% 0,40% 62%);background:#fff}
+  #loyalty .consent-check input[type=checkbox]:checked{background:#8a405f!important;border-color:#8a405f!important}
+  #loyalty .consent-check input[type=checkbox]:checked::before{transform:scale(1)}
+  #loyalty .consent-check span{min-width:0!important;overflow-wrap:anywhere!important}
+  #loyalty .wallet-card{width:100%!important;min-height:0!important;aspect-ratio:1.58/1!important;padding:16px!important;border-radius:20px!important;overflow:hidden!important}
+  #loyalty .wallet-card h3{font-size:1.55rem!important;margin:16px 0 6px!important}
+  #loyalty .wallet-card p{font-size:.82rem!important;color:rgba(255,255,255,.92)!important}
+  #loyalty .wallet-buttons button{width:100%!important;min-height:44px!important}
+  #loyalty>.card .section-heading{align-items:center!important}
+
+  /* Privacy */
+  #privacy .privacy-layout{display:grid!important;grid-template-columns:1fr!important}
+  #privacy .privacy-page-header{display:grid!important;grid-template-columns:1fr!important}
+  #privacy .privacy-status{justify-self:start!important}
+  #privacy .privacy-panel{min-height:0!important}
+
+  /* Install */
+  #install .install-hub{display:grid!important;grid-template-columns:1fr!important;gap:14px!important}
+  #install .install-platforms{display:grid!important;grid-template-columns:1fr!important}
+
+  /* Persistent nav */
+  .bottom-nav{position:fixed!important;z-index:9999!important;left:10px!important;right:10px!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;width:auto!important;height:60px!important;min-height:60px!important;max-height:60px!important;padding:4px!important;margin:0!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;border-radius:18px!important;overflow:hidden!important}
+  .bottom-nav button{width:100%!important;min-width:0!important;height:52px!important;min-height:52px!important;padding:4px 1px!important;font-size:.67rem!important;line-height:1!important;border-radius:14px!important;overflow:hidden!important}
+  .bottom-nav .nav-label{display:block!important;max-width:100%!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:.65rem!important}
+  .mobile-more-menu{left:10px!important;right:10px!important;width:auto!important;max-width:none!important;bottom:calc(76px + env(safe-area-inset-bottom))!important}
+  .footer{width:calc(100% - 24px)!important;margin:12px!important;padding:18px!important;border-radius:18px!important}
+}
+
+@media (max-width:380px){
+  :root{--phone-gutter:9px}
+  .brand-logo{width:44px!important;height:44px!important;min-width:44px!important}
+  .hero-actions .primary{max-width:104px!important;padding-inline:8px!important;font-size:.72rem!important}
+  .dashboard-toolbar h2,.section-heading h2,.card h2,#studio-events .studio-form h2{font-size:1.55rem!important}
+  .bottom-nav .nav-label{font-size:.59rem!important}
+}
+
+
+/* Florist Studio v4.1 — final cross-device stability layer */
+.page::before{display:none!important;content:none!important}
+.page{overflow-x:clip!important}
+.card,.studio-panel,.studio-layout,.studio-form,.studio-list,.table-wrap,.mobile-card{min-width:0;max-width:100%;box-sizing:border-box}
+img,svg,canvas,video{max-width:100%;height:auto}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dashboard-support{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:22px}
+.dashboard-support .kofi{flex:0 0 auto;margin:0}
+.wallet-coming-soon{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:var(--soft)}
+.wallet-coming-soon strong{display:block;margin-bottom:4px}
+.wallet-coming-soon p{margin:0;font-size:.88rem;line-height:1.45;color:var(--muted)}
+.table-item-with-image{display:flex;align-items:center;gap:12px;min-width:180px}
+.table-item-with-image img{width:56px;height:56px;flex:0 0 56px;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:var(--soft)}
+.inventory-card-image{display:block;width:100%;height:160px;object-fit:cover;border-radius:14px;margin:0 0 12px;background:var(--soft);border:1px solid var(--line)}
+#studio-events .studio-layout{width:100%;min-width:0;align-items:start}
+#studio-events .studio-form,#studio-events .studio-list{width:100%;min-width:0;max-width:100%}
+#studio-events .row{min-width:0}
+#studio-events input,#studio-events select,#studio-events textarea{max-width:100%;min-width:0;box-sizing:border-box}
+@media (min-width:1100px){
+ #studio-events .studio-layout{grid-template-columns:minmax(340px,420px) minmax(0,1fr)!important;gap:20px!important}
+ #studio-events .studio-form{position:sticky;top:18px}
+}
+@media (min-width:768px) and (max-width:1099px){
+ #studio-events .studio-layout{grid-template-columns:1fr!important;gap:16px!important}
+ #studio-events .studio-form{position:static!important}
+ .dashboard-support{align-items:flex-start}
+}
+@media (max-width:767px){
+ .dashboard-support{display:grid!important;grid-template-columns:1fr!important;gap:12px!important}
+ .dashboard-support .kofi{width:100%!important;text-align:center!important}
+ .inventory-card-image{height:150px!important}
+ #studio-events .studio-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important}
+ #studio-events .studio-form,#studio-events .studio-list{overflow:visible!important}
+}
