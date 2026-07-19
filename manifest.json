@@ -1,7 +1,7 @@
 {
-  "name": "Florist Studio v4.0",
+  "name": "Florist Studio v4.2",
   "short_name": "Florist Studio",
-  "description": "Stable responsive florist workspace for desktop, iPad/tablet and phone with private Supabase sync.",
+  "description": "Repaired responsive florist workspace for desktop, iPad/tablet and phone with private Supabase sync.",
   "id": "./index.html",
   "start_url": "./index.html#home",
   "scope": "./",

@@ -167,3 +167,96 @@ img,svg,canvas,video{max-width:100%;height:auto}
  #studio-events .studio-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important}
  #studio-events .studio-form,#studio-events .studio-list{overflow:visible!important}
 }
+
+/* v4.2 focused repair pass */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.page{width:100%;max-width:100%;overflow:hidden}
+.page>.card,.studio-shell,.studio-panel,.studio-layout,.loyalty-layout{width:100%;max-width:100%}
+.dashboard-toolbar-compact{display:flex;justify-content:flex-end;min-height:0;margin:0 0 14px;padding:0}
+.dashboard-customise-button{padding:10px 14px;min-height:42px}
+#studio .studio-intro{display:none!important}
+#orders>.feature-card>.section-heading,#invoices>.feature-card>.section-heading,#invoices>.card>.section-heading,#loyalty>.loyalty-hero{display:none!important}
+#orders>.feature-card,#invoices>.feature-card{padding-top:clamp(18px,2vw,28px)}
+#loyalty{padding-top:18px}
+#globalFooter[hidden]{display:none!important}
+
+.three,.command-grid,.grid{width:100%}
+.stat,.command-card{min-width:0;overflow:hidden}
+.stat b,.command-number{display:block;max-width:100%;font-size:clamp(1.8rem,3vw,3rem)!important;line-height:1.05;overflow-wrap:anywhere;word-break:normal}
+.command-number{font-size:clamp(2rem,4vw,4.2rem)!important}
+canvas.chart{width:100%!important;height:300px!important;min-height:240px;object-fit:contain}
+
+/* Event Studio: all content must stay inside the workspace. */
+.studio-shell,.studio-panel{min-width:0;overflow:hidden}
+.studio-tabs{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:8px}
+.studio-tab{min-width:0;white-space:normal;text-align:center}
+.studio-layout{display:grid!important;grid-template-columns:minmax(320px,440px) minmax(0,1fr)!important;gap:18px!important;align-items:start!important}
+.studio-form,.studio-board,.proposal-list,.client-proposals,.portal-layout{position:static!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important}
+.studio-card,.event-card,.proposal-card{max-width:100%;min-width:0;overflow:hidden}
+.studio-form .row,.studio-form .three,.form-grid{width:100%;max-width:100%}
+.studio-form input,.studio-form select,.studio-form textarea{min-width:0;width:100%}
+
+/* Inventory: visible photo and editable, balanced records. */
+.inventory-item-cell{display:flex;align-items:center;gap:12px;min-width:220px}
+.inventory-item-cell img{width:58px;height:58px;flex:0 0 58px;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:#faf7f5}
+.inventory-item-cell small{display:block;color:var(--muted);margin-top:3px}
+.inventory-card-stable{display:grid!important;grid-template-columns:104px minmax(0,1fr);gap:14px;align-items:start}
+.inventory-card-stable .inventory-card-image{width:104px!important;height:104px!important;object-fit:cover;border-radius:18px;margin:0!important;border:1px solid var(--line);background:#faf7f5}
+.inventory-card-content{min-width:0}
+.table-actions{display:flex;flex-wrap:wrap;gap:6px}
+.table-actions button{padding:8px 10px;min-height:38px}
+
+/* Orders and invoices use cards instead of crushed tables at every practical app width. */
+#orders table.desktop,#invoices table.desktop{display:none!important}
+#orders .mobile-list,#invoices .mobile-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.order-card-stable,.invoice-card-stable{margin:0!important;padding:18px!important;min-width:0;overflow:hidden}
+.order-card-title,.invoice-card-title{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.order-card-title p,.invoice-card-title p{margin:5px 0 0;color:var(--muted)}
+.order-metrics,.invoice-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0}
+.invoice-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+.order-metrics span,.invoice-metrics span{padding:10px;border:1px solid var(--line);border-radius:14px;color:var(--muted);min-width:0}
+.order-metrics b,.invoice-metrics b{display:block;color:var(--ink);font-size:1.05rem;margin-top:4px;overflow-wrap:anywhere}
+.stock-details{border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:10px 0}
+.stock-details summary{cursor:pointer;font-weight:800}
+.stock-details ul{margin:10px 0 0;padding-left:20px;columns:2}
+.order-card-stable .actions,.invoice-card-stable .actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.order-card-stable .actions button,.invoice-card-stable .actions button{width:100%;min-width:0;padding:9px 8px}
+
+/* Bloom Club: no oversized marketing panel, no overflow, clear consent control. */
+.loyalty-layout{display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(300px,.8fr)!important;gap:18px!important;align-items:start}
+.wallet-preview{width:100%;max-width:100%;overflow:hidden}
+.wallet-card{width:100%!important;max-width:460px!important;min-height:250px!important;height:auto!important;aspect-ratio:1.58/1;margin-inline:auto;padding:24px!important;overflow:hidden}
+.wallet-card h3{font-size:clamp(1.6rem,3vw,2.4rem)!important;margin:20px 0 10px}
+.stamp-track{display:flex;flex-wrap:wrap;gap:7px;max-width:100%}
+.consent-check{display:grid!important;grid-template-columns:26px minmax(0,1fr)!important;align-items:start!important;gap:12px!important;padding:14px!important}
+.consent-check input{width:22px!important;height:22px!important;min-height:22px!important;margin:2px 0 0!important}
+.consent-check span{min-width:0}
+
+/* Invoice editor fields should breathe. */
+#invoices .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#invoices .payment-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end}
+#invoices select,#invoices input,#invoices button{min-width:0}
+.invoice-preview{width:100%;max-width:100%;overflow:auto}
+
+@media (max-width:1099px){
+  .studio-layout,.loyalty-layout{grid-template-columns:1fr!important}
+  #orders .mobile-list,#invoices .mobile-list{grid-template-columns:1fr!important}
+  .studio-tabs{grid-template-columns:1fr!important}
+  .wallet-card{max-width:520px!important}
+}
+@media (max-width:767px){
+  .page{padding:12px!important}
+  .dashboard-toolbar-compact{margin-top:4px}
+  .dashboard-customise-button{width:100%}
+  .three,.command-grid,.grid{grid-template-columns:1fr!important}
+  .stat b,.command-number{font-size:2rem!important}
+  .inventory-card-stable{grid-template-columns:78px minmax(0,1fr)}
+  .inventory-card-stable .inventory-card-image{width:78px!important;height:78px!important;border-radius:14px}
+  .order-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .invoice-metrics{grid-template-columns:1fr}
+  .order-card-stable .actions,.invoice-card-stable .actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stock-details ul{columns:1}
+  #invoices .row,#invoices .payment-panel{grid-template-columns:1fr}
+  .wallet-card{padding:18px!important;min-height:220px!important}
+  .wallet-card h3{margin-top:12px}
+}

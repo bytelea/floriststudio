@@ -9,13 +9,13 @@
 <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Florist Studio" name="apple-mobile-web-app-title"/>
 <meta content="A privacy-first florist studio for orders, customers, digital loyalty, inventory, proposals and business operations." name="description"/>
-<title>Florist Studio v4.1</title>
+<title>Florist Studio v4.2</title>
 <link href="assets/images/icon-192.png" rel="icon" type="image/png"/>
 <!-- Florist Studio v4.0 · stable desktop, iPad and phone release -->
 <link href="manifest.json" rel="manifest"/>
 <link href="assets/images/icon-192.png" rel="apple-touch-icon"/>
-<link href="assets/css/style.css?v=4.1.0" rel="stylesheet"/>
-<link href="assets/css/responsive-v4.css?v=4.1.0" rel="stylesheet"/>
+<link href="assets/css/style.css?v=4.2.0" rel="stylesheet"/>
+<link href="assets/css/responsive-v4.css?v=4.2.0" rel="stylesheet"/>
 </head>
 <body>
 <div aria-live="polite" class="save-indicator" id="saveIndicator" role="status">
@@ -39,7 +39,7 @@
 </header>
 <nav aria-label="Primary workspace navigation" class="nav" id="nav"></nav>
 <main id="pages" tabindex="-1">
-<section class="page active" id="home"><div class="dashboard-toolbar"><div><span class="eyebrow">Your workspace</span><h2>My dashboard</h2><p class="mini">Choose the information that matters to your flower business.</p></div><button class="dashboard-customise-button" onclick="openDashboardCustomiser()" type="button">🗂️ Customise dashboard</button></div>
+<section class="page active" id="home"><div class="dashboard-toolbar dashboard-toolbar-compact"><button class="dashboard-customise-button" onclick="openDashboardCustomiser()" type="button">Customise dashboard</button></div>
 <div class="three" data-dashboard-widget="three-0">
 <div class="stat">Total sales<b id="sSales">€0</b></div>
 <div class="stat">Profit made<b id="sProfit">€0</b></div>
@@ -527,8 +527,9 @@
 </div>
 </section>
 <section class="page" id="inventory">
-<div class="card">
-<h2>Inventory</h2>
+<div class="card inventory-editor">
+<input id="iEditId" type="hidden"/>
+<h2 class="sr-only">Inventory item editor</h2>
 <div class="row">
 <input id="iName" placeholder="Roses, ribbon, oasis"/><select id="iCat">
 <option>Fresh flowers</option>
@@ -544,9 +545,7 @@
 <div class="row">
 <input id="iCost" placeholder="Cost per unit €" type="number"/><input id="iMin" placeholder="Low stock alert qty" type="number"/>
 </div>
-<div class="image-upload-field"><label for="inventoryImage">Item image</label><input accept="image/*" capture="environment" id="inventoryImage" type="file"/><div class="upload-preview empty" id="inventoryImagePreview"><span>📷</span><small>Add a clear product or flower photo</small></div></div><button class="primary" onclick="addInventory()">
-              Add inventory
-            </button>
+<div class="image-upload-field"><label for="inventoryImage">Item image</label><input accept="image/*" capture="environment" id="inventoryImage" type="file"/><div class="upload-preview empty" id="inventoryImagePreview"><span>📷</span><small>Add a clear product or flower photo</small></div></div><div class="actions"><button class="primary" id="inventorySaveButton" onclick="addInventory()">Add inventory</button><button id="inventoryCancelEdit" hidden onclick="cancelInventoryEdit()" type="button">Cancel edit</button></div>
 </div>
 <div class="card">
 <h2>Stock list</h2>
@@ -739,8 +738,7 @@
 <aside class="wallet-preview card">
 <span class="eyebrow">Customer preview</span>
 <div class="wallet-card" id="walletCardPreview"><div class="wallet-card-top"><span>ETERNAL BLOOMS</span><span>🌸</span></div><h3>Bloom Club</h3><p>Select a member to preview their card.</p><div class="stamp-track" id="walletStampTrack"></div><div class="wallet-code">•••• ••••</div></div>
-<div class="wallet-coming-soon" role="status"><strong>Digital wallet passes are coming later.</strong><p>Bloom Club works inside Florist Studio now. Apple Wallet and Google Wallet will only appear after secure pass signing and issuer setup are complete.</p></div>
-<p class="field-help">The web card works first. Official Wallet buttons activate after a secure cloud service and issuer accounts are connected.</p>
+
 </aside>
 </div>
 <div class="card"><div class="section-heading"><div><span class="eyebrow">Members</span><h2>Bloom Club cards</h2></div><span class="pill" id="loyaltyMemberCount">0 members</span></div><div class="loyalty-member-grid" id="loyaltyCards"></div></div>
@@ -954,7 +952,7 @@
 </div>
 </div></section>
 </main>
-<footer class="footer">
+<footer class="footer" id="globalFooter">
 <img alt="Eternal Blooms logo" id="footerLogo" src="assets/images/eternal-blooms-logo-alt.png"/>
 <p>
 <b>Florist Studio</b> was created by
@@ -967,7 +965,7 @@
           on Instagram for bouquet inspiration, florist tips and future updates.
         </p>
 
-<span class="footer-version">Florist Studio v4.1 · Responsive stability release</span>
+<span class="footer-version">Florist Studio v4.2 · Layout repair release</span>
 </footer>
 </div>
 <div aria-hidden="true" aria-labelledby="installGuideTitle" aria-modal="true" class="install-guide-modal" hidden="" id="installGuideModal" role="dialog">
@@ -999,10 +997,11 @@
 </aside>
 <div aria-hidden="true" class="v3-modal" hidden="" id="dashboardCustomiser"><div class="v3-modal-sheet"><div class="modal-head"><div><span class="eyebrow">Personal workspace</span><h2>Customise dashboard</h2></div><button class="icon-button" onclick="closeDashboardCustomiser()">×</button></div><p>Switch sections on or off. Your choices save automatically on this device.</p><div class="dashboard-switches" id="dashboardSwitches"></div><div class="actions"><button onclick="resetDashboardLayout()">Restore defaults</button><button class="primary" onclick="closeDashboardCustomiser()">Done</button></div></div></div><nav aria-label="Mobile workspace navigation" class="bottom-nav" id="bottomNav"></nav>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/app.js?v=4.1.0"></script>
-<script src="assets/js/studio-features.js?v=4.1.0"></script>
-<script src="assets/js/install-manager.js?v=4.1.0"></script><script src="assets/js/v3-features.js?v=4.1.0"></script>
-<script src="assets/js/cloud-sync.js?v=4.1.0"></script>
+<script src="assets/js/app.js?v=4.2.0"></script>
+<script src="assets/js/studio-features.js?v=4.2.0"></script>
+<script src="assets/js/install-manager.js?v=4.2.0"></script><script src="assets/js/v3-features.js?v=4.2.0"></script>
+<script src="assets/js/cloud-sync.js?v=4.2.0"></script>
+<script src="assets/js/stability-v4.2.js?v=4.2.0"></script>
 <div aria-hidden="true" aria-labelledby="portalTitle" aria-modal="true" class="client-portal-modal" id="clientPortalModal" role="dialog">
 <div class="portal-sheet">
 <button aria-label="Close portal" class="portal-close icon-button" onclick="closeClientPortal()">
